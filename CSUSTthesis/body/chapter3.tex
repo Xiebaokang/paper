@@ -1,0 +1,663 @@
+% !Mode:: "TeX:UTF-8"
+\fancyhead[CO]{\song\wuhao ~\chaptername \quad Transformer模型关键算子的代码生成~}
+\fancypagestyle{plain}{\fancyhead[CO]{\song\wuhao ~\chaptername \quad Transformer模型关键算子的代码生成~}}
+
+\chapter{Transformer模型关键算子的代码生成}
+
+% ########################################################################################
+%                                        1 引言
+% ########################################################################################
+\section{引言}
+随着 Transformer 模型在大规模预训练与推理场景中的广泛应用，MHA 与 Matmul 等核心算子的性能已成为影响整体系统效率的关键因素。尽管现有深度学习框架通常依赖厂商提供的高性能库（如 cuBLAS、cuDNN 等）以获得较优的算子实现，但这类方式在跨平台适配、结构灵活性与可扩展性方面仍面临诸多挑战。尤其是在异构硬件环境日益普及的背景下，不同 GPU 及国产加速芯片在执行模型、线程组织方式、存储层级结构及专用指令支持等方面存在显著差异，导致单一平台上的最优实现往往难以直接迁移至其他平台。
+
+从编译技术角度来看，当前主流深度学习编译框架虽然能够完成算子级别的自动生成与优化，但仍存在以下几个核心问题。首先，在中间表示层级上，多数系统缺乏对块级并行结构与数据分块策略的显式表达能力，导致算子调度逻辑与硬件资源映射过程分散在不同优化阶段，难以进行统一建模与系统化分析。其次，针对矩阵乘与注意力等计算密集型算子，性能瓶颈往往并非来源于算术运算本身，而是数据在多级存储结构之间的搬运与复用效率。然而传统 IR 在描述共享内存布局、线程协作模式以及访存重排策略方面表达能力有限，使得复杂访存优化难以在统一框架下实现。再次，在算子优化过程中，大量关键参数（如分块尺寸、规约轴切分策略、软件流水线阶段数等）共同构成高维调优空间，若缺乏结构化参数体系与系统化剪枝机制，自动调优将面临组合爆炸问题，难以在合理时间内获得高性能实现。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{3_1}
+\caption{DeepGen总体架构}\label{3_1}
+\vspace{\baselineskip}
+\end{figure}
+
+因此，构建一种既能保留高层算子语义，又能够精确表达块级与线程级执行结构的中间表示体系，并在此基础上实现结构化优化与自动调优机制，是提升 Transformer 核心算子跨平台性能的关键。本章围绕上述问题，提出并实现了基于 MLIR 的 Transformer 关键算子代码生成与优化方法，通过引入面向 GPU 块级执行结构的分层 IR 表达方式，实现算子结构、访存路径与并行映射的统一建模。如图\ref{3_1}所示为DeepGen的总体架构，主要分为IR构建、Pass集合、调优以及后端四个部分。这四个功能部件之间高度耦合且环环相扣：IR构建层构建线程块层级和线程层级的IR，使得算子逻辑能够被结构化描述，便于Pass的分层作用；Pass 集合则在此基础上，通过一系列预定义的转换规则对计算调度与访存行为进行逐级精细化重构；而调优部分通过对搜索空间的自动化探索，反馈并驱动 Pass 集合生成最优的参数配置；最后后端根据不同平台，进行高性能代码的生成与执行。
+具体而言，本文的主要贡献包括以下几个方面：
+\begin{itemize}
+\item 提出一种面向硬件层次结构的多级 IR 设计方法。在 MLIR 多级表示机制基础上，构建线程块级与线程级协同的算子建模方式，使数据分块、并行映射与计算调度策略能够在 IR 层清晰表达，为后续优化与转换提供结构化语义支持。
+
+\item 设计并实现了一组面向 Transformer 关键算子的高性能优化 Pass。围绕矩阵乘与注意力机制的计算与访存特性，构建涵盖软件流水线（Software Pipeline）、规约轴并行（Local Split K）、线程块重映射（Block Swizzle）以及离散访存优化（Access Scatter）等在内的优化机制，实现对计算调度与数据访问路径的系统化改进。
+
+\item 构建与 IR 优化流程紧密耦合的自动调优框架。通过定义结构化调优参数空间，并结合剪枝策略与并行编译—测试机制，实现对不同硬件平台的高效参数搜索，使生成算子在多种异构环境下均能获得稳定且可迁移的高性能表现。
+\end{itemize}
+
+通过上述设计，本章所提出的方法不仅能够在 IR 层统一表达算子的结构与优化策略，还能够在不同硬件平台之间实现结构复用与性能迁移，为 Transformer 模型核心算子的自动生成与跨平台优化提供了一种系统化解决方案。后续各节将围绕 IR 建模与转换、优化 Pass 设计以及自动调优机制展开详细阐述。
+
+% ########################################################################################
+%                          2 面向硬件层次结构的多级IR设计与转换
+% ########################################################################################
+\section{面向硬件层次结构的多级IR设计与转换}
+在本节中，首先我们针对传统GPU的硬件层次结构，提出了Block和Thread层级的算子建模方案，并以构建多头注意力机制为例进行详细阐述，其次我们提出了一种算法用于解决线程块和线程层级在Lowering过程中的索引推断的问题，最后从线程块和线程层级的两层IR代码的角度出发，通过示例详细阐述IR代码的Lowering过程。
+
+
+% =============================================================
+%                      2.1 算子的计算建模
+% =============================================================
+\subsection{算子的计算建模}
+现代 GPU 等异构加速硬件在其编程模型中通常呈现“线程块（Block）-线程（Thread）”两级并行层级。通过 blockId 与 threadId 构成的张量访存索引表达式，系统能够将计算任务精确映射至对应的线程块及其内部线程。针对这种层次化的硬件特征，本文提出了一种解耦的计算建模策略：将算子的运算逻辑划分为“线程块级”与“线程级”两个层次，并在中间表示（IR）的构建中使用不同粒度的操作符（Operation）进行刻画。
+
+\begin{table}[htbp]
+\caption{DeepGen Dialect中自定义Operation列表}\label{tab:table2}
+\vspace{0.5em}\centering\wuhao
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{cc}
+\toprule[1.5pt]
+Operation & 描述 \\\midrule[1pt]
+KernelOp & 描述整个算子计算流程，所有操作均应定义在其内部 \\
+ParallelOp & 描述网格的线程块分配及参与计算的线程块内线程数 \\
+AllocBufferOp & 创建涵盖共享内存、寄存器及全局内存的缓冲区 \\
+CopyOp & 执行数据在共享内存、寄存器与全局内存间的拷贝操作 \\
+FillOp & 对寄存器缓冲区进行数据初始化与填充 \\
+MatmulOp & Block级矩阵乘操作，输入共享内存或寄存器，输出至寄存器 \\
+BlockOp & Block级计算，涵盖非矩阵乘计算与特定的数据拷贝逻辑 \\
+ReduceOp & 执行包括max、min、add等在内的规约（Reduction）操作 \\
+EndOp & 自定义操作的块内部终止符，无具体计算含义 \\\bottomrule[1.5pt]
+\end{tabular}
+\vspace{\baselineskip}
+\end{table}
+
+在线程块层级的逻辑建模中，张量访存的索引计算仅依赖于 BlockId。该层级主要聚焦于宏观层面的问题切分（Tiling）策略、内存分配与数据搬移以及计算调度，而屏蔽了块内线程的具体任务分配细节。由于此阶段的索引计算与任务分配策略相对宏观，其 IR 表达也更为简洁。为此，本文自定义了 MLIR 方言——DeepGen Dialect，专门用于描述算子在线程块层面的计算行为。表\ref{tab:table2}详细列出了该方言中的核心 Operation 及其语义，系统将借由这些自定义操作符构建线程块级的骨架。
+相对应的，线程层级的建模则重点转向块内线程的细粒度任务分配与计算实现。该层级通过引入 ThreadId，将单个线程块级的 Operation 进一步展开（Lowering）为若干个具备具体硬件执行语义的线程级 Operation，从而确保整个 IR 的逻辑完整性与可执行性。
+
+\begin{table}[htbp]
+\caption{自定义缓冲区标识符}\label{tab:table3}
+\vspace{0.5em}\centering\wuhao
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{cc}
+\toprule[1.5pt]
+缓冲区标识符 & 含义说明 \\ \midrule[1pt]
+GM(X) & 缓冲区X的地址空间为全局内存 (GM: Global Memory) \\ 
+SM(X) & 缓冲区X的地址空间为共享内存 (SM: Shared Memory) \\ 
+Reg(X) & 缓冲区X的地址空间为寄存器 (Reg: Registers) \\ \bottomrule[1.5pt]
+\end{tabular}
+\vspace{\baselineskip}
+\end{table}
+
+在数据结构与内存抽象方面，本框架统一采用 MLIR 提供的 MemRef 类型进行表示。作为 MLIR 的内置 Dialect，MemRef 提供了完善的数据索引变换基础设施，能够清晰界定数据在不同内存空间（如表\ref{tab:table3}所示）中的排布，且拥有丰富的转换与优化 Pass 生态。而对于线程级的细粒度计算逻辑，本文则复用了 MLIR 内置的 Arith、Affine 等成熟方言。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1\textwidth]{3_2}
+\caption{多头注意力机制在DeepGen下建模示例的数据流图}\label{3_2}
+\vspace{\baselineskip}
+\end{figure}
+
+以 Transformer 模型中的多头注意力机制（MHA）为例，图\ref{3_2}展示了其计算过程在双层 IR 模型下的数据流向。图中蓝色区域代表算子在线程块层级的 Operation 表达，橙色区域则为对应 Operation 向线程层级细化的内部结构。各 Operation 采用圆角矩形标识，张量数据采用直角矩形标识；数据名称中的 GM、SM、Reg 分别对应全局内存、共享内存及寄存器。涉及到数据访存的 Operation，其下方均标注了相应的索引表达式。图中利用紫色矩形框表示线性循环结构，粉色方框表示非线性循环结构，循环体的迭代变量、上下界及步长均已显式标明。如图所示，MHA 的输入为 GM(Q)、GM(K) 与 GM(V)，输出为 GM(O)，各张量的形状由下方中括号标注（其中 b、h、s、d 分别代表批大小 Batch Size、注意力头数 Head Number、序列长度 Sequence Length 以及注意力头维度 Head Dimension）。红色虚线菱形箭头标明了操作间的数据依赖序列，例如在图\ref{3_2}(a)中，ReduceOp 必须在 CopyOp 执行完毕后方可启动。
+
+在线程块层级的运算建模中，数据访问的索引变量仅使用 BlockId。如图\ref{3_2}(a)所示，首个 MatmulOp 所需的输入来自共享内存中的张量分块，这些分块由 CopyOp 从全局内存中搬移而来。其中 \{bz, by, bx, 0\} 与 \{bz, by, i, j\} 分别表示向全局缓存 GM(Q) 与 GM(K) 发起线程块级拷贝的索引表达（$i, j$ 为循环变量）。为降低共享内存的峰值压力，对于 SM(K) 采用了切块加载再累加的策略（分块尺寸为 $[16, 32]$），使得 MatmulOp 在单次迭代中仅需针对 SM(Q)[j:j+16, 32] 与 SM(K)[16, 32] 的子张量分块进行计算。
+
+在 DeepGen Dialect 的设计中，KernelOp 与 ParallelOp 用于封装算子的全局计算域，定义线程块网格分布及块内线程规模，自身不涉及具体的内存访问与算术运算。而 BlockOp 则承担了线程块级别的逐元素（Element-wise）计算与部分数据访存任务。如图\ref{3_2}(a)所示，表达式 $acc\_s = exp(acc\_s - m)$ 明确界定了 BlockOp 内部执行的标量/向量计算逻辑，从而在线程块级 IR 中将此类泛型计算进行了统一且高效的封装。
+
+图\ref{3_2}(b)进一步展示了部分线程块级 Operation 向线程层级细化的建模过程。在此阶段，线程块级的宏观操作被等价展开为若干个细粒度的线程级 Operation。虚线箭头清晰指明了 MatmulOp 与 ReduceOp 在线程层级的内部实现细节。
+在线程块层级表现为整体寄存器张量块（Reg）的数据，在线程层级被精确切割为每个物理线程私有的数据分块。该层级下的访存与计算必须引入 ThreadId 以实现索引的细粒度推断。以图\ref{3_2}(a)中的 MatmulOp 为例，在降级（Lowering）至线程层级后，其外围输入输出接口（即以 SM(Q)、SM(K) 为输入，Reg(acc\_s) 为输出）保持一致。但其内部不再由单一节点概括，而是替换为基于 Arith、Affine 等细粒度 Operation 的微观指令流：数据首先从共享内存加载至寄存器 Reg(Q) 和 Reg(K)，随后由块内各线程执行外积运算并累加，最终存回 Reg(acc\_s)。此过程中，数据从共享内存载入寄存器的索引表达式变为 \{bk, map1(tid, i)\} 与 \{bk, map2(tid, i)\}，其中 tid 代表当前线程的索引 ID（ThreadId），i 为循环变量，map 则为实现索引重映射的转换函数。
+
+为了准确表达线程层级更细粒度的访存与计算语义，本文直接复用了 MLIR 社区成熟的内置方言。具体而言：利用 Affine 方言描述仿射映射相关的控制流（如 affine.for）与内存存取（如 affine.load/store）；利用 Arith 方言执行基础标量算术运算（如加、减、乘、除对应的 arith.addf/subf/mulf/divf 等）；利用 Math 方言处理复杂的数学超越函数（如指数运算 math.expf、对数运算 math.logf 等）。这些基础设施的引入不仅保障了复杂计算在底层线程的正确映射，还充分暴露了执行细节，为后续挂载高级优化 Pass 提供了广阔的操作空间。
+
+% =============================================================
+%                      2.2 IR降级信息推断算法
+% =============================================================
+\subsection{IR降级信息推断算法}
+
+在上一节中，本文将算子建模过程划分为线程块层级与线程层级两个阶段。对应到MLIR实现中，首先使用DeepGen方言对算子逻辑进行表达，其次通过IR Lowering过程将线程块层级的操作进一步降低为线程层级的操作。在该Lowering过程中，需要通过引入线程ID（ThreadId）参与索引计算，从而将线程块层级的访存操作具体映射到每个线程的执行行为。因此，在执行IR Lowering之前，必须明确线程块ID（BlockId）与线程ID之间的索引映射关系。
+
+然而，在线程块层级的IR表示中，并未显式包含线程层级的索引映射信息，因此无法直接完成线程级访存索引的生成。为解决该问题，需要结合算子的计算语义以及线程块层级Operation的结构特性，对线程级索引映射关系进行推断，从而为后续IR Lowering提供必要的指导信息。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.75\textwidth]{3_3}
+\caption{LowerInfo结构体定义}\label{3_3}
+\vspace{\baselineskip}
+\end{figure}
+
+如图\ref{3_3}所示，本文设计了一种名为LowerInfo（Lowering Information）的结构体，用于记录缓冲区（Buffer）在不同执行层级上的访存索引映射关系。对于每一个涉及缓冲区访问的Operation，系统都会为其操作的Buffer建立对应的LowerInfo结构。这里的Buffer在MLIR中以MemRef类型（type）的Value表示。LowerInfo结构内部采用MLIR的AffineMap来描述不同层级的索引映射表达式，并通过设置索引变量的上界约束保证访存地址的合法性。
+
+在LowerInfo结构中，除了线程块与线程层级的索引映射之外，还引入了线程束（Warp）层级的索引表达，从而能够实现更细粒度的线程访问控制。此外，结构中还包含用于访存离散化的索引映射机制，通过对线程访问的数据块进行分散化访问，可以有效降低共享内存中的Bank Conflict问题。针对双层离散化策略的具体实现将在第\ref{ch3_5}节中进行详细介绍。最终，在IR Lowering阶段，对于共享内存的Buffer而言，只需将线程块层级Operation中的Block级索引表达式与LowerInfo中记录的线程、线程束等层级的索引表达式进行组合，而对于寄存器层面的BUffer而言只需要组合LowerInfo中线程内部的索引表达式，即可得到线程级别的最终访存索引。
+
+通过对算子执行过程的分析可以发现，不同Operation之间对Buffer索引的依赖关系存在明显差异。例如，在图\ref{3_2}(a)中，CopyOp与MatmulOp之间的索引访问彼此独立。具体而言，CopyOp对共享内存SM(K)进行写入时的索引分布，并不要求与MatmulOp从SM(K)读取数据时的索引保持一致。而另一方面，MatmulOp与ReduceOp之间通过寄存器Buffer Reg(acc\_s)传递中间结果，因此两者在索引访问上必须保持一致。由于MatmulOp计算得到的部分结果分别存储在不同线程的寄存器中，因此在ReduceOp执行时，每个线程必须按照MatmulOp中数据写入Reg(acc\_s)时的索引方式进行读取，才能保证计算结果的正确性。
+
+基于上述分析可以发现，仅寄存器类型Buffer的LowerInfo需要在多个Operation之间保持一致，并参与跨Operation的依赖关系推断；而对于共享内存或全局内存等其他类型Buffer，其LowerInfo仅在当前Operation内部有效。当这些Buffer在后续Operation中再次被访问时，需要根据新的Operation语义重新推断其LowerInfo。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.75\textwidth]{3_4}
+\caption{MatmulOp中Buffer的LowerInfo的独立推断}\label{3_4}
+\vspace{\baselineskip}
+\end{figure}
+
+基于上述观察，本文提出了一种LowerInfo推断算法\ref{alg1}，用于自动生成算子中各访存Operation对应的Buffer索引映射信息，从而指导IR的Lowering过程。根据推断过程中对前序信息依赖程度的不同，线程块层级的Operation可分为两类。
+
+第一类为可独立推断型Operation。这类Operation可以根据其自身的计算语义直接推导出相关Buffer的LowerInfo。例如图\ref{3_2}(a)中的MatmulOp，其输入Buffer的索引分布可以由输出Buffer的索引关系推导得到。如图\ref{3_4}所示为MatmulOp中Buffer LowerInfo的推断过程。其中Reg(X)表示寄存器层级的Buffer，Tx表示线程束内部线程的索引，不同颜色表示不同线程束负责计算Buffer中的不同区域。由于该矩阵乘法采用外积（Outer Product）的计算方式，因此输出寄存器Reg(acc\_s)的LowerInfo可以直接根据矩阵乘法的计算规则确定。在计算过程中还引入两个临时寄存器Reg(Q)与Reg(K)，分别用于存储来自SM(Q$^T$)和SM(K)的数据。尽管这两个寄存器的LowerInfo未在图中显式展示，但其索引关系同样可以由Reg(acc\_s)的LowerInfo推导得到。因此，通过外积计算的结构特性即可进一步确定SM(Q$^T$)与SM(K)的LowerInfo信息。该推断过程对应算法\ref{alg1}中的第8至第15行。
+
+\SetAlgorithmName{算法}{算法}{算法列表}
+\SetKwInput{KwIn}{输入}
+\SetKwInput{KwOut}{输出}
+\SetKwInput{KwData}{输入}
+\SetKwInput{KwResult}{输出}
+\SetKwFor{For}{for}{do}{end for}
+\SetKwFor{ForEach}{for each}{do}{end for}
+\SetKwIF{If}{ElseIf}{Else}{if}{then}{else if}{else}{end if}
+\SetKwFor{While}{while}{do}{end while}
+\DontPrintSemicolon
+
+\SetAlFnt{\xiaosi} % 使用小号字体
+\SetAlCapFnt{\xiaosi} % 标题也用小号字体
+
+\begin{algorithm}
+\caption{LowerInfo 推断算法}\label{alg1}
+\setstretch{1.5}
+    \KwIn{kernel\_op - 块级别的 KernelOp 操作实例}
+    \KwOut{成功返回 (\textbf{op\_bufs\_info\_map}, \textbf{frag\_buf\_info\_map})，失败返回 false}
+
+    // 步骤 0：初始化数据结构 \\
+    \textbf{need\_infer\_ops} $\gets$ $\emptyset$ \\
+    \textbf{op\_bufs\_info\_map} $\gets$ $\emptyset$ \\
+    \textbf{frag\_buf\_info\_map} $\gets$ $\emptyset$ \\
+
+    // 步骤 1：收集需要推断的操作 \\
+    \textbf{need\_infer\_ops} $\gets$ \{op $\in$ \textbf{kernel\_op} $|$ op 类型为 CopyOp、BlockOp、MatmulOp、FillOp 或 ReduceOp\} \\
+
+    // 步骤 2：直接推断 \\
+    \ForEach{op $\in$ \textbf{need\_infer\_ops}（按前序遍历顺序）}{
+        \If{op 满足直接推断条件}{
+            \textbf{infos} $\gets$ op.inferLowerInfo() \\
+            \textbf{op\_bufs\_info\_map}[op] $\gets$ \textbf{infos} \\
+            从 \textbf{infos} 中更新寄存器级 LowerInfo 至 \textbf{frag\_buf\_info\_map} \\
+            \textbf{need\_infer\_ops} $\gets$ \textbf{need\_infer\_ops} $-$ \{op\}
+        }
+    }
+    // 步骤 3：迭代式依赖推断 \\
+    \For{$k \gets 1$ \KwTo $1000$}{
+        \If{\textbf{need\_infer\_ops} = $\emptyset$}{
+            \Return (\textbf{op\_bufs\_info\_map}, \textbf{frag\_buf\_info\_map})
+        }
+        
+        \textbf{del\_ops} $\gets$ $\emptyset$ \\
+        \ForEach{op $\in$ \textbf{need\_infer\_ops}}{
+            \If{基于 \textbf{frag\_buf\_info\_map} 中的已有信息可推断 op}{
+                \textbf{infos} $\gets$ 基于依赖关系推断(op, \textbf{frag\_buf\_info\_map}) \\
+                \textbf{op\_bufs\_info\_map}[op] $\gets$ \textbf{infos} \\
+                从 \textbf{infos} 中更新寄存器级 LowerInfo 至 \textbf{frag\_buf\_info\_map} \\
+                \textbf{del\_ops} $\gets$ \textbf{del\_ops} $\cup$ \{op\}
+            }
+        }
+        
+        \textbf{need\_infer\_ops} $\gets$ \textbf{need\_infer\_ops} $-$ \textbf{del\_ops}
+    }
+    
+    \Return false
+\end{algorithm}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1.0\textwidth]{3_5}
+\caption{ReduceOp（左）和BlockOp（右）中Buffer的LowerInfo推断}\label{3_5}
+\vspace{\baselineskip}
+\end{figure}
+
+第二类为依赖型Operation。这类Operation的LowerInfo推断需要依赖于前序Operation中已经得到的寄存器Buffer索引信息。例如图\ref{3_2}(a)中的ReduceOp以及其后的BlockOp，其Buffer LowerInfo推断过程如图\ref{3_5}所示。在ReduceOp的推断过程中，输入寄存器Reg(acc\_s)的LowerInfo已经在前面的MatmulOp阶段推导完成，并存储于frag\_buf\_info\_map中。当遍历到ReduceOp时，系统结合Reg(acc\_s)的LowerInfo以及ReduceOp内部的计算逻辑，即可推导得到输出寄存器Reg(m)的LowerInfo。同理，在后续BlockOp中，其计算表达式为scale=exp(prev\_m-m)，在已知Reg(m)索引分布的情况下，结合Operation内部的计算规则即可进一步推导出Reg(scale)与Reg(prev\_m)的LowerInfo信息。推断完成后，新生成的LowerInfo将被存入frag\_buf\_info\_map中，以供后续Operation继续使用。该过程对应算法\ref{alg1}中的第17至第31行。
+
+综上所述，本文提出的LowerInfo推断算法通过结合算子计算语义与寄存器级依赖关系，对线程级访存索引进行系统化推断，从而为线程块层级到线程层级的IR Lowering过程提供准确的索引映射信息。该方法不仅能够保证生成代码的正确性，还为后续访存优化与线程级并行映射提供了重要基础。
+
+
+% =============================================================
+%                      2.3 IR降级转换
+% =============================================================
+\subsection{IR降级转换}
+
+在上一节中，我们介绍了算子从线程块层级IR Lowering至线程层级IR过程中所依赖的LowerInfo结构体及其推断方法。本节进一步说明IR的具体降级转换过程，并以图\ref{3_2}所示注意力机制中的MatmulOp与ReduceOp为示例进行说明。图\ref{3_6}展示了图\ref{3_2}(a)数据流图在MLIR中的线程块层级IR表示，而图\ref{3_7}与图\ref{3_8}分别给出了图\ref{3_6}中第15行和第20行代码表示的MatmulOp与ReduceOp在完成Lowering后的线程层级IR表示。这两个IR片段同时对应图\ref{3_2}(b)左侧与右侧的变换结果。其中IR中的SmemK与SmemQ分别表示SM(K)与SM(Q)，其余Buffer名称均与图\ref{3_2}(a)中的标注保持一致。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{3_6}
+\caption{注意力机制在线程块层级IR}\label{3_6}
+\vspace{\baselineskip}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{3_7}
+\caption{Lowering后MatmulOp在线程层级的IR}\label{3_7}
+\vspace{\baselineskip}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{3_8}
+\caption{Lowering后ReduceOp在线程层级的IR}\label{3_8}
+\vspace{\baselineskip}
+\end{figure}
+
+对于示例中的MatmulOp，其输入Buffer均位于共享内存，因此SM(Q)与SM(K)的加载索引需要依赖输出寄存器Reg(acc\_s)的计算索引。在上一节中已经说明，Reg(acc\_s)的索引分布可以根据MatmulOp自身的计算语义直接推导得到，因此该Operation涉及的所有Buffer的LowerInfo均可以独立推断得到。如图\ref{3_9}所示为MatmulOp中各Buffer对应的LowerInfo打印结果。通过结合调优参数信息，例如离散化前后线程块、线程束与线程所处理的数据分块尺寸，可以计算得到各Buffer对应的布局、索引上界以及索引表达式。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\textwidth]{3_9}
+\caption{MatmulOp中SM(Q)、SM(K)以及Reg(acc\_s)对应的LowerInfo}\label{3_9}
+\vspace{\baselineskip}
+\end{figure}
+
+在完成LowerInfo推断后，即可执行MatmulOp的IR Lowering。如图\ref{3_7}所示，Lowering后的MatmulOp在IR中通过affine.load与affine.store操作对SM(Q)、SM(K)以及Reg(acc\_s)进行访存。其中线程访问共享内存时的索引表达式由LowerInfo中各层级索引（线程块、线程束与线程索引）组合得到；而线程访问寄存器内部数据时，则直接使用thread\_inner\_index中记录的线程内部索引表达式。因此，在确定所有Buffer的索引映射关系之后，即可完成MatmulOp从线程块层级IR到线程层级IR的降级转换。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\textwidth]{3_10}
+\caption{ReduceOp中Reg(acc\_s)和Reg(m)对应的LowerInfo}\label{3_10}
+\vspace{\baselineskip}
+\end{figure}
+
+与MatmulOp不同，ReduceOp的LowerInfo推断依赖于前序Operation的寄存器索引信息。如果在未知Reg(acc\_s)的LowerInfo情况下执行推断，将无法直接确定Reg(m)的索引分布。这是因为寄存器Buffer在GPU执行模型中为线程私有资源，当同一寄存器Buffer被多个Operation访问时，其索引映射必须保持一致，否则将可能导致计算错误甚至访存越界等问题。
+
+如图\ref{3_10}所示为ReduceOp中Buffer的LowerInfo打印结果，其中注释表示组合后的索引表达式。在推断Reg(m)的LowerInfo时，首先利用ReduceOp的dim属性确定该Operation沿行方向执行区间最大值规约操作。同时，根据Reg(acc\_s)的LowerInfo可以得知每个线程所持有的数据分块形状为[2,4]。在沿行方向执行规约后，每个线程最终仅保留长度为2的结果向量，因此Reg(m)的数据分块形状为[2]。由此可以得到Reg(m)的LowerInfo，其索引分布等价于Reg(acc\_s)在行方向上的映射拷贝。
+
+如图\ref{3_8}所示为ReduceOp Lowering后的线程层级IR。首先对寄存器Reg(m)进行初始化以保证计算结果的正确性；随后从Reg(acc\_s)中加载数据并执行最大值规约运算，将局部结果写入Reg(m)，其索引表达式直接来源于thread\_inner\_index中的线程内部索引。之后，根据LowerInfo中记录的布局信息，可以确定线程块在dim=1方向上的线程束数量以及线程束内部对应方向的线程数量。最后利用GPU Dialect提供的线程束级shuffle XOR指令，在同一行上的线程之间完成跨线程的最大值规约操作，并将得到的行最大值结果同步写入每个线程的Reg(m)寄存器中。
+
+综上所述，IR降级转换过程在LowerInfo推断结果的指导下，将线程块层级的算子表达系统化地映射到线程层级IR中，实现了线程级访存索引与计算逻辑的自动生成。该过程不仅保证了线程级访存的正确性与一致性，还为后续的访存优化与并行调度提供了统一的中间表示基础。通过这一降级机制，可以在保持算子语义不变的前提下，逐步细化执行粒度，为后续优化Pass的实施与高效代码生成奠定基础。
+
+
+% ########################################################################################
+%                            3 关键算子的高性能优化pass集合
+% ########################################################################################
+\section{关键算子的高性能优化pass集合}
+上节中，我们已经设计了双层IR对算子的计算逻辑进行了表达，在本节中我们将重点讨论算子的优化方案，在 MLIR 框架中，Pass 是对 IR 实施系统性程序变换的核心机制。每个 Pass 以模式匹配与重写规则（Pattern Rewrite）为基础，可实现操作替换、方言降低、控制流与数据流重构、硬件映射标注等功能。Deepgen 针对 Transformer 架构中最耗时的关键算子构建了一套完整的专用优化 Pass 体系。这些 Pass 主要聚焦于两大性能瓶颈：计算调度不优导致的线程占用率低、算术强度不足，以及访存模式不佳导致的全局内存带宽浪费、共享内存 Bank 冲突和 L2 缓存命中率低下。为此，我们将优化 Pass 明确划分为计算调度优化与访存层次优化两大类，二者协同作用，共同实现端到端的极致性能。
+
+计算调度优化 Pass 负责循环结构的 切分、重排、并行化、软件流水、规约维度拆分等变换，最大化线程级与块级并行度、提升计算-访存隐藏能力。访存层次优化 Pass 则通过全局内存合并访存、共享内存多缓冲、动态分配、Bank 冲突消除、L2 缓存命中率提升、向量化加载等手段，使算子在实际硬件上逼近理论带宽与理论计算屋顶线。表列出了 Deepgen 引入的 13 项核心优化 Pass 及其主要功能。
+
+\begin{table}[htbp]
+\caption{算子优化Pass集合列表}\label{tab:table3}
+\vspace{0.5em}\centering\wuhao
+\renewcommand{\arraystretch}{1.5}
+\begin{tabularx}{\textwidth}{lXXX}
+\toprule[1.5pt]
+Pass名称 & 描述 \\\midrule[1pt]
+Split&循环切分，将单个循环按照循环边界进行切分得到多个循环 \\
+Parallelize & 循环并行化，将串行循环转换成并行执行 \\
+Unroll & 循环展开，按照展开次数将循环进行展开 \\
+SoftwarePipeline & 软件流水线优化，将循环体内符合“访存-计算”的循环执行软件流水线操作 \\
+Schedule & Operation调度，通过调整IR中Operation的位置从而调度程序语句的执行次序 \\
+LocalSplitK & 局部规约轴切分，将MatmulOp中规约循环切分成多个循环，并翻倍线程数目，实现多个循环任务之间的并行 \\
+CoalescedAccess & 全局访存合并，通过检测矩阵存储的行列连续性，优化全局内存复制到共享内存的搬运过程，提高访存效率。 \\ 
+MultiBuffer & 翻倍缓冲区，扩大缓冲区大小，并修改访存索引，为软件流水线提供缓冲区基础 \\ 
+BlockSwizzle & 线程块索引重映射，通过修改线程块ID索引的映射，优化L2 Cache命中率 \\ 
+Vectorize & 向量化访存，识别IR中的访存操作，使用向量化访存的方式减少IO指令个数，提高指令级并行 \\ 
+AccessScatter & 访存离散化，通过离散化线程对于共享内存的访问地址，减少Bank冲突，同时提高访存模式的多样性 \\ 
+MomoryReuse & 缓冲区重用，通过检测缓冲区生命周期，进行缓冲区复用 \\ 
+SharedDynamic & 动态化共享内存，将算子中的所有共享内存合并，并修改为动态共享内存 \\ 
+\bottomrule[1.5pt]
+\end{tabularx}
+\vspace{\baselineskip}
+\end{table}
+
+
+% =============================================================
+%                3.1 矩阵乘法与Attention优化分析
+% =============================================================
+\subsection{矩阵乘法与Attention优化分析}
+矩阵乘法与注意力机制是 Transformer 推理阶段最核心的计算单元。尽管二者在结构形式上有所差异，但从计算模式与性能特性角度分析，其优化问题具有高度一致性。本节将从计算结构、访存行为、并行映射与规约特性等方面对两类算子进行系统分析，为后续优化 Pass 的设计提供理论依据。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\textwidth]{3_11}
+\caption{矩阵乘法在GPU上的两种计算方式}\label{3_11}
+\vspace{\baselineskip}
+\end{figure}
+
+如图\ref{3_11}(a)所示，从计算结构角度看，矩阵乘法属于典型的三重循环规约结构，其核心特征在于存在明确的规约维度（K 维），输出矩阵中的各个子块在空间上相互独立，而输入数据则具有较强的数据复用潜力。如图\ref{3_11}(b)所示，在理想情况下，每个输出子块的计算可以在片上存储中完成大部分规约操作，仅在必要时访问全局内存。然而在实际执行过程中，由于片上存储容量有限，数据往往需要多次从全局内存加载，若分块策略或线程映射方式设计不当，将导致带宽成为主要性能瓶颈。因此，矩阵乘法虽然理论算术强度较高，但实际性能往往受限于访存效率。
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{3_12}
+\caption{无HBM写回的融合MHA计算流程图}\label{3_12}
+\vspace{\baselineskip}
+\end{figure}
+
+注意力机制在结构上可以分解为两个矩阵乘算子与一个逐行归一化过程的组合。首先计算查询矩阵与键矩阵的乘积生成相关性矩阵，随后对每一行进行缩放与 Softmax 归一化，最后将归一化结果与值矩阵相乘得到输出。从计算本质上看，Attention 的主要计算负载仍集中于矩阵乘阶段。然而，与单纯的 Matmul 相比，Attention 在中间阶段会生成规模随序列长度平方增长的相关性矩阵，这不仅增加了计算量，也带来了更为显著的访存压力。若中间结果频繁写回全局内存再读取，将显著降低整体执行效率。因此，Attention 的优化不仅需要关注计算调度问题，还必须考虑中间数据的存储与复用策略，如图\ref{3_12}所示，这里我们采用Safe softmax（如\ref{softmax}）实现融合MHA，与传统MHA相比，无需将$QK^T$的结果写回HBM中从而降低访存压力。
+
+\begin{equation}\label{softmax}
+y_i = \frac{e^{x_i-\sideset{}{}\max _{k=1}^V x_k }}{ {\textstyle \sum_{j=1}^{V}e^{x_j-\sideset{}{}\max _{k=1}^V x_k }} } 
+\end{equation}
+
+从性能瓶颈角度分析，矩阵乘与 Attention 均呈现出“计算能力充足、带宽压力显著”的特征。根据 Roofline 模型，当数据复用不足时，算子执行将落入带宽受限区域。特别是在长序列或大规模隐藏维度场景下，全局内存访问次数迅速增加，若无法通过分块与共享内存机制提高数据复用率，则硬件计算单元难以达到高利用率。因此，提升数据在片上存储中的停留时间与复用程度，是优化的首要方向。
+
+进一步分析线程块级执行行为可以发现，不同线程块之间往往访问输入矩阵中存在重叠的数据区域。若线程块按照简单的行主序遍历输出空间，则相邻块在时间上的访问局部性较弱，缓存命中率下降，导致重复加载相同数据。通过调整线程块的遍历顺序，使空间上邻近的计算块在时间上连续执行，可以有效提高缓存利用率并降低全局内存访问次数。这一问题本质上是线程块索引映射与调度顺序优化问题。
+
+此外，矩阵乘中的规约维度通常由单个线程块内部完成，但当规约维度较大时，单块计算可能成为性能限制因素。从理论上讲，规约轴可以被划分为多个子段，由多个线程块并行计算部分结果，再通过额外的合并步骤完成最终输出。这种策略能够提高并行度，但同时也引入额外的归并开销，因此需要在并行效率与同步成本之间取得平衡。Attention 中的矩阵乘阶段同样具备类似特性，因此规约轴并行策略具有通用意义。
+
+最后，计算与访存之间的执行关系也是影响性能的重要因素。在传统实现中，数据加载与计算往往串行进行，而全局内存访问延迟远高于算术操作延迟，导致计算单元在等待数据时处于空闲状态。若能够通过流水线机制将数据加载阶段与计算阶段进行重叠，则可以有效隐藏访存延迟，提高整体吞吐率。这种“访存—计算重叠”的思想对于矩阵乘与 Attention 均具有重要意义。
+
+综上所述，矩阵乘法与 Attention 的性能优化问题可以统一抽象为对计算调度、规约轴并行、线程块遍历顺序以及计算—访存重叠机制的系统优化问题。尽管 Attention 在结构上较为复杂，但其核心计算阶段仍可归结为矩阵乘结构优化。因此，在统一的 IR 建模框架下，对上述关键方向进行模块化设计与实现，不仅能够提升单一算子的性能，还能够形成具有跨平台适应能力的优化体系。基于上述分析，本文在后续小节中分别提出 SoftwarePipeline、LocalSplitK、BlockSwizzle 以及 AccessScatter 等优化 Pass，对不同层级的性能瓶颈进行针对性改进。
+
+
+% =============================================================
+%                3.2 Software Pipeline：软件流水线优化
+% =============================================================
+\subsection{Software Pipeline：软件流水线优化}
+
+在深度学习算子中，循环结构通常呈现为“加载—计算—存储（load-compute-store）”的执行模式。在这种模式下，计算指令通常依赖于前序访存指令返回的数据，从而形成严格的数据依赖链。当访存延迟较高时，GPU需要等待内存访问完成后才能继续执行计算操作，导致计算单元在等待期间处于空闲状态，严重限制算子性能的发挥。尽管现代GPU具备硬件指令流水线与一定程度的乱序发射能力，但跨指令的数据依赖仍会迫使访存与计算阶段串行执行，从而降低计算核心的利用率。
+
+为隐藏全局内存访问以及共享内存到寄存器之间的数据访问延迟，本文设计并实现了面向线程块与线程两个层级的双层软件流水线优化Pass。该Pass首先通过数据流分析识别循环体内部“load-compute-store”结构中的依赖关系，然后通过多缓冲（MultiBuffer）与索引重写技术，将原本强依赖的访存与计算操作拆分为多个相互独立的流水阶段，自动构建由Prologue、Main Loop和Epilogue组成的标准三段式软件流水线结构。通过该变换，下一次迭代的数据加载可以与当前迭代的计算操作并行执行，从而有效隐藏访存延迟并提升指令级并行度。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1\textwidth]{3_13}
+\caption{MHA中$QK^T$在线程块层级执行软件流水线的变换过程示意图}\label{3_13}
+\vspace{\baselineskip}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1\textwidth]{3_15}
+\caption{MHA中$QK^T$在软件流水线变化前的线程块层级IR}\label{3_15}
+\vspace{\baselineskip}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1\textwidth]{3_16}
+\caption{MHA中$QK^T$在软件流水线变化后的线程块层级IR}\label{3_16}
+\vspace{\baselineskip}
+\end{figure}
+
+图\ref{3_13}图展示了线程块层级应用软件流水线优化的执行流程，且图\ref{3_15}和图\ref{3_16}分别展示了该 Pass 执行前后线程块层级的 IR 变化。在该层级的IR分析中可以发现，Q矩阵在循环外部通过Copy操作加载至共享内存，而K矩阵则在循环内部通过CopyOp进行加载。因此，在循环内部形成了“加载K矩阵—执行MatmulOp计算”的典型访存—计算结构。在执行SoftwarePipeline Pass之前，首先通过MultiBuffer Pass对CopyOp所使用的共享内存缓冲区SM(K)进行扩展，使其容量按照流水线阶段数进行翻倍。在图示示例中，流水线深度为2，因此SM(K)被划分为两个独立缓冲区。随后SoftwarePipeline Pass对Block层级IR进行重排：在Prologue阶段提前加载K矩阵的第一部分数据；在Main Loop阶段，一边加载下一迭代的K矩阵数据，一边执行当前迭代的MatmulOp计算；最后在Epilogue阶段完成剩余未计算的数据块，从而形成完整的软件流水线执行结构。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1\textwidth]{3_14}
+\caption{MHA中$QK^T$在线程层级执行软件流水线的变换过程示意图}\label{3_14}
+\vspace{\baselineskip}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1\textwidth]{3_17}
+\caption{MHA中$QK^T$在软件流水线变化前的线程层级IR}\label{3_17}
+\vspace{\baselineskip}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1\textwidth]{3_18}
+\caption{MHA中$QK^T$在软件流水线变化后的线程层级IR}\label{3_18}
+\vspace{\baselineskip}
+\end{figure}
+
+在MatmulOp内部的线程层级IR中，同样存在类似的访存—计算依赖关系。具体而言，在循环中需要先从共享内存SM(Q)和SM(K)中加载数据至寄存器Reg(Q)与Reg(K)，随后在内层循环中执行外积计算。与线程块层级优化方式类似，首先使用MultiBuffer Pass对寄存器缓冲区Reg(Q)与Reg(K)进行扩展，从而形成双缓冲结构，为流水线执行提供数据缓冲基础。图\ref{3_14}展示了MatmulOp在线程层级应用软件流水线优化的执行流程，而图\ref{3_17}和图\ref{3_18}则展示了在执行该 Pass 前后线程层级的 IR 变化，在此基础上通过SoftwarePipeline Pass对线程层级循环结构进行重排，使寄存器数据加载与外积计算能够在不同迭代阶段并行执行。
+
+从整体原理上看，软件流水线优化的关键在于解除访存操作与计算操作之间的直接依赖关系，使计算阶段的输入来自前一阶段已经加载完成的数据，而当前阶段则负责为下一次迭代准备数据。通过这种方式，在执行第$n$次迭代计算时，可以同时加载第$n+1$次迭代所需的数据，从而实现访存与计算操作的重叠执行。
+
+在具体实现过程中，原始循环结构被拆分为Prologue、Main Loop和Epilogue三个阶段。其中，Prologue阶段负责完成初始数据预取；Main Loop阶段为流水线的稳态执行阶段，在每次循环迭代中同时执行访存与计算操作；Epilogue阶段则用于完成最后一轮尚未执行的计算任务。在Main Loop中，循环起始位置被调整为原循环的第二次迭代，而循环上界保持不变。由于访存操作与计算操作使用不同的索引偏移，因此单次迭代中的访存与计算不再存在直接依赖关系，可以实现并行执行，从而有效提升GPU执行单元的利用率。
+
+综上所述，SoftwarePipeline Pass通过在IR层面对循环结构进行重排，使访存与计算阶段能够在不同迭代中并行执行，从而有效隐藏内存访问延迟并提升指令级并行度。该方法无需改变算子的计算语义，仅通过多缓冲与索引重写即可实现对执行流程的优化，在多种算子场景中均具有良好的通用性，为提升GPU算子执行效率提供了一种高效且稳定的优化手段。
+
+
+% =============================================================
+%                3.3 Local Split K：外积规约轴并行优化
+% =============================================================
+\subsection{Local Split K：外积规约轴并行优化}
+
+在Transformer模型中，当矩阵乘法运算的规约轴维度显著大于输出矩阵的两个空间维度时，算子的并行度会受到明显限制，如图\ref{3_19}(a)所示。在这种情况下，大量计算集中在规约轴方向，使得线程块层级可并行执行的任务数量减少。当输出矩阵的尺寸（即M与N维度）较小时，这一问题会进一步加剧：每个线程块所负责的计算区域变小，线程块数量不足，从而难以充分利用现代GPU的大规模并行计算能力。
+
+一种直观的优化思路是减少每个线程块承担的计算量，从而增加可并行调度的线程块数量，如图\ref{3_19}(b)所示。然而，该方法通常通过缩小线程块内部的计算分块实现，这会直接降低线程层级的并行度，导致每个线程承担的计算任务减少，反而无法有效提升整体硬件利用率。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{3_19}
+\caption{长规约轴矩阵乘法的三种计算方式}\label{3_19}
+\vspace{\baselineskip}
+\end{figure}
+
+针对上述问题，本文设计并实现了LocalSplitK Pass，通过对规约轴方向的计算任务进行重新划分来提升并行度。其核心思想是将原本由单个线程块完成的规约计算在逻辑上拆分为多个子任务，并在同一线程块内并行执行。如图\ref{3_19}(c)所示，原本由一个线程块计算的输出区域被划分为多个独立子区域，同时线程块内部的线程数量按比例扩展。每个线程组负责计算规约轴上不同子区间的部分结果，并将中间结果暂存于共享内存中。计算完成后，通过一次同步操作对共享内存中的部分和进行规约累加，从而得到最终输出结果。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.75\textwidth]{3_20}
+\caption{MatmulOp操作执行LOCAL\_SPLIT\_K Pass优化过程}\label{3_20}
+\vspace{\baselineskip}
+\end{figure}
+
+从实现角度来看，该Pass通过调整MatmulOp外积计算的任务分配策略来挖掘更多线程级并行性。具体而言，其将外积计算中的规约轴维度划分为多个子区间，并将每个子区间分配给线程块内部不同的线程组执行，如图\ref{3_20}所示。同时，线程块规模按照切分倍数进行扩展，使每个物理线程承担的计算负载与原始设计保持一致，从而在不改变整体计算语义的前提下，实现规约轴方向的子任务级并行。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1\textwidth]{3_21}
+\caption{未作用LOCAL\_SPLIT\_K Pass时MatmulOp的线程层级IR}\label{3_21}
+\vspace{\baselineskip}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1\textwidth]{3_22}
+\caption{作用LOCAL\_SPLIT\_K Pass后MatmulOp的线程层级IR}\label{3_22}
+\vspace{\baselineskip}
+\end{figure}
+
+图\ref{3_21}和图\ref{3_22}展示了图\ref{3_20}所示的MatmulOp操作在应用LocalSplitK Pass前后的IR变化情况，其中线程块中的线程数量为128。图\ref{3_21}给出了未应用优化时MatmulOp在线程层级的原始IR结构，而图\ref{3_22}则为应用LocalSplitK Pass后的优化 IR。从两者对比可以看出，该Pass将原本完整的外积循环逻辑划分为多个子部分。具体而言，在图\ref{3_22}第7行的affine.loadOp操作中，规约轴方向的索引访问被重构为基于线程组的偏移访问形式，从而实现线程组之间的并行计算，而其余索引则通过map函数进行简化表示。
+
+此外，为了整合各线程组的计算结果，该Pass在IR中引入新的共享内存缓冲区smemSP与寄存器缓冲区regSP，用于中间结果的存储与规约。如图\ref{3_22}第26至第31行所示，计算过程中各线程组首先将局部结果写入共享内存smemSP，随后在第34至第45行通过寄存器regSP对共享内存中的数据进行逐步累加，从而恢复完整的外积计算结果。通过这种方式，在保持计算语义不变的前提下实现了规约轴方向的并行化处理。最后，在执行MomoryReuse Pass后SmemSP将重用共享内存SmemA和SmemB的缓冲区，同理寄存器RegSP也会重用RegC的缓冲区，从而减少因过渡使用Buffer造成内存溢出的问题。
+
+综上所述，LocalSplitK Pass通过对矩阵乘法外积计算中的规约轴进行切分，使原本串行的规约过程能够在多个线程组之间并行执行，从而有效提升线程块内部的并行度。尽管该方法需要引入额外的共享内存存储和同步操作，但其带来的并行度提升通常能够显著提高计算单元利用率，尤其适用于规约轴维度较大的矩阵乘计算场景，为算子性能优化提供了一种高效且通用的实现方式。
+
+% =============================================================
+%                3.4 Block Swizzle：线程块访存重排优化
+% =============================================================
+\subsection{Block Swizzle：线程块访存重排优化}
+
+在异构计算体系中，缓解“内存墙”问题是提升整体计算性能的重要目标。尽管软件管理的共享内存能够为规则数据访问提供高效的显式局部性管理，但在复杂访存模式下，硬件管理的通用缓存（如L1/L2缓存）仍然发挥着不可替代的作用。通用缓存能够自动聚合线程束内的非合并访问请求，从而提升带宽利用率，并为指令流和随机访存提供透明的局部性保障。在Transformer推理等典型应用场景中，当连续调度的线程块访问的全局内存区域存在较高重叠度时，可以显著提升L2缓存的复用率，从而减少对全局内存的访问压力。
+
+基于上述观察，本文实现了BlockSwizzle Pass，通过对线程块ID进行轻量级重映射来优化线程块的调度顺序。该方法通过建立逻辑blockId与物理blockId之间的映射关系，打破默认的行优先分配模式，使访问相邻数据区域的线程块在时间上更加接近，从而增强线程块之间的时空局部性，提高缓存复用率。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.7\textwidth]{3_23}
+\caption{线程块层面矩阵乘法的两种不同计算次序方式}\label{3_23}
+\vspace{\baselineskip}
+\end{figure}
+
+图\ref{3_23}以矩阵乘法计算为例展示了BlockSwizzle的优化原理。图中A和B为输入矩阵，C为输出矩阵，每个小方格表示一个线程块负责计算的输出区域，因此计算矩阵C需要启动64个线程块。如图\ref{3_23}(a)所示，在默认的行优先执行模式下，线程块按照行主序依次计算矩阵C。在该模式下，每个线程块需要加载A矩阵的一行数据以及整个B矩阵的数据，共计72个数据分块。由于线程块访问顺序较为分散，缓存中的数据很快被新的数据替换，当后续线程块再次需要相同数据时，只能重新从全局内存加载。
+
+在引入BlockSwizzle优化后，连续调度的线程块将优先计算矩阵C中空间上相邻的区域，如图\ref{3_23}(b)中阴影部分所示。在这种执行模式下，连续的四个线程块共享更多输入数据，使得需要加载的数据分块数量减少至48个。同时，由于线程块访问A与B矩阵的数据具有更高的重叠性，缓存中的数据能够被多次复用，从而降低缓存刷新频率并提高缓存命中率。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1\textwidth]{3_24}
+\caption{BlockSwizzle Pass 作用前的行优先映射}\label{3_24}
+\vspace{\baselineskip}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1\textwidth]{3_25}
+\caption{BlockSwizzle Pass 作用后的分组优先映射}\label{3_25}
+\vspace{\baselineskip}
+\end{figure}
+
+图\ref{3_24}和图\ref{3_25}展示了本文实现的两种线程块ID映射方式在IR层面的表示形式。其中图\ref{3_24}为默认的行优先映射方式，而图\ref{3_25}则为经过BlockSwizzle Pass优化后的分组列优先映射方式，两者分别对应图\ref{3_23}(a)与图\ref{3_23}(b)中的计算模式。
+
+在具体实现过程中，BlockSwizzle Pass首先识别IR中的线程块索引操作（gpu.block\_id），随后构建对应的AffineMap以描述新的线程块映射关系，并通过AffineApplyOp执行该映射表达式，从而完成线程块ID的重映射。在图\ref{3_23}(b)所示的示例中，通过调优参数group\_size\_m可以确定线程块的分组大小，在同一组内部线程块按照列优先顺序进行计算。
+
+在实际映射过程中，还需要考虑矩阵C在列方向上的线程块数量是否能够被group\_size\_m整除。为保证映射的正确性，本文使用AffineMinOp计算每个线程块所在分组的实际大小，从而在边界情况下动态调整分组范围。通过这种方式，可以在保证计算正确性的前提下完成线程块ID的重映射。
+
+综上所述，BlockSwizzle Pass通过对线程块执行顺序进行轻量级重排，使空间上相邻的计算任务在时间上更加接近，从而提升输入数据在缓存层次中的复用率。该方法无需改变算子计算逻辑，仅通过调整线程块调度顺序即可改善全局访存行为，在实现成本极低的情况下显著提高缓存命中率，为算子性能优化提供了一种高效且通用的手段。
+
+
+% =============================================================
+%                3.5 Access Scatter：离散化访存优化
+% =============================================================
+\subsection{Access Scatter：离散化访存优化}\label{ch3_5}
+
+在GPU体系结构中，共享内存通常被组织为32个Bank，每个Bank宽度为4字节。当一个线程束中的线程请求的数据量超过4B时，硬件会将其拆分为多个内存事务，每个事务的最大传输规模为128B。Bank冲突的检测以单个事务为单位：当同一事务中的多个线程访问同一Bank的不同地址时，即会产生Bank冲突，从而导致访存请求被串行化处理。冲突路数越多，有效带宽越低，对算子性能的影响也越显著。因此，在GPU算子优化过程中，通过合理设计数据布局与访存模式以避免事务内的Bank冲突具有重要意义。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{3_26}
+\caption{MatmulOp操作的计算细节（无离散化优化）}\label{3_26}
+\vspace{\baselineskip}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{3_27}
+\caption{MatmulOp操作的计算细节（有离散化优化）}\label{3_27}
+\vspace{\baselineskip}
+\end{figure}
+
+以图\ref{3_26}与图\ref{3_27}为例，展示了图\ref{3_2}中第二个MatmulOp操作在不同访存策略下的计算示意。该算子的输入参数Reg(acc\_s)与SM(V)的形状分别为[32, 32]和[32, 128]，分别位于寄存器与共享内存中。由于Reg(acc\_s)位于寄存器中，其线程级数据布局已确定，因此SM(V)与结果Reg(acc\_o)在线程层级的访存索引信息（即LowerInfo）需要根据Reg(acc\_s)的布局进行推导。在该配置下，每个线程持有Reg(acc\_s)中的[2,4]数据块，因此需要从SM(V)中加载大小为[2,16]的数据块以完成外积计算。
+
+如图\ref{3_26}所示，线程T0需要从SM(V)中加载一个[2,16]的数据块。由于线程最大向量化加载宽度为16字节，每次最多读取4个元素，因此该数据块需要通过4次迭代完成加载。在每次迭代中，线程需要加载一行16个元素，而每行加载通过4条LDS.128指令完成，对应图中不同灰度标识的数据块。根据SM(V)在共享内存Bank上的映射关系可以观察到，在同一迭代中，0–7号线程会访问同一Bank的不同地址，因此产生4路Bank冲突，从而降低访存效率。
+
+针对这一问题，本文在缓冲区LowerInfo结构体中引入离散化索引变量（xxx\_scatter\_index），用于对线程的访存数据进行重新划分与分散索引，使得不同线程访问的数据能够分布到不同Bank中。图\ref{3_26}与图\ref{3_27}分别展示了离散化优化前后的访存模式。可以看到，在进行访存离散化后，原本每个线程连续加载的16个元素被拆分为4次分散加载，每次加载4个元素。通过这种方式，不同线程在同一事务中的访存地址被重新排列，从而避免了原先0–7号线程之间的4路Bank冲突。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1\textwidth]{3_28}
+\caption{MatmulOp操作中SM(V)缓冲区的LowerInfo}\label{3_28}
+\vspace{\baselineskip}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1\textwidth]{3_29}
+\caption{MatmulOp操作中SM(V)缓冲区的LowerInfo}\label{3_29}
+\vspace{\baselineskip}
+\end{figure}
+
+该优化Pass主要通过调整线程层级的访存模式实现，即修改LowerInfo结构中与离散化相关的参数。当xxx\_scatter\_bound参数的上界均为1时，表示未启用访存离散化优化，此时线程按照原始布局进行连续访问。启用离散化后，系统会缩小线程块、线程束与线程在共享内存中的访问分块尺寸，并通过重复访问的方式重组数据加载顺序。每次重复访问的偏移量由LowerInfo中的xxx\_scatter\_index索引表达式计算得到，从而确保线程在不同访问阶段访问到不同的内存地址。
+
+图\ref{3_28}和图\ref{3_29}分别展示了MatmulOp操作中SM(V)缓冲区在执行AccessScatter Pass前后的LowerInfo配置，分别与图\ref{3_26}和图\ref{3_27}中的计算示意相对应。其中，block\_scatter\_index与warp\_scatter\_index分别从线程块与线程束两个层级控制访存离散化模式。通过不同索引组合方式，可以生成多种访存布局，从而为自动调优系统提供更加丰富的优化空间。
+
+综上所述，AccessScatter Pass通过在IR层引入离散化访存索引机制，对线程级共享内存访问模式进行重排，从而有效降低甚至消除Bank冲突问题。该方法在不改变计算语义的前提下显著提升共享内存带宽利用率，并为不同算子配置提供灵活的访存布局选择，为后续自动调优过程提供了更多潜在的高性能实现方案。
+
+
+% ########################################################################################
+%                            4 基于空间剪枝的自动调优框架设计
+% ########################################################################################
+\section{基于空间剪枝的自动调优框架设计}
+在前一节中，本文围绕 Transformer 模型中的矩阵乘与 Attention 等关键算子，设计并实现了一系列面向计算调度与访存优化的编译优化 Pass。这些优化 Pass 能够在 IR 层面对算子的并行结构、访存模式以及执行顺序进行系统化调整，从而为高性能代码生成提供基础。然而，在实际执行过程中，算子性能不仅取决于优化策略本身，还与一系列具体参数配置密切相关，例如线程块与线程级的数据分块尺寸、规约轴切分方式、软件流水线阶段数以及线程块映射方式等。这些参数共同决定了算子的执行粒度、资源利用情况以及数据复用效率，对最终生成代码的性能具有显著影响。
+
+由于不同硬件平台在计算能力、寄存器数量、共享内存容量以及线程调度策略等方面存在差异，即使在相同的优化策略下，不同参数配置所对应的性能表现也可能存在较大波动。在某些情况下，仅对少量参数进行调整，算子性能便可能出现数量级的变化。因此，依赖人工经验选择固定参数的方式难以适应复杂多变的硬件环境，也难以充分挖掘算子的潜在性能。
+
+为了在保证编译效率的同时获得接近最优的执行性能，自动调优（Auto-Tuning）技术被广泛应用于高性能算子生成过程中。自动调优通过系统化地探索不同参数组合，并结合实际运行性能进行评估，从而寻找最优或近似最优的算子实现方案。然而，在面向 GPU 等并行架构的算子生成场景中，调优参数往往形成一个高维、离散且规模庞大的搜索空间，若对所有参数组合进行穷举测试，将带来极高的编译与测试成本，严重影响调优效率。
+
+针对上述问题，本文在前述 IR 优化体系基础上，设计了一种基于空间剪枝的自动调优框架。该框架通过在 IR 层定义结构化调优参数体系，对算子执行结构进行参数化描述，并在此基础上构建可搜索的调优空间。同时，通过引入一系列与硬件资源约束及算子结构特性相关的剪枝策略，在调优阶段提前过滤不合理或低效的参数组合，从而显著减少搜索空间规模，提高调优效率。通过自动化的编译、运行与性能评估流程，该框架能够在合理时间内为目标算子生成高性能实现。
+
+在本节中，将首先介绍自动调优框架的整体设计与工作流程，随后给出调优空间参数的定义及其生成方法，最后对调优空间的剪枝策略进行详细说明。
+
+% =============================================================
+%                       4.1 调优框架的设计
+% =============================================================
+\subsection{调优框架的设计}
+
+为了在高维且复杂的参数空间中高效地搜索高性能算子实现方案，本文在前述编译优化体系的基础上设计并实现了一套自动调优框架。该框架以算子代码生成为核心，通过参数化的IR变换机制生成大量候选实现，并结合运行时性能测试对不同实现方案进行评估，从而自动选择性能最优的算子配置。与依赖人工经验进行参数设定的方法相比，该框架能够系统化地探索算子调度参数与硬件执行特性之间的关系，从而在不同硬件平台上获得更加稳定且接近最优的性能表现。
+
+图\ref{3_30}展示了自动调优器DeepGen的整体架构及其模块组成。整个调优框架主要由三个核心组件构成：Compiler、Tester以及Monitor。Compiler模块主要负责算子代码生成过程，其内部包括调优空间生成与剪枝模块、代码生成模块以及Python加载与封装器。Tester模块由数据收集器与性能测量模块组成，主要负责对生成的kernel文件进行加载执行，并收集运行时数据以完成性能测试。Monitor模块则提供统一的任务管理功能，包括远程任务管理器和任务控制器，负责协调Compiler与Tester的启动、通信以及任务同步，从而保证自动调优过程能够稳定运行。对于整个自动调优系统而言，其输入为用户提供的任务配置文件和调优空间配置文件，最终输出为最优kernel的代码生成方案、运行时元数据以及对应的二进制文件。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{3_30}
+\caption{DeepGen调优模块总体架构}\label{3_30}
+\vspace{\baselineskip}
+\end{figure}
+
+在系统实现上，Compiler、Tester和Monitor分别运行于独立进程中，并可部署在不同主机上，通过Socket通信实现同步控制。当Monitor接收到调优任务后，会将任务分别下发至Compiler与Tester。随后Compiler与Tester协同工作：Compiler负责生成不同参数配置下的算子实现，而Tester则对生成的kernel进行性能测试。两者通过Monitor提供的通信端口进行任务同步。当Compiler完成全部代码生成任务后，会向Tester发送结束信号；Tester在完成所有kernel测试后返回结果并通知Monitor，随后Compiler与Tester进程结束。Monitor在接收到最终结果文件后结束运行，至此自动调优流程完成。
+
+基于Compiler、Tester与Monitor的分层架构设计，编译过程与性能测试过程可以相互解耦并并行执行。具体而言，在进行下一批kernel编译时无需等待上一批kernel测试完成，从而使编译阶段与测试阶段能够充分重叠执行，提高整体调优效率。此外，该设计还能够避免大量编译进程同时运行所带来的CPU负载过高问题，从而减少系统噪声对性能测量结果准确性的影响。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\textwidth]{3_31}
+\caption{DeepGen自动调优流程}\label{3_31}
+\vspace{\baselineskip}
+\end{figure}
+
+图\ref{3_31}进一步展示了DeepGen自动调优框架的完整执行流程。首先，系统读取经过剪枝后的调优空间，并根据设定的进程池容量启动多个编译进程，以并行方式生成不同参数组合对应的kernel实现。同时，调优框架会分析算子的函数签名，并自动生成用于调用kernel的Launcher程序。在完成编译后，各个kernel对应的二进制文件以及运行时配置会被统一打包，并生成包含运行时信息的pkl文件。
+
+随后系统进入性能评估阶段。对于每一个生成的kernel文件，调优框架会根据其pkl文件中的运行时信息调用Launcher程序执行算子，并记录其运行时间。同时，以PyTorch实现作为基准，对kernel计算结果进行正确性验证。若验证通过，则根据其执行时间判断是否将该方案加入最优kernel候选集合。该集合的规模由用户指定，DeepGen会保留运行时间最短的前N个方案作为最优候选。上述过程会对调优空间中的所有候选配置依次执行，最终得到算子的最优实现方案，从而完成自动调优过程。
+
+
+% =============================================================
+%                  4.2 调优空间参数的设置与定义
+% =============================================================
+\subsection{调优空间参数的设置与定义}
+在算子代码生成过程中，多个关键调优参数共同决定了中间表示的变换路径及最终生成代码的性能表现。这些参数包括但不限于线程块与线程级的数据分块尺寸、软件流水线阶段设置、局部规约轴的切分策略，以及线程块、线程束与线程之间的布局结构等。它们共同构成了一个高维、离散且高度非凸的联合优化空间。实测结果表明，即使在相同硬件平台上，仅对少数参数进行调整也可能引发性能的剧烈波动；而不同硬件架构之间，最优参数配置亦存在显著差异。传统基于固定参数的优化策略已难以满足Transformer模型在多样化部署场景下对极致性能的需求。为此，本文设计了一套与IR优化流程紧密耦合的调优参数体系，旨在为后续自动调优模块提供结构化、可扩展的参数空间定义。
+
+\begin{table}[htbp]
+\caption{调优参数列表}\label{tab:table4}
+\vspace{0.5em}\centering\wuhao
+\renewcommand{\arraystretch}{1.5}
+\begin{tabularx}{\textwidth}{lXXX}
+\toprule[1.5pt]
+参数类型 & 描述 \\\midrule[1pt]
+block\_size & 线程块所操作的数据分块尺寸，包括行、列和规约轴三个方向 \\ 
+warp\_size & 线程束所需要计算的数据分块尺寸，包括行、列两个方向 \\ 
+thread\_size & 线程所需要计算的数据分块尺寸，包括行、列两个方向 \\ 
+scatter\_block\_size & 离散化后线程块需要计算的数据分块尺寸，包括行、列两个方向 \\ 
+scatter\_warp\_size & 离散化后线程束需要计算的数据分块尺寸，包括行、列两个方向 \\ 
+group\_size\_m & 线程块索引重映射分组的行方向线程块个数 \\ 
+pipeline\_stage\_num & 软件流水线阶数，包括线程和线程块两个级别，1表示不启用优化 \\ 
+local\_split\_num & 局部规约轴切分次数，1表示不启用优化 \\ 
+unroll & 循环展开次数 \\ 
+\bottomrule[1.5pt]
+\end{tabularx}
+\vspace{\baselineskip}
+\end{table}
+
+表\ref{tab:table4}给出了DeepGen系统中定义的主要调优参数。其中，block\_size、warp\_size与thread\_size共同决定内核启动时的线程网格与线程块结构，同时描述线程块内部线程束与线程之间的层级布局关系。这三个参数构成IR结构的基础，并直接影响算子在GPU内存层次中的数据流动方式与计算效率。scatter\_block\_size与scatter\_warp\_size用于为AccessScatter Pass提供配置，通过调整线程块与线程束的访存粒度，从而有效降低共享内存访问过程中的Bank Conflict问题。group\_size\_m参数用于BlockSwizzle Pass，通过对线程块索引进行分组重映射以增强数据局部性，从而提升缓存命中率与整体执行效率。pipeline\_stage\_num用于控制软件流水线的深度设置，MultiBuffer Pass依据该参数扩展具有数据依赖关系的缓冲区数量，并由SoftwarePipeline Pass完成对应的IR重排与调度优化。local\_split\_num参数用于配置LocalSplitK Pass对规约轴进行切分，通过增加并行线程数提升计算并行度。unroll参数则用于控制循环展开次数，通过减少循环控制开销并提升指令级并行性进一步优化执行性能。
+
+如图\ref{3_32}\ref{3_33}和所示，DeepGen提供了一种基于JSON的可配置接口，用于描述调优参数的搜索空间。用户可通过该配置文件灵活指定各参数的候选取值范围，自动调优系统据此生成完整的参数组合空间以供搜索。为增强参数组织的结构化程度，本设计将调优参数划分为二级参数体系：对于数据分块类参数，其二级参数对应不同计算维度上的分块尺寸；对于软件流水线类参数，其二级参数则对应不同循环层级的流水线深度配置。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\textwidth]{3_32}
+\caption{注意力机制调优配置参数}\label{3_32}
+\vspace{\baselineskip}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\textwidth]{3_33}
+\caption{矩阵乘法调优配置参数}\label{3_33}
+\vspace{\baselineskip}
+\end{figure}
+
+图\ref{3_32}展示了注意力算子的调优配置示例。由于该算子内部包含两个存在数据依赖关系的矩阵乘操作，两者共享相同的线程块尺寸约束，因此block\_size参数仅设置一种二级配置。对于第二个矩阵乘操作，其第二输入矩阵需要单独设置离散化访存参数，因此scatter\_block\_size与scatter\_warp\_size均包含两组二级参数配置，其中第二组配置的列方向参数留空，表示继承前一矩阵乘操作的列方向设置。图\ref{3_33}展示了通用矩阵乘算子的配置示例。与注意力算子相比，其额外包含group\_size\_m参数，这是因为注意力算子的计算结构受到数据依赖约束，无法应用BlockSwizzle Pass进行线程块重映射优化。
+
+综上所述，本文通过构建结构化的调优参数体系，将算子代码生成过程中的关键优化决策参数化，并通过统一的配置接口描述其搜索空间。这种设计不仅增强了调优参数组织的可扩展性，也使得不同算子能够在统一框架下进行参数配置与性能探索。同时，通过将调优参数与编译优化Pass紧密关联，系统能够根据不同参数组合生成多种候选实现，为后续自动调优模块提供充分的搜索空间。然而，由于参数维度较多且取值范围较广，生成的原始搜索空间规模往往十分庞大。为了在保证搜索质量的前提下降低调优开销，下一节将进一步介绍调优空间的剪枝策略，以减少无效参数组合并提高自动调优效率。
+
+
+% =============================================================
+%                  4.3 搜索空间剪枝策略
+% =============================================================
+\subsection{搜索空间剪枝策略}
+在自动调优过程中，算子性能通常由多个调优参数共同决定。例如线程块级数据分块尺寸、线程级计算粒度、规约轴切分策略、软件流水线阶段数以及线程块映射方式等。这些参数之间存在复杂的耦合关系，不同参数组合可能对应完全不同的执行策略。在理论上，通过穷举搜索所有可能的参数组合可以获得最优实现方案。然而，在实际应用中，调优参数往往构成一个高维离散空间，其规模随着参数数量的增加呈指数级增长。若直接对全部候选方案进行编译与测试，将带来极高的时间开销与计算资源消耗，严重影响自动调优的效率。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{3_34}
+\caption{调优空间剪枝过程}\label{3_34}
+\vspace{\baselineskip}
+\end{figure}
+
+为了实现这一目标，本文在调优空间生成之后引入了一套分层剪枝机制。该机制通过对参数组合进行静态分析，从多个维度对候选配置进行筛选，在保证算子功能正确性的前提下尽可能减少需要实际编译与测试的方案数量。整体剪枝流程如图\ref{3_34}所示，其核心思想是将剪枝策略划分为两类：一类为基于硬件资源约束与架构特性的必要剪枝条件，另一类为基于专家经验与性能启发的可选剪枝条件。通过这两类策略的协同作用，可以在保证搜索空间覆盖潜在高性能方案的同时有效降低搜索复杂度。
+
+在完成初始调优空间构建后，搜索空间中往往仍包含大量可执行但性能潜力较低的配置，我们首先引入一系列基于经验规则的可选剪枝策略，对明显不具备良好性能潜力的参数组合进行提前过滤。例如，在数据拷贝阶段，为保证访存效率，通常需要保证每个线程承担一定规模的数据搬运任务。当线程数据拷贝量过小时，线程调度与同步开销将显著增加，从而影响整体执行效率。因此，在调优空间生成过程中可以设定线程数据拷贝的最小负载下限，以避免生成过于细粒度的配置方案。此外，在矩阵乘算子中，分块形状对数据复用具有重要影响。实践经验表明，当输出 tile 的形状接近方形时，通常能够在行列两个方向获得更均衡的数据复用。因此，在搜索空间规模过大时，可优先保留接近方形的数据分块组合，从而减少需要探索的参数规模。
+
+在完成可选剪枝后，调优框架进一步执行必要剪枝策略，以保证所有候选方案在目标硬件上均能够正确执行。该类剪枝主要基于 GPU 的硬件资源限制与执行模型约束。例如，每个线程块可使用的共享内存容量与寄存器数量均存在上限，当某些参数组合导致资源需求超出硬件限制时，该方案将无法编译或运行，因此需要在调优阶段提前剔除。此外，线程块组织方式还需满足线程束的结构要求，例如线程数量通常应为线程束大小的整数倍，否则会降低硬件利用率。同时，在共享内存访问过程中，不合理的线程映射还可能引发严重的 Bank Conflict，从而降低访存带宽利用率。因此，在必要剪枝阶段需要统一检查这些硬件约束，以过滤掉无法执行或明显低效的配置组合。
+
+通过上述两类剪枝策略的协同作用，原始调优空间能够得到显著压缩。一方面，必要剪枝条件保证了所有候选方案在硬件资源与执行模型上均具有可行性；另一方面，可选剪枝条件则利用经验规则进一步缩小搜索范围，使自动调优过程能够更加集中地探索具有潜在高性能的配置区域。在实际应用中，当调优空间规模较小时，可以仅启用必要剪枝以保证搜索的完整性。而当调优空间规模过大时，则可以同时启用可选剪枝策略，从而显著降低搜索复杂度并加快调优收敛速度。通过这一机制，本文所提出的自动调优框架能够在保持较高搜索效率的同时，仍然有效发现性能优良的算子实现方案。
+% 第五节
+\section{本章小结}
+本章详细阐述了面向 Transformer 模型关键算子的代码生成与 DeepGen 的核心设计与实现细节。针对现有编译器在块级逻辑表达和跨平台性能迁移方面的局限性，本章从中间表示构建、编译优化变换以及自动化调优三个维度提出了一套系统化的解决方案。
+
+首先，本章提出了一种面向异构硬件层次结构的多级 IR 建模方法。通过设计自定义的 DeepGen 方言，将算子的计算逻辑解耦为线程块级与线程级两个层次。同时，设计了基于寄存器依赖的降级信息（LowerInfo）推断算法，成功解决了从粗粒度块级表示到细粒度线程级表示的索引映射难题，实现了对 GPU 计算调度与访存路径的精准刻画。
+
+其次，基于对矩阵乘法与注意力机制算术及访存特性的深入分析，本章设计并实现了一组针对性的高性能优化 Pass 集合。具体包括：利用软件流水线（Software Pipeline）隐藏全局与共享内存访存延迟；通过局部规约轴切分（Local Split K）提升长规约轴场景下的线程级并行度；采用线程块访存重排（Block Swizzle）优化 L2 缓存复用率；以及引入离散化访存（Access Scatter）有效消除共享内存的 Bank 冲突。这些 Pass 协同工作，显著突破了算子执行的内存与计算瓶颈。
+
+最后，为应对多维优化参数带来的组合爆炸问题，本章构建了基于空间剪枝的自动调优框架。通过定义结构化的调优参数体系，并结合基于硬件资源约束的必要剪枝与基于专家经验的可选剪枝策略，有效剔除了无效与低效的参数组合。该框架实现了编译、测试与监控的异步协同，在极大缩小搜索空间的同时保证了调优的高效性。
+
+综上所述，本章设计的 IR 表达、优化 Pass 与调优框架深度耦合，共同构成了一个自动化的代码生成闭环体系。这为下一章在多平台异构硬件上开展关键算子与端到端模型的性能评估奠定了坚实的技术基础。

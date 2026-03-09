@@ -1,0 +1,48 @@
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Transformer模型参数量的增长趋势}}{3}{section*.16}%
+\contentsline {figure}{\numberline {1.2}{\ignorespaces LLaMA2模型推理时间占比随序列长度变化}}{4}{section*.17}%
+\contentsline {figure}{\numberline {1.3}{\ignorespaces 不同编译器框架下的矩阵乘法IR对比}}{5}{section*.19}%
+\contentsline {figure}{\numberline {1.4}{\ignorespaces MHA算子的两种执行方式及推理时延}}{8}{section*.22}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces NVIDIA H100 GPU 核心}}{13}{section*.29}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces NVIDIA H100 GPU SM 架构}}{13}{section*.30}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces NVIDIA GPU 编程模型的逻辑抽象}}{14}{section*.31}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces DCU Z100 (CNDA1.0) CU 架构}}{15}{section*.33}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Transformer架构}}{16}{section*.36}%
+\contentsline {figure}{\numberline {2.6}{\ignorespaces 矩阵乘法（左）和注意力机制（右）计算流程示意图}}{17}{section*.38}%
+\contentsline {figure}{\numberline {2.7}{\ignorespaces 传统编译器（右）和机器学习编译器（左）的编译流程对比}}{19}{section*.41}%
+\contentsline {figure}{\numberline {2.8}{\ignorespaces MLIR的通用表示}}{20}{section*.43}%
+\contentsline {figure}{\numberline {2.9}{\ignorespaces MLIR编译流程}}{22}{section*.45}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces DeepGen总体架构}}{25}{section*.49}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces 多头注意力机制在DeepGen下建模示例的数据流图}}{27}{section*.54}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces LowerInfo结构体定义}}{29}{section*.56}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces MatmulOp中Buffer的LowerInfo的独立推断}}{31}{section*.57}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces ReduceOp（左）和BlockOp（右）中Buffer的LowerInfo推断}}{31}{section*.59}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces 注意力机制在线程块层级IR}}{34}{section*.61}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Lowering后MatmulOp在线程层级的IR}}{34}{section*.62}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Lowering后ReduceOp在线程层级的IR}}{35}{section*.63}%
+\contentsline {figure}{\numberline {3.9}{\ignorespaces MatmulOp中SM(Q)、SM(K)以及Reg(acc\_s)对应的LowerInfo}}{35}{section*.64}%
+\contentsline {figure}{\numberline {3.10}{\ignorespaces ReduceOp中Reg(acc\_s)和Reg(m)对应的LowerInfo}}{36}{section*.65}%
+\contentsline {figure}{\numberline {3.11}{\ignorespaces 矩阵乘法在GPU上的两种计算方式}}{38}{section*.69}%
+\contentsline {figure}{\numberline {3.12}{\ignorespaces 无HBM写回的融合MHA计算流程图}}{39}{section*.70}%
+\contentsline {figure}{\numberline {3.13}{\ignorespaces MHA中$QK^T$在线程块层级执行软件流水线的变换过程示意图}}{41}{section*.72}%
+\contentsline {figure}{\numberline {3.14}{\ignorespaces MHA中$QK^T$在软件流水线变化前的线程块层级IR}}{41}{section*.73}%
+\contentsline {figure}{\numberline {3.15}{\ignorespaces MHA中$QK^T$在软件流水线变化后的线程块层级IR}}{41}{section*.74}%
+\contentsline {figure}{\numberline {3.16}{\ignorespaces MHA中$QK^T$在线程层级执行软件流水线的变换过程示意图}}{42}{section*.75}%
+\contentsline {figure}{\numberline {3.17}{\ignorespaces MHA中$QK^T$在软件流水线变化前的线程层级IR}}{42}{section*.76}%
+\contentsline {figure}{\numberline {3.18}{\ignorespaces MHA中$QK^T$在软件流水线变化后的线程层级IR}}{43}{section*.77}%
+\contentsline {figure}{\numberline {3.19}{\ignorespaces 长规约轴矩阵乘法的三种计算方式}}{45}{section*.79}%
+\contentsline {figure}{\numberline {3.20}{\ignorespaces MatmulOp操作执行LOCAL\_SPLIT\_K Pass优化过程}}{45}{section*.80}%
+\contentsline {figure}{\numberline {3.21}{\ignorespaces 未作用LOCAL\_SPLIT\_K Pass时MatmulOp的线程层级IR}}{46}{section*.81}%
+\contentsline {figure}{\numberline {3.22}{\ignorespaces 作用LOCAL\_SPLIT\_K Pass后MatmulOp的线程层级IR}}{47}{section*.82}%
+\contentsline {figure}{\numberline {3.23}{\ignorespaces 线程块层面矩阵乘法的两种不同计算次序方式}}{48}{section*.84}%
+\contentsline {figure}{\numberline {3.24}{\ignorespaces BlockSwizzle Pass 作用前的行优先映射}}{49}{section*.85}%
+\contentsline {figure}{\numberline {3.25}{\ignorespaces BlockSwizzle Pass 作用后的分组优先映射}}{49}{section*.86}%
+\contentsline {figure}{\numberline {3.26}{\ignorespaces MatmulOp操作的计算细节（无离散化优化）}}{50}{section*.88}%
+\contentsline {figure}{\numberline {3.27}{\ignorespaces MatmulOp操作的计算细节（有离散化优化）}}{50}{section*.89}%
+\contentsline {figure}{\numberline {3.28}{\ignorespaces MatmulOp操作中SM(V)缓冲区的LowerInfo}}{51}{section*.90}%
+\contentsline {figure}{\numberline {3.29}{\ignorespaces MatmulOp操作中SM(V)缓冲区的LowerInfo}}{52}{section*.91}%
+\contentsline {figure}{\numberline {3.30}{\ignorespaces DeepGen调优模块总体架构}}{54}{section*.94}%
+\contentsline {figure}{\numberline {3.31}{\ignorespaces DeepGen自动调优流程}}{55}{section*.95}%
+\contentsline {figure}{\numberline {3.32}{\ignorespaces 注意力机制调优配置参数}}{57}{section*.98}%
+\contentsline {figure}{\numberline {3.33}{\ignorespaces 矩阵乘法调优配置参数}}{58}{section*.99}%
+\contentsline {figure}{\numberline {3.34}{\ignorespaces 调优空间剪枝过程}}{59}{section*.101}%
+\contentsfinish 

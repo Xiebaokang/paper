@@ -1,0 +1,40 @@
+% !Mode:: "TeX:UTF-8"
+\fancyhead[CO]{\song\wuhao ~\chaptername \quad 实验结果~}
+\fancypagestyle{plain}{\fancyhead[CO]{\song\wuhao ~\chaptername \quad 实验结果~}}
+
+\chapter{实验结果}
+
+% 第一节
+\section{实验设置}
+本章节在NVIDIA V100/A100 GPU与海光Z100/K100 DCU异构平台上，对基于DeepGen生成的矩阵乘法算子、注意力机制及其对应的端到端模型进行基准性能测试。实验均在Ubuntu 22.04 LTS上进行，统一采用单精度浮点格式(FP32)的计算精度，且未启用Tensor Core硬件加速特性。在实验测试前均进行50次预热运行，随后执行500次测试，取平均值作为最终结果。本研究以PyTorch官方实现为参考基准，并计算相对L2范数误差，对矩阵乘法与注意力机制的输出进行数值精度验证。相关精度对比与分析结果已在本文第3.3节中详细说明。实验所用的硬件平台、软件依赖及环境配置详见表4。
+
+
+\begin{table}[htbp]
+\caption{实验平台信息}\label{tab:table5}
+\vspace{0.5em}\wuhao
+\begin{tabularx}{\textwidth}{lXXXX}
+\toprule[1.5pt]
+平台 & NVIDIA &  &  & 海光 \\ \midrule[1pt]
+型号 & V100-PCIe & A100-SXM & Z100 & K100 \\ 
+显存 & 32G & 80G & 32G & 64G \\ 
+频率 & 1380MHz & 1410MHz & 1319MHz & 2100MHz \\ 
+编程模型 & CUDA 11.8 & CUDA 12.8 & ROCm 5.4、DTK 23.10 & ROCm 5.4、DTK 23.10 \\ 
+依赖软件 & PyTorch2.6.0、Triton2.3.0、TVM0.15.0、LLVM21.0.0、IREE3.9.0、Tilelang0.1.6 & & & PyTorch2.1.0、Trtion2.1.0、LLVM 21.0.0 \\ 
+\bottomrule[1.5pt]
+\end{tabularx}
+\vspace{\baselineskip}
+\end{table}
+
+
+
+% 第二节
+\section{矩阵乘法算子代码生成测试}
+
+% 第三节
+\section{注意力机制代码生成测试}
+
+% 第四节
+\section{计算精确度验证}
+
+% 第六节
+\section{端到端推理性能测试}
