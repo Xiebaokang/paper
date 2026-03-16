@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{75}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{#1}
 \expandafter\ifx\csname urlstyle\endcsname\relax\else
@@ -11,9 +11,414 @@
   \let\eprint\href
 \fi
 
+\bibitem[{NVIDIA Corporation}(2022)]{nvidia_hopper}
+{NVIDIA Corporation}.
+\newblock {NVIDIA Hopper Architecture In-Depth}\allowbreak[R/OL].
+\newblock NVIDIA, 2022.
+\newblock \url{https://resources.nvidia.com/en-us-hopper-architecture}.
+
+\bibitem[{NVIDIA Corporation}(2026)]{nvidia_cuda_programming_guide}
+{NVIDIA Corporation}.
+\newblock {CUDA C++ Programming Guide}\allowbreak[M/OL].
+\newblock NVIDIA Corporation, 2026.
+\newblock \url{https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html}.
+
+\bibitem[{Advanced Micro Devices, Inc.}(2020)]{amd_cdna}
+{Advanced Micro Devices, Inc.}
+\newblock {AMD CDNA Architecture}\allowbreak[R/OL].
+\newblock AMD, 2020.
+\newblock \url{https://www.amd.com/en/technologies/cdna.html}.
+
 \bibitem[Vaswani et~al.(2017)Vaswani, Shazeer, Parmar, Uszkoreit, Jones, Gomez, Kaiser, and Polosukhin]{vaswani2017attention}
 VASWANI A, SHAZEER N, PARMAR N, et~al.
 \newblock Attention is all you need\allowbreak[J].
 \newblock Advances in neural information processing systems, 2017, 30.
+
+\bibitem[Lattner et~al.(2020)Lattner, Amini, Bondhugula, Cohen, Davis, Pienaar, Riddle, Shpeisman, Vasilache, and Zinenko]{lattner2020mlir}
+LATTNER C, AMINI M, BONDHUGULA U, et~al.
+\newblock Mlir: A compiler infrastructure for the end of moore's law\allowbreak[A].
+\newblock 2020.
+
+\bibitem[Kaplan et~al.(2020)Kaplan, McCandlish, Henighan, Brown, Chess, Child, Gray, Radford, Wu, and Amodei]{kaplan2020scaling}
+KAPLAN J, MCCANDLISH S, HENIGHAN T, et~al.
+\newblock Scaling laws for neural language models\allowbreak[A].
+\newblock 2020.
+
+\bibitem[Devlin et~al.(2019)Devlin, Chang, Lee, and Toutanova]{devlin2019bert}
+DEVLIN J, CHANG M~W, LEE K, et~al.
+\newblock Bert: Pre-training of deep bidirectional transformers for language understanding\allowbreak[C]//\allowbreak
+Proceedings of the 2019 conference of the North American chapter of the association for computational linguistics: human language technologies, volume 1 (long and short papers).
+\newblock 2019: 4171-4186.
+
+\bibitem[Brown et~al.(2020)Brown, Mann, Ryder, Subbiah, Kaplan, Dhariwal, Neelakantan, Shyam, Sastry, Askell, et~al.]{brown2020language}
+BROWN T, MANN B, RYDER N, et~al.
+\newblock Language models are few-shot learners\allowbreak[J].
+\newblock Advances in neural information processing systems, 2020, 33: 1877-1901.
+
+\bibitem[Cai et~al.(2024)Cai, Jiang, Wang, Tang, Kim, and Huang]{cai2024survey}
+CAI W, JIANG J, WANG F, et~al.
+\newblock A survey on mixture of experts\allowbreak[J].
+\newblock Authorea Preprints, 2024.
+
+\bibitem[闫啸彤\ 等(2024)闫啸彤, 唐晓彬, 沈童, and 雷诺]{SCGD202404002}
+闫啸彤, 唐晓彬, 沈童, 等.
+\newblock 大语言模型发展综述\allowbreak[J/OL].
+\newblock 统计学报, 2024, 5\allowbreak (04): 13-18.
+\newblock DOI: \doi{10.19820/j.cnki.ISSN2096-7411.2024.04.002}.
+
+\bibitem[Liu et~al.(2024)Liu, Feng, Xue, Wang, Wu, Lu, Zhao, Deng, Zhang, Ruan, et~al.]{liu2024deepseek}
+LIU A, FENG B, XUE B, et~al.
+\newblock Deepseek-v3 technical report\allowbreak[A].
+\newblock 2024.
+
+\bibitem[Guo et~al.(2025)Guo, Yang, Zhang, Song, Wang, Zhu, Xu, Zhang, Ma, Bi, et~al.]{guo2025deepseek}
+GUO D, YANG D, ZHANG H, et~al.
+\newblock Deepseek-r1: Incentivizing reasoning capability in llms via reinforcement learning\allowbreak[A].
+\newblock 2025.
+
+\bibitem[Dai et~al.(2024)Dai, Deng, Zhao, Xu, Gao, Chen, Li, Zeng, Yu, Wu, et~al.]{dai2024deepseekmoe}
+DAI D, DENG C, ZHAO C, et~al.
+\newblock Deepseekmoe: Towards ultimate expert specialization in mixture-of-experts language models\allowbreak[C]//\allowbreak
+Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers).
+\newblock 2024: 1280-1297.
+
+\bibitem[Yang et~al.(2021)Yang, Tang, Bai, Liu, Hao, Meng, Liu, and Wang]{yang2021exploration}
+YANG T, TANG H, BAI C, et~al.
+\newblock Exploration in deep reinforcement learning: a comprehensive survey\allowbreak[A].
+\newblock 2021: arXiv-2109.
+
+\bibitem[Gholami et~al.(2024)Gholami, Yao, Kim, Hooper, Mahoney, and Keutzer]{gholami2024ai}
+GHOLAMI A, YAO Z, KIM S, et~al.
+\newblock Ai and memory wall\allowbreak[J].
+\newblock IEEE Micro, 2024, 44\allowbreak (3): 33-39.
+
+\bibitem[Dao et~al.(2022)Dao, Fu, Ermon, Rudra, and R{\'e}]{dao2022flashattention}
+DAO T, FU D, ERMON S, et~al.
+\newblock Flashattention: Fast and memory-efficient exact attention with io-awareness\allowbreak[J].
+\newblock Advances in neural information processing systems, 2022, 35: 16344-16359.
+
+\bibitem[Dao(2023)]{dao2023flashattention}
+DAO T.
+\newblock Flashattention-2: Faster attention with better parallelism and work partitioning\allowbreak[A].
+\newblock 2023.
+
+\bibitem[Shah et~al.(2024)Shah, Bikshandi, Zhang, Thakkar, Ramani, and Dao]{shah2024flashattention}
+SHAH J, BIKSHANDI G, ZHANG Y, et~al.
+\newblock Flashattention-3: Fast and accurate attention with asynchrony and low-precision\allowbreak[J].
+\newblock Advances in Neural Information Processing Systems, 2024, 37: 68658-68685.
+
+\bibitem[Zadouri et~al.(2026)Zadouri, Hoehnerbach, Shah, Liu, Thakkar, and Dao]{zadouri2026flashattention}
+ZADOURI T, HOEHNERBACH M, SHAH J, et~al.
+\newblock Flashattention-4: Algorithm and kernel pipelining co-design for asymmetric hardware scaling\allowbreak[A].
+\newblock 2026.
+
+\bibitem[{NVIDIA Corporation}(2020)]{nvidia_ampere}
+{NVIDIA Corporation}.
+\newblock {NVIDIA Ampere Architecture In-Depth}\allowbreak[R/OL].
+\newblock NVIDIA, 2020.
+\newblock \url{https://images.nvidia.com/aem-dam/en-zz/Solutions/data-center/nvidia-ampere-architecture-whitepaper.pdf}.
+
+\bibitem[Luo et~al.(2024)Luo, Fan, Li, Du, Wang, and Chu]{luo2024benchmarking}
+LUO W, FAN R, LI Z, et~al.
+\newblock Benchmarking and dissecting the nvidia hopper gpu architecture (2024)\allowbreak[J].
+\newblock URL https://arxiv. org/abs/2402.13499, 2024.
+
+\bibitem[Soi et~al.(2025)Soi, Yadav, Kjolstad, Aiken, Dehnavi, Garland, and Bauer]{soi2025optimal}
+SOI R, YADAV R, KJOLSTAD F, et~al.
+\newblock Optimal software pipelining and warp specialization for tensor core gpus\allowbreak[A].
+\newblock 2025.
+
+\bibitem[{NVIDIA Corporation}(2024)]{nvidia_blackwell}
+{NVIDIA Corporation}.
+\newblock {NVIDIA Blackwell Architecture Technical Brief}\allowbreak[R/OL].
+\newblock NVIDIA, 2024.
+\newblock \url{https://resources.nvidia.com/en-us-blackwell-architecture}.
+
+\bibitem[Cheng et~al.(2025)Cheng, Wang, Shi, Xia, Ma, Xue, Wang, Mo, Chen, Yang, et~al.]{cheng2025pipethreader}
+CHENG Y, WANG L, SHI Y, et~al.
+\newblock $\{$PipeThreader$\}$:$\{$Software-Defined$\}$ pipelining for efficient $\{$DNN$\}$ execution\allowbreak[C]//\allowbreak
+19th USENIX Symposium on Operating Systems Design and Implementation (OSDI 25).
+\newblock 2025: 767-783.
+
+\bibitem[Liu et~al.(2026)Liu, Xu, Li, Zheng, Li, Liu, and He]{liu2026dr}
+LIU W, XU J, LI Y, et~al.
+\newblock Dr. kernel: Reinforcement learning done right for triton kernel generations\allowbreak[A].
+\newblock 2026.
+
+\bibitem[Liao et~al.(2025)Liao, Qin, Wang, Golden, Kuchnik, Yetim, Ang, Fu, He, Hsia, et~al.]{liao2025kernelevolve}
+LIAO G, QIN H, WANG Y, et~al.
+\newblock Kernelevolve: Scaling agentic kernel coding for heterogeneous ai accelerators at meta\allowbreak[A].
+\newblock 2025.
+
+\bibitem[刘正煜\ 等(2025)刘正煜, 张帆, 祁晓峰, 高彦钊, 宋怡景, and 范旺]{JSJA202508003}
+刘正煜, 张帆, 祁晓峰, 等.
+\newblock 深度学习编译器研究综述\allowbreak[J].
+\newblock 计算机科学, 2025, 52\allowbreak (08): 29-44.
+
+\bibitem[Lattner et~al.(2021)Lattner, Amini, Bondhugula, Cohen, Davis, Pienaar, Riddle, Shpeisman, Vasilache, and Zinenko]{lattner2021mlir}
+LATTNER C, AMINI M, BONDHUGULA U, et~al.
+\newblock Mlir: Scaling compiler infrastructure for domain specific computation\allowbreak[C]//\allowbreak
+2021 IEEE/ACM International Symposium on Code Generation and Optimization (CGO).
+\newblock IEEE, 2021: 2-14.
+
+\bibitem[Shi et~al.(2023)Shi, Yang, Xue, Ma, Xia, Miao, Guo, Yang, and Zhou]{shi2023welder}
+SHI Y, YANG Z, XUE J, et~al.
+\newblock Welder: Scheduling deep learning memory access via tile-graph\allowbreak[C]//\allowbreak
+17th USENIX Symposium on Operating Systems Design and Implementation (OSDI 23).
+\newblock 2023: 701-718.
+
+\bibitem[Ma et~al.(2020)Ma, Xie, Yang, Xue, Miao, Cui, Hu, Yang, Zhang, and Zhou]{ma2020rammer}
+MA L, XIE Z, YANG Z, et~al.
+\newblock Rammer: Enabling holistic deep learning compiler optimizations with $\{$rTasks$\}$\allowbreak[C]//\allowbreak
+14th USENIX Symposium on Operating Systems Design and Implementation (OSDI 20).
+\newblock 2020: 881-897.
+
+\bibitem[Rotem et~al.(2018)Rotem, Fix, Abdulrasool, Catron, Deng, Dzhabarov, Gibson, Hegeman, Lele, Levenstein, et~al.]{rotem2018glow}
+ROTEM N, FIX J, ABDULRASOOL S, et~al.
+\newblock Glow: Graph lowering compiler techniques for neural networks\allowbreak[A].
+\newblock 2018.
+
+\bibitem[Wang et~al.(2024)Wang, Ma, Cao, Zhang, Xue, Shi, Zheng, Miao, Yang, Cao, et~al.]{wang2024ladder}
+WANG L, MA L, CAO S, et~al.
+\newblock Ladder: Enabling efficient $\{$Low-Precision$\}$ deep learning computing through hardware-aware tensor transformation\allowbreak[C]//\allowbreak
+18th USENIX Symposium on Operating Systems Design and Implementation (OSDI 24).
+\newblock 2024: 307-323.
+
+\bibitem[Sabne(2020)]{sabne2020xla}
+SABNE A.
+\newblock Xla: Compiling machine learning for peak performance\allowbreak[Z].
+\newblock 2020.
+
+\bibitem[Tillet et~al.(2019)Tillet, Kung, and Cox]{tillet2019triton}
+TILLET P, KUNG H~T, COX D.
+\newblock Triton: an intermediate language and compiler for tiled neural network computations\allowbreak[C]//\allowbreak
+Proceedings of the 3rd ACM SIGPLAN International Workshop on Machine Learning and Programming Languages.
+\newblock 2019: 10-19.
+
+\bibitem[Fang et~al.(2020)Fang, Huang, Tang, and Wang]{fang2020parallel}
+FANG J, HUANG C, TANG T, et~al.
+\newblock Parallel programming models for heterogeneous many-cores: A survey\allowbreak[A].
+\newblock 2020.
+
+\bibitem[Ding et~al.(2023)Ding, Yu, Zheng, Liu, Wang, and Pekhimenko]{ding2023hidet}
+DING Y, YU C~H, ZHENG B, et~al.
+\newblock Hidet: Task-mapping programming paradigm for deep learning tensor programs\allowbreak[C]//\allowbreak
+Proceedings of the 28th ACM International Conference on Architectural Support for Programming Languages and Operating Systems, Volume 2.
+\newblock 2023: 370-384.
+
+\bibitem[韩林\ 等(2025)韩林, 王一帆, 李嘉楠, and 高伟]{JSJA202503029}
+韩林, 王一帆, 李嘉楠, 等.
+\newblock 一种基于TVM的自动调度搜索优化方法\allowbreak[J].
+\newblock 计算机科学, 2025, 52\allowbreak (03): 268-276.
+
+\bibitem[Chen et~al.(2018)Chen, Zheng, Yan, Jiang, Moreau, Ceze, Guestrin, and Krishnamurthy]{chen2018learning}
+CHEN T, ZHENG L, YAN E, et~al.
+\newblock Learning to optimize tensor programs\allowbreak[J].
+\newblock Advances in Neural Information Processing Systems, 2018, 31.
+
+\bibitem[Zheng et~al.(2020)Zheng, Jia, Sun, Wu, Yu, Haj-Ali, Wang, Yang, Zhuo, Sen, et~al.]{zheng2020ansor}
+ZHENG L, JIA C, SUN M, et~al.
+\newblock Ansor: Generating $\{$High-Performance$\}$ tensor programs for deep learning\allowbreak[C]//\allowbreak
+14th USENIX symposium on operating systems design and implementation (OSDI 20).
+\newblock 2020: 863-879.
+
+\bibitem[Chen et~al.(2016)Chen and Guestrin]{chen2016xgboost}
+CHEN T, GUESTRIN C.
+\newblock Xgboost: A scalable tree boosting system\allowbreak[C]//\allowbreak
+Proceedings of the 22nd acm sigkdd international conference on knowledge discovery and data mining.
+\newblock 2016: 785-794.
+
+\bibitem[Paszke et~al.(2019)Paszke, Gross, Massa, Lerer, Bradbury, Chanan, Killeen, Lin, Gimelshein, Antiga, et~al.]{paszke2019pytorch}
+PASZKE A, GROSS S, MASSA F, et~al.
+\newblock Pytorch: An imperative style, high-performance deep learning library\allowbreak[J].
+\newblock Advances in neural information processing systems, 2019, 32.
+
+\bibitem[Bhaskaracharya et~al.(2020)Bhaskaracharya, Demouth, and Grover]{bhaskaracharya2020automatic}
+BHASKARACHARYA S~G, DEMOUTH J, GROVER V.
+\newblock Automatic kernel generation for volta tensor cores\allowbreak[A].
+\newblock 2020.
+
+\bibitem[Zhou et~al.(2026)Zhou, Lezcano-Casado, Goucher, Rakhmati, Niu, Lebar, Szczerbuk, Bell, Tillet, Raoux, et~al.]{zhou2026linear}
+ZHOU K, LEZCANO-CASADO M, GOUCHER A~P, et~al.
+\newblock Linear layouts: Robust code generation of efficient tensor computation using f\_2\allowbreak[C]//\allowbreak
+Proceedings of the 31st ACM International Conference on Architectural Support for Programming Languages and Operating Systems, Volume 1.
+\newblock 2026: 132-146.
+
+\bibitem[Abadi et~al.(2016)Abadi, Agarwal, Barham, Brevdo, Chen, Citro, Corrado, Davis, Dean, Devin, et~al.]{abadi2016tensorflow}
+ABADI M, AGARWAL A, BARHAM P, et~al.
+\newblock Tensorflow: Large-scale machine learning on heterogeneous distributed systems\allowbreak[A].
+\newblock 2016.
+
+\bibitem[{NVIDIA Corporation}(2026)]{cublas_doc}
+{NVIDIA Corporation}.
+\newblock {cuBLAS Library Documentation}\allowbreak[EB/OL].
+\newblock 2026.
+\newblock \url{https://docs.nvidia.com/cuda/cublas/index.html}.
+
+\bibitem[{NVIDIA Corporation}(2026)]{cudnn_doc}
+{NVIDIA Corporation}.
+\newblock {NVIDIA cuDNN Documentation}\allowbreak[EB/OL].
+\newblock 2026.
+\newblock \url{https://docs.nvidia.com/deeplearning/cudnn/index.html}.
+
+\bibitem[{Advanced Micro Devices, Inc.}(2026)]{rocblas_doc}
+{Advanced Micro Devices, Inc.}
+\newblock {rocBLAS Documentation}\allowbreak[EB/OL].
+\newblock 2026.
+\newblock \url{https://rocm.docs.amd.com/en/latest/index.html}.
+
+\bibitem[{Advanced Micro Devices, Inc.}(2026)]{miopen_doc}
+{Advanced Micro Devices, Inc.}
+\newblock {MIOpen Documentation}\allowbreak[EB/OL].
+\newblock 2026.
+\newblock \url{https://rocm.docs.amd.com/projects/MIOpen/en/latest/}.
+
+\bibitem[Tanner(2018)]{tanner2018tensile}
+TANNER D~E.
+\newblock Tensile: Auto-tuning gemm gpu assembly for all problem sizes\allowbreak[C]//\allowbreak
+2018 IEEE International Parallel and Distributed Processing Symposium Workshops (IPDPSW).
+\newblock IEEE, 2018: 1066-1075.
+
+\bibitem[段柳成\ 等(2025)段柳成, 肖巧玲, 金怡, 吴双双, and 龚辰]{DKJS202503002}
+段柳成, 肖巧玲, 金怡, 等.
+\newblock 大模型时代国产大算力GPU的关键挑战与发展路径\allowbreak[J/OL].
+\newblock 人工智能, 2025\allowbreak (03): 8-21.
+\newblock DOI: \doi{10.16453/j.2096-5036.202522}.
+
+\bibitem[Fernandez(2024)]{fernandez2024telu}
+FERNANDEZ A.
+\newblock Telu activation function for fast and stable deep learning\allowbreak[D].
+\newblock University of South Florida, 2024.
+
+\bibitem[Lin et~al.(2022)Lin, Wang, Liu, and Qiu]{lin2022survey}
+LIN T, WANG Y, LIU X, et~al.
+\newblock A survey of transformers\allowbreak[J].
+\newblock AI open, 2022, 3: 111-132.
+
+\bibitem[Jouppi et~al.(2017)Jouppi, Young, Patil, Patterson, Agrawal, Bajwa, Bates, Bhatia, Boden, Borchers, et~al.]{jouppi2017datacenter}
+JOUPPI N~P, YOUNG C, PATIL N, et~al.
+\newblock In-datacenter performance analysis of a tensor processing unit\allowbreak[C]//\allowbreak
+Proceedings of the 44th annual international symposium on computer architecture.
+\newblock 2017: 1-12.
+
+\bibitem[Jouppi et~al.(2021)Jouppi, Yoon, Ashcraft, Gottscho, Jablin, Kurian, Laudon, Li, Ma, Ma, et~al.]{jouppi2021ten}
+JOUPPI N~P, YOON D~H, ASHCRAFT M, et~al.
+\newblock Ten lessons from three generations shaped google’s tpuv4i: Industrial product\allowbreak[C]//\allowbreak
+2021 ACM/IEEE 48th Annual International Symposium on Computer Architecture (ISCA).
+\newblock IEEE, 2021: 1-14.
+
+\bibitem[{NVIDIA Corporation}(2017)]{nvidia_volta}
+{NVIDIA Corporation}.
+\newblock {NVIDIA Tesla V100 GPU Architecture}\allowbreak[R/OL].
+\newblock NVIDIA, 2017.
+\newblock \url{https://images.nvidia.com/content/volta-architecture/pdf/volta-architecture-whitepaper.pdf}.
+
+\bibitem[Mei et~al.(2016)Mei and Chu]{mei2016dissecting}
+MEI X, CHU X.
+\newblock Dissecting gpu memory hierarchy through microbenchmarking\allowbreak[J].
+\newblock IEEE Transactions on Parallel and Distributed Systems, 2016, 28\allowbreak (1): 72-86.
+
+\bibitem[Nickolls et~al.(2008)Nickolls, Buck, Garland, and Skadron]{nickolls2008scalable}
+NICKOLLS J, BUCK I, GARLAND M, et~al.
+\newblock Scalable parallel programming with cuda: Is cuda the parallel programming model that application developers have been waiting for?\allowbreak[J].
+\newblock Queue, 2008, 6\allowbreak (2): 40-53.
+
+\bibitem[Baghsorkhi et~al.(2010)Baghsorkhi, Delahaye, Patel, Gropp, and Hwu]{baghsorkhi2010adaptive}
+BAGHSORKHI S~S, DELAHAYE M, PATEL S~J, et~al.
+\newblock An adaptive performance modeling tool for gpu architectures\allowbreak[C]//\allowbreak
+Proceedings of the 15th ACM SIGPLAN symposium on Principles and practice of parallel programming.
+\newblock 2010: 105-114.
+
+\bibitem[Lattner et~al.(2004)Lattner and Adve]{lattner2004llvm}
+LATTNER C, ADVE V.
+\newblock Llvm: A compilation framework for lifelong program analysis \& transformation\allowbreak[C]//\allowbreak
+International symposium on code generation and optimization, 2004. CGO 2004.
+\newblock IEEE, 2004: 75-86.
+
+\bibitem[Press et~al.(2021)Press, Smith, and Lewis]{press2021train}
+PRESS O, SMITH N~A, LEWIS M.
+\newblock Train short, test long: Attention with linear biases enables input length extrapolation\allowbreak[A].
+\newblock 2021.
+
+\bibitem[Xiong et~al.(2020)Xiong, Yang, He, Zheng, Zheng, Xing, Zhang, Lan, Wang, and Liu]{xiong2020layer}
+XIONG R, YANG Y, HE D, et~al.
+\newblock On layer normalization in the transformer architecture\allowbreak[C]//\allowbreak
+International conference on machine learning.
+\newblock PMLR, 2020: 10524-10533.
+
+\bibitem[He et~al.(2016)He, Zhang, Ren, and Sun]{he2016deep}
+HE K, ZHANG X, REN S, et~al.
+\newblock Deep residual learning for image recognition\allowbreak[C]//\allowbreak
+Proceedings of the IEEE conference on computer vision and pattern recognition.
+\newblock 2016: 770-778.
+
+\bibitem[Ba et~al.(2016)Ba, Kiros, and Hinton]{ba2016layer}
+BA J~L, KIROS J~R, HINTON G~E.
+\newblock Layer normalization\allowbreak[A].
+\newblock 2016.
+
+\bibitem[Su et~al.(2024)Su, Ahmed, Lu, Pan, Bo, and Liu]{su2024roformer}
+SU J, AHMED M, LU Y, et~al.
+\newblock Roformer: Enhanced transformer with rotary position embedding\allowbreak[J].
+\newblock Neurocomputing, 2024, 568: 127063.
+
+\bibitem[Bebis et~al.(2002)Bebis and Georgiopoulos]{bebis2002feed}
+BEBIS G, GEORGIOPOULOS M.
+\newblock Feed-forward neural networks\allowbreak[J].
+\newblock Ieee Potentials, 2002, 13\allowbreak (4): 27-31.
+
+\bibitem[Wang et~al.(2020)Wang, Li, Khabsa, Fang, and Ma]{wang2020linformer}
+WANG S, LI B~Z, KHABSA M, et~al.
+\newblock Linformer: Self-attention with linear complexity\allowbreak[A].
+\newblock 2020.
+
+\bibitem[Beltagy et~al.(2020)Beltagy, Peters, and Cohan]{beltagy2020longformer}
+BELTAGY I, PETERS M~E, COHAN A.
+\newblock Longformer: The long-document transformer\allowbreak[A].
+\newblock 2020.
+
+\bibitem[Zhang et~al.(2023)Zhang, Xing, Wu, and Zhao]{zhang2023compiler}
+ZHANG H, XING M, WU Y, et~al.
+\newblock Compiler technologies in deep learning co-design: A survey\allowbreak[J].
+\newblock Intelligent Computing, 2023, 2: 0040.
+
+\bibitem[Roesch et~al.(2018)Roesch, Lyubomirsky, Weber, Pollock, Kirisame, Chen, and Tatlock]{roesch2018relay}
+ROESCH J, LYUBOMIRSKY S, WEBER L, et~al.
+\newblock Relay: A new ir for machine learning frameworks\allowbreak[C]//\allowbreak
+Proceedings of the 2nd ACM SIGPLAN international workshop on machine learning and programming languages.
+\newblock 2018: 58-68.
+
+\bibitem[Zhong et~al.(2025)Zhong, Jin, Zhang, Lei, Li, and Zhai]{zhong2025flashtensor}
+ZHONG R, JIN Y, ZHANG C, et~al.
+\newblock Flashtensor: Optimizing tensor programs by leveraging fine-grained tensor property\allowbreak[C]//\allowbreak
+Proceedings of the 30th ACM SIGPLAN Annual Symposium on Principles and Practice of Parallel Programming.
+\newblock 2025: 183-196.
+
+\bibitem[高伟\ 等(2025)高伟, 王磊, 李嘉楠, 李帅龙, and 韩林]{JSJA202505006}
+高伟, 王磊, 李嘉楠, 等.
+\newblock 面向深度学习编译器TVM的算子融合优化\allowbreak[J].
+\newblock 计算机科学, 2025, 52\allowbreak (05): 58-66.
+
+\bibitem[Feng et~al.(2023)Feng, Hou, Jin, Lin, Shao, Lai, Ye, Zheng, Yu, Yu, et~al.]{feng2023tensorir}
+FENG S, HOU B, JIN H, et~al.
+\newblock Tensorir: An abstraction for automatic tensorized program optimization\allowbreak[C]//\allowbreak
+Proceedings of the 28th ACM International Conference on Architectural Support for Programming Languages and Operating Systems, Volume 2.
+\newblock 2023: 804-817.
+
+\bibitem[李金熹\ 等(2024)李金熹, 尹首一, 魏少军, and 胡杨]{data_flow_mlir}
+李金熹, 尹首一, 魏少军, 等.
+\newblock 基于MLIR的数据流模型\allowbreak[J].
+\newblock 计算机工程与科学, 2024, 46\allowbreak (7): 1151-1157.
+
+\bibitem[Chelini et~al.(2021)Chelini, Drebes, Zinenko, Cohen, Vasilache, Grosser, and Corporaal]{chelini2021progressive}
+CHELINI L, DREBES A, ZINENKO O, et~al.
+\newblock Progressive raising in multi-level ir\allowbreak[C]//\allowbreak
+2021 IEEE/ACM International Symposium on Code Generation and Optimization (CGO).
+\newblock IEEE, 2021: 15-26.
+
+\bibitem[Wang et~al.(2025)Wang, Bayliss, Bisca, Blair, Chowdhary, Denolf, Fifield, Freiberger, Hunhoff, James-Roxby, et~al.]{wang2025loop}
+WANG E, BAYLISS S, BISCA A, et~al.
+\newblock From loop nests to silicon: Mapping ai workloads onto amd npus with mlir-air\allowbreak[J].
+\newblock ACM Transactions on Reconfigurable Technology and Systems, 2025.
 
 \end{thebibliography}

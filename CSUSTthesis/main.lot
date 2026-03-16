@@ -1,7 +1,10 @@
 \contentsline {table}{\numberline {1.1}{\ignorespaces 与现有框架的核心设计差异}}{6}{section*.20}%
-\contentsline {table}{\numberline {3.1}{\ignorespaces DeepGen Dialect中自定义Operation列表}}{26}{section*.52}%
+\contentsline {table}{\numberline {3.1}{\ignorespaces DeepGen Dialect 中自定义 Operation 列表}}{26}{section*.52}%
 \contentsline {table}{\numberline {3.2}{\ignorespaces 自定义缓冲区标识符}}{27}{section*.53}%
-\contentsline {table}{\numberline {3.3}{\ignorespaces 算子优化Pass集合列表}}{38}{section*.67}%
-\contentsline {table}{\numberline {3.4}{\ignorespaces 调优参数列表}}{56}{section*.97}%
+\contentsline {table}{\numberline {3.3}{\ignorespaces 算子优化 Pass 集合列表}}{38}{section*.67}%
+\contentsline {table}{\numberline {3.4}{\ignorespaces 调优参数列表}}{57}{section*.97}%
 \contentsline {table}{\numberline {4.1}{\ignorespaces 实验平台信息}}{62}{section*.105}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces 矩阵乘法结果值的相对 L2 范数误差}}{71}{section*.117}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces 注意力机制结果值的相对 L2 范数误差}}{71}{section*.118}%
+\contentsline {table}{\numberline {4.4}{\ignorespaces 端到端实验模型参数}}{72}{section*.120}%
 \contentsfinish 

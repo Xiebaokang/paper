@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2026.1.30)  9 MAR 2026 12:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2026.1.30)  16 MAR 2026 18:18
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**c:/Users/Xie/Desktop/graduate/CSUSTthesis/main.tex
-(c:/Users/Xie/Desktop/graduate/CSUSTthesis/main.tex
+**c:/Users/Xie/Desktop/graduate/paper/CSUSTthesis/main.tex
+(c:/Users/Xie/Desktop/graduate/paper/CSUSTthesis/main.tex
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
 (d:/Softwares/texlive/2025/texmf-dist/tex/latex/base/book.cls
@@ -885,7 +885,14 @@ File: ot1txr.fd 2000/12/15 v3.1
 
 LaTeX Warning: Label `tab:table3' multiply defined.
 
-) (./body/chapter4.aux) (./body/chapter5.aux) (./appendix/acknowledgements.aux) (./appendix/publications.aux))
+) (./body/chapter4.aux
+
+LaTeX Warning: Label `tab:table4' multiply defined.
+
+
+LaTeX Warning: Label `tab:table5' multiply defined.
+
+) (./body/chapter5.aux) (./appendix/acknowledgements.aux) (./appendix/publications.aux))
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 6.
@@ -1083,56 +1090,56 @@ Package hyperref Info: Link coloring ON on input line 6.
 \c@remark=\count409
 \@title@width=\skip164
 ) (./preface/cover.tex
-LaTeX Font Info:    Trying to load font information for U+txsya on input line 65.
+LaTeX Font Info:    Trying to load font information for U+txsya on input line 81.
  (d:/Softwares/texlive/2025/texmf-dist/tex/latex/txfonts/utxsya.fd
 File: utxsya.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Trying to load font information for U+txsyb on input line 65.
+LaTeX Font Info:    Trying to load font information for U+txsyb on input line 81.
  (d:/Softwares/texlive/2025/texmf-dist/tex/latex/txfonts/utxsyb.fd
 File: utxsyb.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 65.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 81.
  (d:/Softwares/texlive/2025/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Trying to load font information for U+txmia on input line 65.
+LaTeX Font Info:    Trying to load font information for U+txmia on input line 81.
  (d:/Softwares/texlive/2025/texmf-dist/tex/latex/txfonts/utxmia.fd
 File: utxmia.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Trying to load font information for U+txsyc on input line 65.
+LaTeX Font Info:    Trying to load font information for U+txsyc on input line 81.
  (d:/Softwares/texlive/2025/texmf-dist/tex/latex/txfonts/utxsyc.fd
 File: utxsyc.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Trying to load font information for C70+hei on input line 65.
+LaTeX Font Info:    Trying to load font information for C70+hei on input line 81.
  (d:/Softwares/texlive/2025/texmf-dist/tex/latex/zhmetrics/c70hei.fd
 File: c70hei.fd 2009/09/23 4.8.2
 )
-LaTeX Font Info:    Trying to load font information for OT1+txss on input line 65.
+LaTeX Font Info:    Trying to load font information for OT1+txss on input line 81.
  (d:/Softwares/texlive/2025/texmf-dist/tex/latex/txfonts/ot1txss.fd
 File: ot1txss.fd 2000/12/15 v3.1
 )
 LaTeX Font Info:    Font shape `OT1/txss/m/n' will be
-(Font)              scaled to size 11.39996pt on input line 65.
-<figures/cslglogo.png, id=238, 1078.78032pt x 783.67781pt>
+(Font)              scaled to size 11.39996pt on input line 81.
+<figures/cslglogo.png, id=242, 1078.78032pt x 783.67781pt>
 File: figures/cslglogo.png Graphic file (type png)
 <use figures/cslglogo.png>
-Package pdftex.def Info: figures/cslglogo.png  used on input line 65.
+Package pdftex.def Info: figures/cslglogo.png  used on input line 81.
 (pdftex.def)             Requested size: 227.62206pt x 165.35446pt.
 
-Underfull \hbox (badness 1527) detected at line 65
+Underfull \hbox (badness 1527) detected at line 81
 \C70/hei/m/n/12/5b f \C70/hei/m/n/12/4f M \C70/hei/m/n/12/75 3 \C70/hei/m/n/12/8b ˜ \C70/hei/m/n/12/4e ∫ \C70/hei/m/n/12/59 ” \C70/hei/m/n/12/54 ^^M
  []
 
-LaTeX Font Info:    Trying to load font information for C70+song on input line 65.
+LaTeX Font Info:    Trying to load font information for C70+song on input line 81.
 (d:/Softwares/texlive/2025/texmf-dist/tex/latex/cjk/texinput/UTF8/c70song.fd
 File: c70song.fd 2021/10/16 4.8.5
 )
-Underfull \hbox (badness 10000) detected at line 65
+Underfull \hbox (badness 10000) detected at line 81
 []
  []
 
 
-Underfull \hbox (badness 10000) detected at line 65
+Underfull \hbox (badness 10000) detected at line 81
 []
  []
 
@@ -1147,27 +1154,27 @@ File: ctex-zhmap-windows.tex 2022/07/14 v2.5.10 Windows font map loader for pdfT
 
 
 {d:/Softwares/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc} <./figures/cslglogo.png>]
-Underfull \hbox (badness 2181) detected at line 65
+Underfull \hbox (badness 2181) detected at line 81
 \C70/hei/m/n/12/5b f \C70/hei/m/n/12/68 ! \C70/hei/m/n/12/4e „ \C70/hei/m/n/12/53 ˜\OT1/txr/m/n/12 :
  []
 
 LaTeX Font Info:    Font shape `OT1/txr/b/n' in size <18> not available
-(Font)              Font shape `OT1/txr/bx/n' tried instead on input line 65.
-LaTeX Font Info:    Trying to load font information for C70+rm on input line 65.
+(Font)              Font shape `OT1/txr/bx/n' tried instead on input line 81.
+LaTeX Font Info:    Trying to load font information for C70+rm on input line 81.
 (d:/Softwares/texlive/2025/texmf-dist/tex/latex/ctex/fd/c70rm.fd
 File: c70rm.fd 2022/07/14 v2.5.10 Chinese font definition (CTEX)
 )
-Underfull \hbox (badness 1527) detected at line 65
+Underfull \hbox (badness 1527) detected at line 81
 \C70/hei/m/n/12/5b f \C70/hei/m/n/12/4f M \C70/hei/m/n/12/75 3 \C70/hei/m/n/12/8b ˜ \C70/hei/m/n/12/4e ∫ \C70/hei/m/n/12/59 ” \C70/hei/m/n/12/54 ^^M
  []
 
 
-Underfull \hbox (badness 1527) detected at line 65
+Underfull \hbox (badness 1527) detected at line 81
 \C70/hei/m/n/12/5b ¸ \C70/hei/m/n/12/5e ^^H \C70/hei/m/n/12/59 ” \C70/hei/m/n/12/54 ^^M \C70/hei/m/n/12/53   \C70/hei/m/n/12/80 L \C70/hei/m/n/12/79 
  []
 
 
-Underfull \hbox (badness 1527) detected at line 65
+Underfull \hbox (badness 1527) detected at line 81
 \C70/hei/m/n/12/7b T \C70/hei/m/n/12/8f © \C70/hei/m/n/12/59 ‘ \C70/hei/m/n/12/54 X \C70/hei/m/n/12/4f ^^Z \C70/hei/m/n/12/4e ; \C70/hei/m/n/12/5e -
  []
 
@@ -1182,22 +1189,22 @@ Underfull \hbox (badness 1527) detected at line 65
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 65--65
+Underfull \hbox (badness 10000) in paragraph at lines 81--81
 
  []
 
 LaTeX Font Info:    Font shape `OT1/txr/b/n' in size <12> not available
-(Font)              Font shape `OT1/txr/bx/n' tried instead on input line 65.
-Package CJKpunct Info: punctuation spaces for family 'song' do not exist. Use family 'def' instead. on input line 65.
-Package CJKpunct Info: use punctuation spaces for family 'rm' with punctstyle (quanjiao) on input line 65.
-LaTeX Font Info:    Calculating math sizes for size <18> on input line 65.
+(Font)              Font shape `OT1/txr/bx/n' tried instead on input line 81.
+Package CJKpunct Info: punctuation spaces for family 'song' do not exist. Use family 'def' instead. on input line 81.
+Package CJKpunct Info: use punctuation spaces for family 'rm' with punctstyle (quanjiao) on input line 81.
+LaTeX Font Info:    Calculating math sizes for size <18> on input line 81.
 
 LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <18> not available
-(Font)              size <17.28> substituted on input line 65.
+(Font)              size <17.28> substituted on input line 81.
 
 
 LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <12.59995> not available
-(Font)              size <12> substituted on input line 65.
+(Font)              size <12> substituted on input line 81.
 
 
 
@@ -1205,7 +1212,7 @@ LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <12.59995> not available
 pdfTeX warning (ext4): destination with the same identifier (name{page.I}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.65 \makecover
+l.81 \makecover
                 [1
 
 
@@ -1213,39 +1220,48 @@ l.65 \makecover
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                \hskip 12.0pt
-(hyperref)                replaced by space on input line 65.
+(hyperref)                replaced by space on input line 81.
 
-Package CJKpunct Info: punctuation spaces for family 'hei' do not exist. Use family 'def' instead. on input line 65.
 
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.I}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.65 \makecover
+l.81 \makecover
                 [1
 
 
 
 ]
+Package CJKpunct Info: punctuation spaces for family 'hei' do not exist. Use family 'def' instead. on input line 81.
+
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.II}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.67 \clearpage
-                [2
-
-
-
-]) (./main.toc
+l.81 \makecover
+                [2]
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.III}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.41 ...ÔºöËΩØ‰ª∂ÊµÅÊ∞¥Á∫ø‰ºòÂåñ}{40}{section*.71}
-                                                  % [3
+l.81 \makecover
+                [3
+
+
+
+]
+LaTeX Font Info:    Trying to load font information for TS1+txr on input line 81.
+ (d:/Softwares/texlive/2025/texmf-dist/tex/latex/txfonts/ts1txr.fd
+File: ts1txr.fd 2000/12/15 v3.1
+)
+
+[4]) (./main.toc
+
+[5
 
 
 
@@ -1256,9 +1272,9 @@ l.41 ...ÔºöËΩØ‰ª∂ÊµÅÊ∞¥Á∫ø‰ºòÂåñ}{40}{section*.71}
 
 
 
-[4] (./main.lof
+[6] (./main.lof
 
-[5
+[7
 
 
 
@@ -1268,13 +1284,13 @@ l.41 ...ÔºöËΩØ‰ª∂ÊµÅÊ∞¥Á∫ø‰ºòÂåñ}{40}{section*.71}
 
 
 
-[6] (./main.lot)
+[8] (./main.lot)
 \tf@lot=\write6
 \openout6 = `main.lot'.
 
 
 
-[7
+[9
 
 
 
@@ -1306,7 +1322,7 @@ Package fancyhdr Warning: \headheight is too small (11.38092pt):
 
 
 ]
-<figures/1_1.pdf, id=726, 1002.17024pt x 571.60052pt>
+<figures/1_1.pdf, id=786, 1002.17024pt x 571.60052pt>
 File: figures/1_1.pdf Graphic file (type pdf)
 <use figures/1_1.pdf>
 Package pdftex.def Info: figures/1_1.pdf  used on input line 29.
@@ -1321,7 +1337,7 @@ Package fancyhdr Warning: \headheight is too small (11.38092pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
 
 [2]
-<figures/1_2.pdf, id=744, 583.89578pt x 337.90622pt>
+<figures/1_2.pdf, id=812, 583.89578pt x 337.90622pt>
 File: figures/1_2.pdf Graphic file (type pdf)
 <use figures/1_2.pdf>
 Package pdftex.def Info: figures/1_2.pdf  used on input line 39.
@@ -1345,7 +1361,10 @@ Package fancyhdr Warning: \headheight is too small (11.38092pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
 
 [4 <./figures/1_2.pdf>]
-<figures/1_3.pdf, id=884, 6776.75784pt x 1766.27885pt>
+
+LaTeX Warning: Reference `chen2018tvm' on page 5 undefined on input line 53.
+
+<figures/1_3.pdf, id=985, 6776.75784pt x 1766.27885pt>
 File: figures/1_3.pdf Graphic file (type pdf)
 <use figures/1_3.pdf>
 Package pdftex.def Info: figures/1_3.pdf  used on input line 56.
@@ -1374,10 +1393,10 @@ Package fancyhdr Warning: \headheight is too small (11.38092pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
 
 [6]
-<figures/1_4.pdf, id=948, 2289.51357pt x 1072.48679pt>
+<figures/1_4.pdf, id=1079, 2289.51357pt x 1072.48679pt>
 File: figures/1_4.pdf Graphic file (type pdf)
 <use figures/1_4.pdf>
-Package pdftex.def Info: figures/1_4.pdf  used on input line 91.
+Package pdftex.def Info: figures/1_4.pdf  used on input line 90.
 (pdftex.def)             Requested size: 364.19667pt x 170.58678pt.
 
 
@@ -1429,17 +1448,17 @@ Package fancyhdr Warning: \headheight is too small (11.38092pt):
 
  (./body/chapter2.tex
 Á¨¨2Á´† 2.
-<figures/2_1.pdf, id=980, 1482.25768pt x 660.54782pt>
+<figures/2_1.pdf, id=1129, 1482.25768pt x 660.54782pt>
 File: figures/2_1.pdf Graphic file (type pdf)
 <use figures/2_1.pdf>
 Package pdftex.def Info: figures/2_1.pdf  used on input line 19.
 (pdftex.def)             Requested size: 409.71692pt x 182.58353pt.
-<figures/2_2.pdf, id=981, 1060.92355pt x 1486.59393pt>
+<figures/2_2.pdf, id=1131, 1060.92355pt x 1486.59393pt>
 File: figures/2_2.pdf Graphic file (type pdf)
 <use figures/2_2.pdf>
 Package pdftex.def Info: figures/2_2.pdf  used on input line 26.
 (pdftex.def)             Requested size: 250.38564pt x 350.84674pt.
-<figures/2_3.pdf, id=983, 2616.1739pt x 1237.26242pt>
+<figures/2_3.pdf, id=1136, 2616.1739pt x 1237.26242pt>
 File: figures/2_3.pdf Graphic file (type pdf)
 <use figures/2_3.pdf>
 Package pdftex.def Info: figures/2_3.pdf  used on input line 34.
@@ -1470,6 +1489,12 @@ Package fancyhdr Warning: \headheight is too small (11.38092pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
 
 [13 <./figures/2_1.pdf> <./figures/2_2.pdf>]
+<figures/2_4.pdf, id=1161, 1331.93607pt x 398.2077pt>
+File: figures/2_4.pdf Graphic file (type pdf)
+<use figures/2_4.pdf>
+Package pdftex.def Info: figures/2_4.pdf  used on input line 47.
+(pdftex.def)             Requested size: 432.48051pt x 129.30052pt.
+
 
 
 Package fancyhdr Warning: \headheight is too small (11.38092pt): 
@@ -1479,23 +1504,6 @@ Package fancyhdr Warning: \headheight is too small (11.38092pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
 
 [14 <./figures/2_3.pdf>]
-<figures/2_4.pdf, id=1010, 1331.93607pt x 398.2077pt>
-File: figures/2_4.pdf Graphic file (type pdf)
-<use figures/2_4.pdf>
-Package pdftex.def Info: figures/2_4.pdf  used on input line 47.
-(pdftex.def)             Requested size: 432.48051pt x 129.30052pt.
-
-Underfull \hbox (badness 1565) in paragraph at lines 54--55
-[]\C70/song/m/n/12/57 ( \C70/song/m/n/12/5b X \C70/song/m/n/12/50 ® \C70/song/m/n/12/67 ∂ Ñ \C70/song/m/n/12/65 π \C70/song/m/n/12/97 b|\C70/song/m/n/12/ff ^^L| \C70/song/m/n/12/6d w \C70/song/m/n/12/51 I\OT1/txr/m/n/12 DCU\C70/song/m/n/12/91 « \C70/song/m/n/12/75 ( \C70/song/m/n/12/59 ^^Z \C70/song/m/n/12/7e ß \C70/song/m/n/12/5b X \C70/song/m/n/12/50 ® \C70/song/m/n/12/5c B \C70/song/m/n/12/6b ! \C70/song/m/n/12/7e ” \C70/song/m/n/12/67 Ñ|\C70/song/m/n/12/ff ^^L| \C70/song/m/n/12/51 v \C70/song/m/n/12/4e - \C70/song/m/n/12/72 G \C70/song/m/n/12/4e 
- \C70/song/m/n/12/51 q \C70/song/m/n/12/4e ´ \C70/song/m/n/12/51 Ö \C70/song/m/n/12/5b X \C70/song/m/n/12/88 ´
- []
-
-
-Underfull \hbox (badness 1237) in paragraph at lines 54--55
-\C70/song/m/n/12/79  \C70/song/m/n/12/4e :\OT1/txr/m/n/12 LDS |\C70/song/m/n/12/ff ^^H|\OT1/txr/m/n/12 LocalDataShare|\C70/song/m/n/12/ff 	||\C70/song/m/n/12/30 ^^B| \OT1/txr/m/n/12 LDS\C70/song/m/n/12/90 ^^Z \C70/song/m/n/12/5e 8 \C70/song/m/n/12/88 ´ \C70/song/m/n/12/52 ^^R ^^F \C70/song/m/n/12/4e :\OT1/txr/m/n/12 32\C70/song/m/n/12/4e *\OT1/txr/m/n/12 Bank|\C70/song/m/n/12/ff ^^L| \C70/song/m/n/12/6b œ \C70/song/m/n/12/4e *\OT1/txr/m/n/12 Bank\C70/song/m/n/12/5b Ω \C70/song/m/n/12/5e ¶ \C70/song/m/n/12/4e :\OT1/txr/m/n/12 4\C70/song/m/n/12/5b W \C70/song/m/n/12/82 Ç|\C70/song/m/n/12/30 ^^B|
- []
-
-
 
 
 Package fancyhdr Warning: \headheight is too small (11.38092pt): 
@@ -1505,7 +1513,7 @@ Package fancyhdr Warning: \headheight is too small (11.38092pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
 
 [15 <./figures/2_4.pdf>]
-<figures/2_5.pdf, id=1019, 1580.54492pt x 1990.31581pt>
+<figures/2_5.pdf, id=1183, 1580.54492pt x 1990.31581pt>
 File: figures/2_5.pdf Graphic file (type pdf)
 <use figures/2_5.pdf>
 Package pdftex.def Info: figures/2_5.pdf  used on input line 66.
@@ -1520,7 +1528,7 @@ Package fancyhdr Warning: \headheight is too small (11.38092pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
 
 [16 <./figures/2_5.pdf>]
-<figures/2_6.pdf, id=1030, 1985.97966pt x 819.54178pt>
+<figures/2_6.pdf, id=1204, 1985.97966pt x 819.54178pt>
 File: figures/2_6.pdf Graphic file (type pdf)
 <use figures/2_6.pdf>
 Package pdftex.def Info: figures/2_6.pdf  used on input line 78.
@@ -1544,22 +1552,12 @@ Package fancyhdr Warning: \headheight is too small (11.38092pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
 
 [18]
-<figures/2_7.pdf, id=1046, 2129.79698pt x 886.03017pt>
+<figures/2_7.pdf, id=1233, 2129.79698pt x 886.03017pt>
 File: figures/2_7.pdf Graphic file (type pdf)
 <use figures/2_7.pdf>
 Package pdftex.def Info: figures/2_7.pdf  used on input line 107.
 (pdftex.def)             Requested size: 386.96027pt x 160.97923pt.
-
-
-
-Package fancyhdr Warning: \headheight is too small (11.38092pt): 
-(fancyhdr)                Make it at least 11.55002pt, for example:
-(fancyhdr)                \setlength{\headheight}{11.55002pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
-
-[19 <./figures/2_7.pdf>]
-<figures/2_8.pdf, id=1060, 1800.96838pt x 1716.4125pt>
+<figures/2_8.pdf, id=1241, 1800.96838pt x 1716.4125pt>
 File: figures/2_8.pdf Graphic file (type pdf)
 <use figures/2_8.pdf>
 Package pdftex.def Info: figures/2_8.pdf  used on input line 124.
@@ -1573,7 +1571,22 @@ Package fancyhdr Warning: \headheight is too small (11.38092pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
 
+[19 <./figures/2_7.pdf>]
+
+
+Package fancyhdr Warning: \headheight is too small (11.38092pt): 
+(fancyhdr)                Make it at least 11.55002pt, for example:
+(fancyhdr)                \setlength{\headheight}{11.55002pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
+
 [20 <./figures/2_8.pdf>]
+<figures/2_9.pdf, id=1267, 1862.39784pt x 1344.22195pt>
+File: figures/2_9.pdf Graphic file (type pdf)
+<use figures/2_9.pdf>
+Package pdftex.def Info: figures/2_9.pdf  used on input line 142.
+(pdftex.def)             Requested size: 295.90588pt x 213.56207pt.
+
 
 
 Package fancyhdr Warning: \headheight is too small (11.38092pt): 
@@ -1583,12 +1596,6 @@ Package fancyhdr Warning: \headheight is too small (11.38092pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
 
 [21]
-<figures/2_9.pdf, id=1075, 1862.39784pt x 1344.22195pt>
-File: figures/2_9.pdf Graphic file (type pdf)
-<use figures/2_9.pdf>
-Package pdftex.def Info: figures/2_9.pdf  used on input line 142.
-(pdftex.def)             Requested size: 295.90588pt x 213.56207pt.
-
 
 
 Package fancyhdr Warning: \headheight is too small (11.38092pt): 
@@ -1611,7 +1618,7 @@ Package fancyhdr Warning: \headheight is too small (11.38092pt):
 
  (./body/chapter3.tex
 Á¨¨3Á´† 3.
-<figures/3_1.pdf, id=1088, 2697.11644pt x 1883.35614pt>
+<figures/3_1.pdf, id=1287, 2697.11644pt x 1883.35614pt>
 File: figures/3_1.pdf Graphic file (type pdf)
 <use figures/3_1.pdf>
 Package pdftex.def Info: figures/3_1.pdf  used on input line 17.
@@ -1633,10 +1640,6 @@ Package fancyhdr Warning: \headheight is too small (11.38092pt):
 
 
 ]
-LaTeX Font Info:    Trying to load font information for TS1+txr on input line 25.
- (d:/Softwares/texlive/2025/texmf-dist/tex/latex/txfonts/ts1txr.fd
-File: ts1txr.fd 2000/12/15 v3.1
-)
 
 
 Package fancyhdr Warning: \headheight is too small (11.38092pt): 
@@ -1655,7 +1658,7 @@ Package fancyhdr Warning: \headheight is too small (11.38092pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
 
 [26]
-<figures/3_2.pdf, id=1122, 4026.16182pt x 2126.90607pt>
+<figures/3_2.pdf, id=1319, 4026.16182pt x 2126.90607pt>
 File: figures/3_2.pdf Graphic file (type pdf)
 <use figures/3_2.pdf>
 Package pdftex.def Info: figures/3_2.pdf  used on input line 88.
@@ -1686,16 +1689,11 @@ Package fancyhdr Warning: \headheight is too small (11.38092pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
 
 [28]
-<figures/3_3.pdf, id=1139, 1952.01266pt x 1140.42064pt>
+<figures/3_3.pdf, id=1336, 1952.01266pt x 1140.42064pt>
 File: figures/3_3.pdf Graphic file (type pdf)
 <use figures/3_3.pdf>
 Package pdftex.def Info: figures/3_3.pdf  used on input line 115.
 (pdftex.def)             Requested size: 341.43307pt x 199.47218pt.
-
-Underfull \hbox (badness 1189) in paragraph at lines 120--121
-[]\C70/song/m/n/12/59 Ç \C70/song/m/n/12/56 ˛[][]\OT1/txr/m/n/12 3.3[][]\C70/song/m/n/12/62 @ \C70/song/m/n/12/79 :|\C70/song/m/n/12/ff ^^L| \C70/song/m/n/12/67 , \C70/song/m/n/12/65 á \C70/song/m/n/12/8b æ ° \C70/song/m/n/12/4e Ü ^^@ \C70/song/m/n/12/79 Õ \C70/song/m/n/12/54 ^^M \C70/song/m/n/12/4e :\OT1/txr/m/n/12 LowerInfo |\C70/song/m/n/12/ff ^^H|\OT1/txr/m/n/12 Lowering In-for-ma-tion|\C70/song/m/n/12/ff 	| \C70/song/m/n/12/76 Ñ \C70/song/m/n/12/7e ” \C70/song/m/n/12/67 Ñ
- []
-
 
 
 
@@ -1706,32 +1704,7 @@ Package fancyhdr Warning: \headheight is too small (11.38092pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
 
 [29 <./figures/3_3.pdf>]
-Underfull \hbox (badness 4819) in paragraph at lines 124--125
-[]\C70/song/m/n/12/90 ^^Z \C70/song/m/n/12/8f « \C70/song/m/n/12/5b ˘ \C70/song/m/n/12/7b ó \C70/song/m/n/12/5b P \C70/song/m/n/12/62 g \C70/song/m/n/12/88 L \C70/song/m/n/12/8f « \C70/song/m/n/12/7a  \C70/song/m/n/12/76 Ñ \C70/song/m/n/12/52 ^^F \C70/song/m/n/12/67 ê \C70/song/m/n/12/53 Ô \C70/song/m/n/12/4e Â \C70/song/m/n/12/53 — \C70/song/m/n/12/73 ∞|\C70/song/m/n/12/ff ^^L| \C70/song/m/n/12/4e ^^M \C70/song/m/n/12/54 ^^L\OT1/txr/m/n/12 Operation\C70/song/m/n/12/4e K \C70/song/m/n/12/95 Ù \C70/song/m/n/12/5b ˘\OT1/txr/m/n/12 Buffer\C70/song/m/n/12/7d " \C70/song/m/n/12/5f ^^U \C70/song/m/n/12/76 Ñ
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 124--125
-\C70/song/m/n/12/4f ù \C70/song/m/n/12/8d V \C70/song/m/n/12/51 s \C70/song/m/n/12/7c ˚ \C70/song/m/n/12/5b X \C70/song/m/n/12/57 ( \C70/song/m/n/12/66 ^^N > \C70/song/m/n/12/5d Ó \C70/song/m/n/12/5f ^^B|\C70/song/m/n/12/30 ^^B| \C70/song/m/n/12/4f ã \C70/song/m/n/12/59 Ç|\C70/song/m/n/12/ff ^^L| \C70/song/m/n/12/57 ( \C70/song/m/n/12/56 ˛[][]\OT1/txr/m/n/12 3.2[][](a)\C70/song/m/n/12/4e -|\C70/song/m/n/12/ff ^^L| \OT1/txr/m/n/12 CopyOp\C70/song/m/n/12/4e ^^N\OT1/txr/m/n/12 MatmulOp\C70/song/m/n/12/4e K \C70/song/m/n/12/95 Ù \C70/song/m/n/12/76 Ñ \C70/song/m/n/12/7d "
- []
-
-
-Underfull \hbox (badness 4168) in paragraph at lines 124--125
-\C70/song/m/n/12/5f ^^U \C70/song/m/n/12/8b ø \C70/song/m/n/12/95 Ó \C70/song/m/n/12/5f | \C70/song/m/n/12/6b d \C70/song/m/n/12/72 Ï \C70/song/m/n/12/7a À|\C70/song/m/n/12/30 ^^B| \C70/song/m/n/12/51 w \C70/song/m/n/12/4f S \C70/song/m/n/12/80 ^^L \C70/song/m/n/12/8a ^^@|\C70/song/m/n/12/ff ^^L| \OT1/txr/m/n/12 CopyOp\C70/song/m/n/12/5b ˘ \C70/song/m/n/12/51 q \C70/song/m/n/12/4e ´ \C70/song/m/n/12/51 Ö \C70/song/m/n/12/5b X\OT1/txr/m/n/12 SM(K)\C70/song/m/n/12/8f € \C70/song/m/n/12/88 L \C70/song/m/n/12/51 ô e \C70/song/m/n/12/65 ˆ \C70/song/m/n/12/76 Ñ \C70/song/m/n/12/7d " \C70/song/m/n/12/5f ^^U \C70/song/m/n/12/52 ^^F
- []
-
-
-Underfull \hbox (badness 4001) in paragraph at lines 124--125
-\C70/song/m/n/12/5e ^^C|\C70/song/m/n/12/ff ^^L| \C70/song/m/n/12/5e v \C70/song/m/n/12/4e ^^M \C70/song/m/n/12/89 Å \C70/song/m/n/12/6c B \C70/song/m/n/12/4e ^^N\OT1/txr/m/n/12 MatmulOp\C70/song/m/n/12/4e Œ\OT1/txr/m/n/12 SM(K)\C70/song/m/n/12/8b ˚ \C70/song/m/n/12/53 ÷ \C70/song/m/n/12/65 p \C70/song/m/n/12/63 n \C70/song/m/n/12/65 ˆ \C70/song/m/n/12/76 Ñ \C70/song/m/n/12/7d " \C70/song/m/n/12/5f ^^U \C70/song/m/n/12/4f › \C70/song/m/n/12/63 ^^A \C70/song/m/n/12/4e ^^@ \C70/song/m/n/12/81 Ù|\C70/song/m/n/12/30 ^^B| \C70/song/m/n/12/80 ^^L \C70/song/m/n/12/53 Ê \C70/song/m/n/12/4e ^^@ \C70/song/m/n/12/65 π \C70/song/m/n/12/97 b|\C70/song/m/n/12/ff ^^L|
- []
-
-
-Underfull \hbox (badness 1221) in paragraph at lines 124--125
-\C70/song/m/n/12/7d " \C70/song/m/n/12/5f ^^U \C70/song/m/n/12/8b ø \C70/song/m/n/12/95 Ó \C70/song/m/n/12/4e 
- \C70/song/m/n/12/5f ≈ \C70/song/m/n/12/98 { \C70/song/m/n/12/4f › \C70/song/m/n/12/63 ^^A \C70/song/m/n/12/4e ^^@ \C70/song/m/n/12/81 Ù|\C70/song/m/n/12/30 ^^B| \C70/song/m/n/12/75 1 \C70/song/m/n/12/4e é\OT1/txr/m/n/12 MatmulOp\C70/song/m/n/12/8b ° \C70/song/m/n/12/7b ó \C70/song/m/n/12/5f ó \C70/song/m/n/12/52 0 \C70/song/m/n/12/76 Ñ \C70/song/m/n/12/90 Ë \C70/song/m/n/12/52 ^^F \C70/song/m/n/12/7e ” \C70/song/m/n/12/67 ú \C70/song/m/n/12/52 ^^F + \C70/song/m/n/12/5b X \C70/song/m/n/12/50 ® \C70/song/m/n/12/57 ( \C70/song/m/n/12/4e ^^M \C70/song/m/n/12/54 ^^L
- []
-
-<figures/3_4.pdf, id=1150, 2367.56517pt x 1353.61716pt>
+<figures/3_4.pdf, id=1347, 2367.56517pt x 1353.61716pt>
 File: figures/3_4.pdf Graphic file (type pdf)
 <use figures/3_4.pdf>
 Package pdftex.def Info: figures/3_4.pdf  used on input line 130.
@@ -1751,41 +1724,11 @@ LaTeX Font Info:    Font shape `OT1/txr/b/n' in size <8> not available
 LaTeX Font Info:    Font shape `OT1/txr/b/it' in size <12> not available
 (Font)              Font shape `OT1/txr/bx/it' tried instead on input line 176.
 Package CJKpunct Info: use punctuation spaces for family 'zhkai' with punctstyle (quanjiao) on input line 176.
-<figures/3_5.pdf, id=1160, 3216.015pt x 1269.06114pt>
+<figures/3_5.pdf, id=1358, 3216.015pt x 1269.06114pt>
 File: figures/3_5.pdf Graphic file (type pdf)
 <use figures/3_5.pdf>
 Package pdftex.def Info: figures/3_5.pdf  used on input line 200.
 (pdftex.def)             Requested size: 455.24411pt x 179.6425pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 205--206
-[]\C70/song/m/n/12/7b , \C70/song/m/n/12/4e å \C70/song/m/n/12/7c { \C70/song/m/n/12/4e : \C70/song/m/n/12/4f ù \C70/song/m/n/12/8d V \C70/song/m/n/12/57 ã\OT1/txr/m/n/12 Operation|\C70/song/m/n/12/30 ^^B| \C70/song/m/n/12/8f Ÿ \C70/song/m/n/12/7c {\OT1/txr/m/n/12 Operation\C70/song/m/n/12/76 Ñ\OT1/txr/m/n/12 LowerInfo\C70/song/m/n/12/63 ® \C70/song/m/n/12/65 ≠ \C70/song/m/n/12/97 ^^@ \C70/song/m/n/12/89 Å \C70/song/m/n/12/4f ù \C70/song/m/n/12/8d V \C70/song/m/n/12/4e é \C70/song/m/n/12/52 M
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 205--206
-\C70/song/m/n/12/5e è\OT1/txr/m/n/12 Operation\C70/song/m/n/12/4e - \C70/song/m/n/12/5d Ú \C70/song/m/n/12/7e œ \C70/song/m/n/12/5f ó \C70/song/m/n/12/52 0 \C70/song/m/n/12/76 Ñ \C70/song/m/n/12/5b ƒ X \C70/song/m/n/12/56 h\OT1/txr/m/n/12 Buffer\C70/song/m/n/12/7d " \C70/song/m/n/12/5f ^^U \C70/song/m/n/12/4f · \C70/song/m/n/12/60 o|\C70/song/m/n/12/30 ^^B| \C70/song/m/n/12/4f ã \C70/song/m/n/12/59 Ç \C70/song/m/n/12/56 ˛[][]\OT1/txr/m/n/12 3.2[][](a)\C70/song/m/n/12/4e - \C70/song/m/n/12/76 Ñ\OT1/txr/m/n/12 ReduceOp\C70/song/m/n/12/4e Â
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 205--206
-\C70/song/m/n/12/53   \C70/song/m/n/12/51 v \C70/song/m/n/12/54 ^^N \C70/song/m/n/12/76 Ñ\OT1/txr/m/n/12 BlockOp|\C70/song/m/n/12/ff ^^L| \C70/song/m/n/12/51 v\OT1/txr/m/n/12 Buffer Low-er-Info\C70/song/m/n/12/63 ® \C70/song/m/n/12/65 ≠ \C70/song/m/n/12/8f « \C70/song/m/n/12/7a  \C70/song/m/n/12/59 Ç \C70/song/m/n/12/56 ˛[][]\OT1/txr/m/n/12 3.5[][]\C70/song/m/n/12/62 @ \C70/song/m/n/12/79 :|\C70/song/m/n/12/30 ^^B| \C70/song/m/n/12/57 (\OT1/txr/m/n/12 ReduceOp\C70/song/m/n/12/76 Ñ
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 205--206
-\C70/song/m/n/12/63 ® \C70/song/m/n/12/65 ≠ \C70/song/m/n/12/8f « \C70/song/m/n/12/7a  \C70/song/m/n/12/4e -|\C70/song/m/n/12/ff ^^L| \C70/song/m/n/12/8f ì \C70/song/m/n/12/51 e \C70/song/m/n/12/5b ƒ X \C70/song/m/n/12/56 h\OT1/txr/m/n/12 Reg(acc[]s)\C70/song/m/n/12/76 Ñ\OT1/txr/m/n/12 LowerInfo\C70/song/m/n/12/5d Ú \C70/song/m/n/12/7e œ \C70/song/m/n/12/57 ( \C70/song/m/n/12/52 M \C70/song/m/n/12/97 b \C70/song/m/n/12/76 Ñ\OT1/txr/m/n/12 MatmulOp\C70/song/m/n/12/96 6
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 205--206
-\C70/song/m/n/12/6b µ \C70/song/m/n/12/63 ® \C70/song/m/n/12/5b ¸ å \C70/song/m/n/12/62 ^^P|\C70/song/m/n/12/ff ^^L| \C70/song/m/n/12/5e v \C70/song/m/n/12/5b X \C70/song/m/n/12/50 ® \C70/song/m/n/12/4e é\OT1/txr/m/n/12 frag[]buf[]info[]map\C70/song/m/n/12/4e -|\C70/song/m/n/12/30 ^^B| \C70/song/m/n/12/5f S \C70/song/m/n/12/90 M \C70/song/m/n/12/53 Ü \C70/song/m/n/12/52 0\OT1/txr/m/n/12 ReduceOp\C70/song/m/n/12/65 ˆ|\C70/song/m/n/12/ff ^^L| \C70/song/m/n/12/7c ˚ \C70/song/m/n/12/7e ﬂ ”
- []
-
-
-Underfull \hbox (badness 3168) in paragraph at lines 205--206
-\C70/song/m/n/12/54 ^^H\OT1/txr/m/n/12 Reg(acc[]s)\C70/song/m/n/12/76 Ñ\OT1/txr/m/n/12 LowerInfo\C70/song/m/n/12/4e Â \C70/song/m/n/12/53  \OT1/txr/m/n/12 ReduceOp\C70/song/m/n/12/51 Ö \C70/song/m/n/12/90 Ë \C70/song/m/n/12/76 Ñ \C70/song/m/n/12/8b ° \C70/song/m/n/12/7b ó \C70/song/m/n/12/90 ; \C70/song/m/n/12/8f ë|\C70/song/m/n/12/ff ^^L| \C70/song/m/n/12/53 s Ô \C70/song/m/n/12/63 ® \C70/song/m/n/12/5b ¸ \C70/song/m/n/12/5f ó \C70/song/m/n/12/52 0 \C70/song/m/n/12/8f ì \C70/song/m/n/12/51 ˙ \C70/song/m/n/12/5b ƒ X
- []
-
 
 
 
@@ -1805,55 +1748,26 @@ Package fancyhdr Warning: \headheight is too small (11.38092pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
 
 [32]
-Underfull \hbox (badness 1715) in paragraph at lines 215--216
-\C70/song/m/n/12/62 @ \C70/song/m/n/12/4f ù \C70/song/m/n/12/8d V \C70/song/m/n/12/76 Ñ\OT1/txr/m/n/12 LowerInfo\C70/song/m/n/12/7e ” \C70/song/m/n/12/67 Ñ \C70/song/m/n/12/4f S \C70/song/m/n/12/53   \C70/song/m/n/12/51 v \C70/song/m/n/12/63 ® \C70/song/m/n/12/65 ≠ π \C70/song/m/n/12/6c ’|\C70/song/m/n/12/30 ^^B| \C70/song/m/n/12/67 , \C70/song/m/n/12/82 Ç \C70/song/m/n/12/8f € \C70/song/m/n/12/4e ^^@ \C70/song/m/n/12/6b e \C70/song/m/n/12/8b Ù \C70/song/m/n/12/66 ^^N\OT1/txr/m/n/12 IR\C70/song/m/n/12/76 Ñ \C70/song/m/n/12/51 w \C70/song/m/n/12/4f S \C70/song/m/n/12/96 M \C70/song/m/n/12/7e ß \C70/song/m/n/12/8f l \C70/song/m/n/12/63 b \C70/song/m/n/12/8f «
- []
-
-
-Underfull \hbox (badness 1117) in paragraph at lines 215--216
-\C70/song/m/n/12/79 : \C70/song/m/n/12/4e Ü \C70/song/m/n/12/56 ˛[][]\OT1/txr/m/n/12 3.2[][](a)\C70/song/m/n/12/65 p \C70/song/m/n/12/63 n \C70/song/m/n/12/6d A \C70/song/m/n/12/56 ˛ \C70/song/m/n/12/57 (\OT1/txr/m/n/12 MLIR\C70/song/m/n/12/4e - \C70/song/m/n/12/76 Ñ \C70/song/m/n/12/7e ø \C70/song/m/n/12/7a  \C70/song/m/n/12/57 W \C70/song/m/n/12/5c B \C70/song/m/n/12/7e ß\OT1/txr/m/n/12 IR\C70/song/m/n/12/88 h \C70/song/m/n/12/79 :|\C70/song/m/n/12/ff ^^L| \C70/song/m/n/12/80 ^^L \C70/song/m/n/12/56 ˛[][]\OT1/txr/m/n/12 3.7[][]\C70/song/m/n/12/4e ^^N \C70/song/m/n/12/56 ˛[][]\OT1/txr/m/n/12 3.8[][]\C70/song/m/n/12/52 ^^F + \C70/song/m/n/12/7e Ÿ \C70/song/m/n/12/51 ˙ \C70/song/m/n/12/4e Ü
- []
-
-
-Underfull \hbox (badness 2903) in paragraph at lines 215--216
-\C70/song/m/n/12/56 ˛[][]\OT1/txr/m/n/12 3.6[][]\C70/song/m/n/12/4e - \C70/song/m/n/12/7b ,\OT1/txr/m/n/12 15\C70/song/m/n/12/88 L \C70/song/m/n/12/54 å \C70/song/m/n/12/7b ,\OT1/txr/m/n/12 20\C70/song/m/n/12/88 L \C70/song/m/n/12/4e „ \C70/song/m/n/12/78 ^^A \C70/song/m/n/12/88 h \C70/song/m/n/12/79 : \C70/song/m/n/12/76 Ñ\OT1/txr/m/n/12 MatmulOp\C70/song/m/n/12/4e ^^N\OT1/txr/m/n/12 ReduceOp\C70/song/m/n/12/57 ( \C70/song/m/n/12/5b å \C70/song/m/n/12/62 ^^P\OT1/txr/m/n/12 Lowering\C70/song/m/n/12/54 ^^N \C70/song/m/n/12/76 Ñ \C70/song/m/n/12/7e ø \C70/song/m/n/12/7a 
- []
-
-
-Underfull \hbox (badness 1953) in paragraph at lines 215--216
-\C70/song/m/n/12/5c B \C70/song/m/n/12/7e ß\OT1/txr/m/n/12 IR\C70/song/m/n/12/88 h \C70/song/m/n/12/79 :|\C70/song/m/n/12/30 ^^B| \C70/song/m/n/12/8f Ÿ \C70/song/m/n/12/4e $ *\OT1/txr/m/n/12 IR\C70/song/m/n/12/72 G \C70/song/m/n/12/6b µ \C70/song/m/n/12/54 ^^L \C70/song/m/n/12/65 ˆ \C70/song/m/n/12/5b ˘ \C70/song/m/n/12/5e î \C70/song/m/n/12/56 ˛[][]\OT1/txr/m/n/12 3.2[][](b)\C70/song/m/n/12/5d Ê \C70/song/m/n/12/4f ß \C70/song/m/n/12/4e ^^N \C70/song/m/n/12/53 Û \C70/song/m/n/12/4f ß \C70/song/m/n/12/76 Ñ \C70/song/m/n/12/53 ÿ \C70/song/m/n/12/63 b \C70/song/m/n/12/7e ” \C70/song/m/n/12/67 ú|\C70/song/m/n/12/30 ^^B| \C70/song/m/n/12/51 v \C70/song/m/n/12/4e -\OT1/txr/m/n/12 IR\C70/song/m/n/12/4e -
- []
-
-<figures/3_6.pdf, id=1239, 3433.54767pt x 2941.3889pt>
+<figures/3_6.pdf, id=1436, 3433.54767pt x 2941.3889pt>
 File: figures/3_6.pdf Graphic file (type pdf)
 <use figures/3_6.pdf>
 Package pdftex.def Info: figures/3_6.pdf  used on input line 219.
 (pdftex.def)             Requested size: 432.48051pt x 370.4554pt.
-<figures/3_7.pdf, id=1240, 3460.2877pt x 1730.14386pt>
+<figures/3_7.pdf, id=1437, 3460.2877pt x 1730.14386pt>
 File: figures/3_7.pdf Graphic file (type pdf)
 <use figures/3_7.pdf>
 Package pdftex.def Info: figures/3_7.pdf  used on input line 226.
 (pdftex.def)             Requested size: 432.48051pt x 216.24104pt.
-<figures/3_8.pdf, id=1241, 3458.11945pt x 2230.9748pt>
+<figures/3_8.pdf, id=1438, 3457.39677pt x 2225.19318pt>
 File: figures/3_8.pdf Graphic file (type pdf)
 <use figures/3_8.pdf>
 Package pdftex.def Info: figures/3_8.pdf  used on input line 233.
-(pdftex.def)             Requested size: 432.48051pt x 279.00734pt.
-<figures/3_9.pdf, id=1243, 3173.37572pt x 2223.74785pt>
+(pdftex.def)             Requested size: 432.48051pt x 278.31824pt.
+<figures/3_9.pdf, id=1440, 3173.37572pt x 2223.74785pt>
 File: figures/3_9.pdf Graphic file (type pdf)
 <use figures/3_9.pdf>
 Package pdftex.def Info: figures/3_9.pdf  used on input line 242.
 (pdftex.def)             Requested size: 409.71692pt x 287.0954pt.
-
-Underfull \hbox (badness 7047) in paragraph at lines 247--248
-[]\C70/song/m/n/12/57 ( \C70/song/m/n/12/5b å \C70/song/m/n/12/62 ^^P\OT1/txr/m/n/12 LowerInfo\C70/song/m/n/12/63 ® \C70/song/m/n/12/65 ≠ \C70/song/m/n/12/54 ^^N|\C70/song/m/n/12/ff ^^L| \C70/song/m/n/12/53 s Ô \C70/song/m/n/12/62 g \C70/song/m/n/12/88 L\OT1/txr/m/n/12 MatmulOp\C70/song/m/n/12/76 Ñ\OT1/txr/m/n/12 IR Low-er-ing|\C70/song/m/n/12/30 ^^B| \C70/song/m/n/12/59 Ç \C70/song/m/n/12/56 ˛[][]\OT1/txr/m/n/12 3.7[][]\C70/song/m/n/12/62 @ \C70/song/m/n/12/79 :|\C70/song/m/n/12/ff ^^L|
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 247--248
-\OT1/txr/m/n/12 Lowering\C70/song/m/n/12/54 ^^N \C70/song/m/n/12/76 Ñ\OT1/txr/m/n/12 MatmulOp\C70/song/m/n/12/57 (\OT1/txr/m/n/12 IR\C70/song/m/n/12/4e - \C70/song/m/n/12/90 ^^Z \C70/song/m/n/12/8f «\OT1/txr/m/n/12 affine.load\C70/song/m/n/12/4e ^^N\OT1/txr/m/n/12 affine.store\C70/song/m/n/12/64 Õ \C70/song/m/n/12/4f \ \C70/song/m/n/12/5b ˘\OT1/txr/m/n/12 SM(Q)|\C70/song/m/n/12/30 ^^A| \OT1/txr/m/n/12 SM(K)\C70/song/m/n/12/4e Â
- []
-
 
 
 
@@ -1882,21 +1796,11 @@ Package fancyhdr Warning: \headheight is too small (11.38092pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
 
 [35 <./figures/3_8.pdf> <./figures/3_9.pdf>]
-<figures/3_10.pdf, id=1266, 3164.70319pt x 1597.88974pt>
+<figures/3_10.pdf, id=1463, 3164.70319pt x 1597.88974pt>
 File: figures/3_10.pdf Graphic file (type pdf)
 <use figures/3_10.pdf>
 Package pdftex.def Info: figures/3_10.pdf  used on input line 251.
 (pdftex.def)             Requested size: 409.71692pt x 206.85521pt.
-
-Underfull \hbox (badness 1527) in paragraph at lines 258--259
-[]\C70/song/m/n/12/59 Ç \C70/song/m/n/12/56 ˛[][]\OT1/txr/m/n/12 3.10[][]\C70/song/m/n/12/62 @ \C70/song/m/n/12/79 : \C70/song/m/n/12/4e :\OT1/txr/m/n/12 ReduceOp\C70/song/m/n/12/4e -\OT1/txr/m/n/12 Buffer\C70/song/m/n/12/76 Ñ\OT1/txr/m/n/12 LowerInfo\C70/song/m/n/12/62 S \C70/song/m/n/12/53 p \C70/song/m/n/12/7e ” \C70/song/m/n/12/67 ú|\C70/song/m/n/12/ff ^^L| \C70/song/m/n/12/51 v \C70/song/m/n/12/4e - \C70/song/m/n/12/6c Ë \C70/song/m/n/12/91   \C70/song/m/n/12/88 h \C70/song/m/n/12/79 : \C70/song/m/n/12/7e ƒ \C70/song/m/n/12/54 ^^H ^^N
- []
-
-
-Underfull \hbox (badness 3029) in paragraph at lines 258--259
-\C70/song/m/n/12/76 Ñ \C70/song/m/n/12/7d " \C70/song/m/n/12/5f ^^U \C70/song/m/n/12/88 h \C70/song/m/n/12/8f æ \C70/song/m/n/12/5f ^^O|\C70/song/m/n/12/30 ^^B| \C70/song/m/n/12/57 ( \C70/song/m/n/12/63 ® \C70/song/m/n/12/65 ≠\OT1/txr/m/n/12 Reg(m)\C70/song/m/n/12/76 Ñ\OT1/txr/m/n/12 LowerInfo\C70/song/m/n/12/65 ˆ|\C70/song/m/n/12/ff ^^L| \C70/song/m/n/12/99 ñ \C70/song/m/n/12/51 H \C70/song/m/n/12/52 ) \C70/song/m/n/12/75 (\OT1/txr/m/n/12 ReduceOp\C70/song/m/n/12/76 Ñ\OT1/txr/m/n/12 dim\C70/song/m/n/12/5c ^ \C70/song/m/n/12/60 ' \C70/song/m/n/12/78 n \C70/song/m/n/12/5b ö
- []
-
 
 
 
@@ -1907,6 +1811,17 @@ Package fancyhdr Warning: \headheight is too small (11.38092pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
 
 [36 <./figures/3_10.pdf>]
+<figures/3_11.pdf, id=1473, 3082.31555pt x 1033.46097pt>
+File: figures/3_11.pdf Graphic file (type pdf)
+<use figures/3_11.pdf>
+Package pdftex.def Info: figures/3_11.pdf  used on input line 307.
+(pdftex.def)             Requested size: 409.71692pt x 137.36658pt.
+<figures/3_12.pdf, id=1476, 3008.6002pt x 1740.26161pt>
+File: figures/3_12.pdf Graphic file (type pdf)
+<use figures/3_12.pdf>
+Package pdftex.def Info: figures/3_12.pdf  used on input line 315.
+(pdftex.def)             Requested size: 432.48051pt x 250.14075pt.
+
 
 
 Package fancyhdr Warning: \headheight is too small (11.38092pt): 
@@ -1916,17 +1831,6 @@ Package fancyhdr Warning: \headheight is too small (11.38092pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
 
 [37]
-<figures/3_11.pdf, id=1281, 3082.31555pt x 1033.46097pt>
-File: figures/3_11.pdf Graphic file (type pdf)
-<use figures/3_11.pdf>
-Package pdftex.def Info: figures/3_11.pdf  used on input line 307.
-(pdftex.def)             Requested size: 409.71692pt x 137.36658pt.
-<figures/3_12.pdf, id=1284, 3008.6002pt x 1740.26161pt>
-File: figures/3_12.pdf Graphic file (type pdf)
-<use figures/3_12.pdf>
-Package pdftex.def Info: figures/3_12.pdf  used on input line 315.
-(pdftex.def)             Requested size: 432.48051pt x 250.14075pt.
-
 
 
 Package fancyhdr Warning: \headheight is too small (11.38092pt): 
@@ -1954,20 +1858,20 @@ Package fancyhdr Warning: \headheight is too small (11.38092pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
 
 [40]
-<figures/3_13.pdf, id=1308, 3407.53055pt x 908.43388pt>
+<figures/3_13.pdf, id=1505, 3407.53055pt x 908.43388pt>
 File: figures/3_13.pdf Graphic file (type pdf)
 <use figures/3_13.pdf>
-Package pdftex.def Info: figures/3_13.pdf  used on input line 348.
+Package pdftex.def Info: figures/3_13.pdf  used on input line 347.
 (pdftex.def)             Requested size: 455.24411pt x 121.35802pt.
-<figures/3_15.pdf, id=1309, 3434.27034pt x 448.79669pt>
+<figures/3_15.pdf, id=1506, 3434.27034pt x 448.79669pt>
 File: figures/3_15.pdf Graphic file (type pdf)
 <use figures/3_15.pdf>
-Package pdftex.def Info: figures/3_15.pdf  used on input line 355.
+Package pdftex.def Info: figures/3_15.pdf  used on input line 354.
 (pdftex.def)             Requested size: 455.24411pt x 59.48924pt.
-<figures/3_16.pdf, id=1310, 3451.61517pt x 1015.39348pt>
+<figures/3_16.pdf, id=1507, 3451.61517pt x 1015.39348pt>
 File: figures/3_16.pdf Graphic file (type pdf)
 <use figures/3_16.pdf>
-Package pdftex.def Info: figures/3_16.pdf  used on input line 362.
+Package pdftex.def Info: figures/3_16.pdf  used on input line 361.
 (pdftex.def)             Requested size: 455.24411pt x 133.9115pt.
 
 
@@ -1979,20 +1883,20 @@ Package fancyhdr Warning: \headheight is too small (11.38092pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
 
 [41 <./figures/3_13.pdf> <./figures/3_15.pdf> <./figures/3_16.pdf>]
-<figures/3_14.pdf, id=1324, 4571.0775pt x 1189.5642pt>
+<figures/3_14.pdf, id=1521, 4571.0775pt x 1189.5642pt>
 File: figures/3_14.pdf Graphic file (type pdf)
 <use figures/3_14.pdf>
-Package pdftex.def Info: figures/3_14.pdf  used on input line 371.
+Package pdftex.def Info: figures/3_14.pdf  used on input line 370.
 (pdftex.def)             Requested size: 455.24411pt x 118.45515pt.
-<figures/3_17.pdf, id=1325, 3192.1659pt x 1806.02733pt>
+<figures/3_17.pdf, id=1522, 3192.1659pt x 1806.02733pt>
 File: figures/3_17.pdf Graphic file (type pdf)
 <use figures/3_17.pdf>
-Package pdftex.def Info: figures/3_17.pdf  used on input line 378.
+Package pdftex.def Info: figures/3_17.pdf  used on input line 377.
 (pdftex.def)             Requested size: 455.24411pt x 257.55447pt.
-<figures/3_18.pdf, id=1326, 3154.58556pt x 3242.03212pt>
+<figures/3_18.pdf, id=1523, 3154.58556pt x 3242.03212pt>
 File: figures/3_18.pdf Graphic file (type pdf)
 <use figures/3_18.pdf>
-Package pdftex.def Info: figures/3_18.pdf  used on input line 385.
+Package pdftex.def Info: figures/3_18.pdf  used on input line 384.
 (pdftex.def)             Requested size: 455.24411pt x 467.83177pt.
 
 
@@ -2013,12 +1917,6 @@ Package fancyhdr Warning: \headheight is too small (11.38092pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
 
 [43 <./figures/3_18.pdf>]
-<figures/3_19.pdf, id=1346, 3739.24983pt x 1464.19017pt>
-File: figures/3_19.pdf Graphic file (type pdf)
-<use figures/3_19.pdf>
-Package pdftex.def Info: figures/3_19.pdf  used on input line 410.
-(pdftex.def)             Requested size: 386.96027pt x 151.5215pt.
-
 
 
 Package fancyhdr Warning: \headheight is too small (11.38092pt): 
@@ -2028,31 +1926,16 @@ Package fancyhdr Warning: \headheight is too small (11.38092pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
 
 [44]
-<figures/3_20.pdf, id=1354, 3225.4102pt x 1350.00356pt>
+<figures/3_19.pdf, id=1549, 3739.24983pt x 1464.19017pt>
+File: figures/3_19.pdf Graphic file (type pdf)
+<use figures/3_19.pdf>
+Package pdftex.def Info: figures/3_19.pdf  used on input line 409.
+(pdftex.def)             Requested size: 386.96027pt x 151.5215pt.
+<figures/3_20.pdf, id=1551, 3225.4102pt x 1350.00356pt>
 File: figures/3_20.pdf Graphic file (type pdf)
 <use figures/3_20.pdf>
-Package pdftex.def Info: figures/3_20.pdf  used on input line 419.
+Package pdftex.def Info: figures/3_20.pdf  used on input line 418.
 (pdftex.def)             Requested size: 341.43307pt x 142.89781pt.
-<figures/3_21.pdf, id=1356, 3204.45178pt x 1808.91814pt>
-File: figures/3_21.pdf Graphic file (type pdf)
-<use figures/3_21.pdf>
-Package pdftex.def Info: figures/3_21.pdf  used on input line 428.
-(pdftex.def)             Requested size: 455.24411pt x 256.97305pt.
-<figures/3_22.pdf, id=1357, 3190.72055pt x 3359.10966pt>
-File: figures/3_22.pdf Graphic file (type pdf)
-<use figures/3_22.pdf>
-Package pdftex.def Info: figures/3_22.pdf  used on input line 435.
-(pdftex.def)             Requested size: 455.24411pt x 479.24193pt.
-
-Underfull \hbox (badness 3148) in paragraph at lines 440--441
-[]\C70/song/m/n/12/56 ˛[][]\OT1/txr/m/n/12 3.21[][]\C70/song/m/n/12/54 å \C70/song/m/n/12/56 ˛[][]\OT1/txr/m/n/12 3.22[][]\C70/song/m/n/12/5c U \C70/song/m/n/12/79 : \C70/song/m/n/12/4e Ü \C70/song/m/n/12/56 ˛[][]\OT1/txr/m/n/12 3.20[][]\C70/song/m/n/12/62 @ \C70/song/m/n/12/79 : \C70/song/m/n/12/76 Ñ\OT1/txr/m/n/12 MatmulOp\C70/song/m/n/12/64 Õ \C70/song/m/n/12/4f \ \C70/song/m/n/12/57 ( \C70/song/m/n/12/5e î \C70/song/m/n/12/75 (\OT1/txr/m/n/12 LocalSplitK Pass\C70/song/m/n/12/52 M \C70/song/m/n/12/54 ^^N
- []
-
-
-Underfull \hbox (badness 7256) in paragraph at lines 440--441
-\C70/song/m/n/12/76 Ñ\OT1/txr/m/n/12 IR\C70/song/m/n/12/53 ÿ ^^V \C70/song/m/n/12/60 ≈ \C70/song/m/n/12/51 µ|\C70/song/m/n/12/ff ^^L| \C70/song/m/n/12/51 v \C70/song/m/n/12/4e - \C70/song/m/n/12/7e ø \C70/song/m/n/12/7a  \C70/song/m/n/12/57 W \C70/song/m/n/12/4e - \C70/song/m/n/12/76 Ñ \C70/song/m/n/12/7e ø \C70/song/m/n/12/7a  \C70/song/m/n/12/65 p \C70/song/m/n/12/91 œ \C70/song/m/n/12/4e :\OT1/txr/m/n/12 128|\C70/song/m/n/12/30 ^^B| \C70/song/m/n/12/56 ˛[][]\OT1/txr/m/n/12 3.21[][]\C70/song/m/n/12/7e Ÿ \C70/song/m/n/12/51 ˙ \C70/song/m/n/12/4e Ü \C70/song/m/n/12/67 * \C70/song/m/n/12/5e î \C70/song/m/n/12/75 ( \C70/song/m/n/12/4f ^^X \C70/song/m/n/12/53 ^^V
- []
-
 
 
 
@@ -2063,6 +1946,17 @@ Package fancyhdr Warning: \headheight is too small (11.38092pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
 
 [45 <./figures/3_19.pdf> <./figures/3_20.pdf>]
+<figures/3_21.pdf, id=1561, 3204.45178pt x 1808.91814pt>
+File: figures/3_21.pdf Graphic file (type pdf)
+<use figures/3_21.pdf>
+Package pdftex.def Info: figures/3_21.pdf  used on input line 427.
+(pdftex.def)             Requested size: 455.24411pt x 256.97305pt.
+<figures/3_22.pdf, id=1562, 3190.72055pt x 3359.10966pt>
+File: figures/3_22.pdf Graphic file (type pdf)
+<use figures/3_22.pdf>
+Package pdftex.def Info: figures/3_22.pdf  used on input line 434.
+(pdftex.def)             Requested size: 455.24411pt x 479.24193pt.
+
 
 
 Package fancyhdr Warning: \headheight is too small (11.38092pt): 
@@ -2081,10 +1975,10 @@ Package fancyhdr Warning: \headheight is too small (11.38092pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
 
 [47 <./figures/3_22.pdf>]
-<figures/3_23.pdf, id=1385, 2556.9127pt x 1618.12526pt>
+<figures/3_23.pdf, id=1582, 2556.9127pt x 1618.12526pt>
 File: figures/3_23.pdf Graphic file (type pdf)
 <use figures/3_23.pdf>
-Package pdftex.def Info: figures/3_23.pdf  used on input line 457.
+Package pdftex.def Info: figures/3_23.pdf  used on input line 456.
 (pdftex.def)             Requested size: 318.66948pt x 201.64789pt.
 
 
@@ -2096,30 +1990,19 @@ Package fancyhdr Warning: \headheight is too small (11.38092pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
 
 [48 <./figures/3_23.pdf>]
-<figures/3_24.pdf, id=1397, 3400.3036pt x 599.84097pt>
+<figures/3_24.pdf, id=1595, 3400.3036pt x 599.84097pt>
 File: figures/3_24.pdf Graphic file (type pdf)
 <use figures/3_24.pdf>
-Package pdftex.def Info: figures/3_24.pdf  used on input line 468.
+Package pdftex.def Info: figures/3_24.pdf  used on input line 467.
 (pdftex.def)             Requested size: 455.24411pt x 80.30687pt.
-<figures/3_25.pdf, id=1398, 3410.42123pt x 753.77612pt>
+<figures/3_25.pdf, id=1596, 3410.42123pt x 753.77612pt>
 File: figures/3_25.pdf Graphic file (type pdf)
 <use figures/3_25.pdf>
-Package pdftex.def Info: figures/3_25.pdf  used on input line 475.
+Package pdftex.def Info: figures/3_25.pdf  used on input line 474.
 (pdftex.def)             Requested size: 455.24411pt x 100.61671pt.
 
-Underfull \hbox (badness 7981) in paragraph at lines 482--483
-[]\C70/song/m/n/12/57 ( \C70/song/m/n/12/51 w \C70/song/m/n/12/4f S \C70/song/m/n/12/5b û \C70/song/m/n/12/73 ∞ \C70/song/m/n/12/8f « \C70/song/m/n/12/7a  \C70/song/m/n/12/4e -|\C70/song/m/n/12/ff ^^L| \OT1/txr/m/n/12 BlockSwizzle Pass\C70/song/m/n/12/99 ñ \C70/song/m/n/12/51 H \C70/song/m/n/12/8b ∆ \C70/song/m/n/12/52 +\OT1/txr/m/n/12 IR\C70/song/m/n/12/4e - \C70/song/m/n/12/76 Ñ \C70/song/m/n/12/7e ø \C70/song/m/n/12/7a  \C70/song/m/n/12/57 W \C70/song/m/n/12/7d " \C70/song/m/n/12/5f ^^U \C70/song/m/n/12/64 Õ \C70/song/m/n/12/4f \
- []
-
-
-Underfull \hbox (badness 5460) in paragraph at lines 482--483
-|\C70/song/m/n/12/ff ^^H|\OT1/txr/m/n/12 gpu.block[]id|\C70/song/m/n/12/ff 	||^^L| \C70/song/m/n/12/96 è \C70/song/m/n/12/54 ^^N \C70/song/m/n/12/67 Ñ \C70/song/m/n/12/5e ˙ \C70/song/m/n/12/5b ˘ \C70/song/m/n/12/5e î \C70/song/m/n/12/76 Ñ\OT1/txr/m/n/12 AffineMap\C70/song/m/n/12/4e Â \C70/song/m/n/12/63 œ \C70/song/m/n/12/8f  \C70/song/m/n/12/65 ∞ \C70/song/m/n/12/76 Ñ \C70/song/m/n/12/7e ø \C70/song/m/n/12/7a  \C70/song/m/n/12/57 W \C70/song/m/n/12/66   \C70/song/m/n/12/5c ^^D \C70/song/m/n/12/51 s \C70/song/m/n/12/7c ˚|\C70/song/m/n/12/ff ^^L| \C70/song/m/n/12/5e v \C70/song/m/n/12/90 ^^Z
- []
-
-
-Underfull \hbox (badness 1917) in paragraph at lines 484--485
-[]\C70/song/m/n/12/57 ( \C70/song/m/n/12/5b û \C70/song/m/n/12/96 E \C70/song/m/n/12/66   \C70/song/m/n/12/5c ^^D \C70/song/m/n/12/8f « \C70/song/m/n/12/7a  \C70/song/m/n/12/4e -|\C70/song/m/n/12/ff ^^L| \C70/song/m/n/12/8f ÿ \C70/song/m/n/12/97 ^^@ \C70/song/m/n/12/89 Å \C70/song/m/n/12/80 ^^C \C70/song/m/n/12/86 Q \C70/song/m/n/12/77 È \C70/song/m/n/12/96 5\OT1/txr/m/n/12 C\C70/song/m/n/12/57 ( \C70/song/m/n/12/52 ^^W \C70/song/m/n/12/65 π \C70/song/m/n/12/54 ^^Q \C70/song/m/n/12/4e 
- \C70/song/m/n/12/76 Ñ \C70/song/m/n/12/7e ø \C70/song/m/n/12/7a  \C70/song/m/n/12/57 W \C70/song/m/n/12/65 p \C70/song/m/n/12/91 œ \C70/song/m/n/12/66 / \C70/song/m/n/12/54 & \C70/song/m/n/12/80 ˝ \C70/song/m/n/12/59 ^^_
+Underfull \hbox (badness 2012) in paragraph at lines 481--482
+[]\C70/song/m/n/12/57 ( \C70/song/m/n/12/51 w \C70/song/m/n/12/4f S \C70/song/m/n/12/5b û \C70/song/m/n/12/73 ∞ \C70/song/m/n/12/8f « \C70/song/m/n/12/7a  \C70/song/m/n/12/4e -|\C70/song/m/n/12/ff ^^L| \OT1/txr/m/n/12 BlockSwizzle Pass \C70/song/m/n/12/99 ñ \C70/song/m/n/12/51 H \C70/song/m/n/12/8b ∆ \C70/song/m/n/12/52 + \OT1/txr/m/n/12 IR \C70/song/m/n/12/4e - \C70/song/m/n/12/76 Ñ \C70/song/m/n/12/7e ø \C70/song/m/n/12/7a  \C70/song/m/n/12/57 W \C70/song/m/n/12/7d " \C70/song/m/n/12/5f ^^U \C70/song/m/n/12/64 Õ \C70/song/m/n/12/4f \
  []
 
 
@@ -2132,15 +2015,15 @@ Package fancyhdr Warning: \headheight is too small (11.38092pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
 
 [49 <./figures/3_24.pdf> <./figures/3_25.pdf>]
-<figures/3_26.pdf, id=1414, 3397.41267pt x 1256.05258pt>
+<figures/3_26.pdf, id=1612, 3397.41267pt x 1256.05258pt>
 File: figures/3_26.pdf Graphic file (type pdf)
 <use figures/3_26.pdf>
-Package pdftex.def Info: figures/3_26.pdf  used on input line 498.
+Package pdftex.def Info: figures/3_26.pdf  used on input line 497.
 (pdftex.def)             Requested size: 432.48051pt x 159.88106pt.
-<figures/3_27.pdf, id=1415, 3370.67288pt x 1285.6833pt>
+<figures/3_27.pdf, id=1613, 3370.67288pt x 1285.6833pt>
 File: figures/3_27.pdf Graphic file (type pdf)
 <use figures/3_27.pdf>
-Package pdftex.def Info: figures/3_27.pdf  used on input line 505.
+Package pdftex.def Info: figures/3_27.pdf  used on input line 504.
 (pdftex.def)             Requested size: 432.48051pt x 164.94748pt.
 
 
@@ -2151,20 +2034,20 @@ Package fancyhdr Warning: \headheight is too small (11.38092pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
 
-[50 <./figures/3_26.pdf> <./figures/3_27.pdf>]
-Underfull \hbox (badness 8019) in paragraph at lines 514--515
-[]\C70/song/m/n/12/94 à \C70/song/m/n/12/5b ˘ \C70/song/m/n/12/8f Ÿ \C70/song/m/n/12/4e ^^@ \C70/song/m/n/12/95 Ó \C70/song/m/n/12/98 ò|\C70/song/m/n/12/ff ^^L| \C70/song/m/n/12/67 , \C70/song/m/n/12/65 á \C70/song/m/n/12/57 ( \C70/song/m/n/12/7f ^^S \C70/song/m/n/12/51 ≤ \C70/song/m/n/12/53 :\OT1/txr/m/n/12 LowerInfo\C70/song/m/n/12/7e ” \C70/song/m/n/12/67 Ñ \C70/song/m/n/12/4f S \C70/song/m/n/12/4e - \C70/song/m/n/12/5f ^^U \C70/song/m/n/12/51 e \C70/song/m/n/12/79 ª \C70/song/m/n/12/65 c \C70/song/m/n/12/53 ^^V \C70/song/m/n/12/7d " \C70/song/m/n/12/5f ^^U \C70/song/m/n/12/53 ÿ \C70/song/m/n/12/91 œ
+[50 <./figures/3_26.pdf>]
+Underfull \hbox (badness 2435) in paragraph at lines 513--514
+[]\C70/song/m/n/12/94 à \C70/song/m/n/12/5b ˘ \C70/song/m/n/12/8f Ÿ \C70/song/m/n/12/4e ^^@ \C70/song/m/n/12/95 Ó \C70/song/m/n/12/98 ò|\C70/song/m/n/12/ff ^^L| \C70/song/m/n/12/67 , \C70/song/m/n/12/65 á \C70/song/m/n/12/57 ( \C70/song/m/n/12/7f ^^S \C70/song/m/n/12/51 ≤ \C70/song/m/n/12/53 : \OT1/txr/m/n/12 Low-er-Info \C70/song/m/n/12/7e ” \C70/song/m/n/12/67 Ñ \C70/song/m/n/12/4f S \C70/song/m/n/12/4e - \C70/song/m/n/12/5f ^^U \C70/song/m/n/12/51 e \C70/song/m/n/12/79 ª \C70/song/m/n/12/65 c \C70/song/m/n/12/53 ^^V \C70/song/m/n/12/7d " \C70/song/m/n/12/5f ^^U \C70/song/m/n/12/53 ÿ \C70/song/m/n/12/91 œ
  []
 
-<figures/3_28.pdf, id=1432, 3183.49359pt x 1371.68466pt>
+<figures/3_28.pdf, id=1628, 3183.49359pt x 1371.68466pt>
 File: figures/3_28.pdf Graphic file (type pdf)
 <use figures/3_28.pdf>
-Package pdftex.def Info: figures/3_28.pdf  used on input line 518.
+Package pdftex.def Info: figures/3_28.pdf  used on input line 517.
 (pdftex.def)             Requested size: 455.24411pt x 196.13686pt.
-<figures/3_29.pdf, id=1433, 3149.52661pt x 1381.80241pt>
+<figures/3_29.pdf, id=1629, 3149.52661pt x 1381.80241pt>
 File: figures/3_29.pdf Graphic file (type pdf)
 <use figures/3_29.pdf>
-Package pdftex.def Info: figures/3_29.pdf  used on input line 525.
+Package pdftex.def Info: figures/3_29.pdf  used on input line 524.
 (pdftex.def)             Requested size: 455.24411pt x 199.71313pt.
 
 
@@ -2175,17 +2058,7 @@ Package fancyhdr Warning: \headheight is too small (11.38092pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
 
-[51 <./figures/3_28.pdf>]
-Underfull \hbox (badness 6032) in paragraph at lines 532--533
-[]\C70/song/m/n/12/56 ˛[][]\OT1/txr/m/n/12 3.28[][]\C70/song/m/n/12/54 å \C70/song/m/n/12/56 ˛[][]\OT1/txr/m/n/12 3.29[][]\C70/song/m/n/12/52 ^^F + \C70/song/m/n/12/5c U \C70/song/m/n/12/79 : \C70/song/m/n/12/4e Ü\OT1/txr/m/n/12 MatmulOp\C70/song/m/n/12/64 Õ \C70/song/m/n/12/4f \ \C70/song/m/n/12/4e -\OT1/txr/m/n/12 SM(V)\C70/song/m/n/12/7f ^^S \C70/song/m/n/12/51 ≤ \C70/song/m/n/12/53 : \C70/song/m/n/12/57 ( \C70/song/m/n/12/62 g \C70/song/m/n/12/88 L\OT1/txr/m/n/12 AccessScatter
- []
-
-
-Underfull \hbox (badness 4967) in paragraph at lines 532--533
-\OT1/txr/m/n/12 Pass\C70/song/m/n/12/52 M \C70/song/m/n/12/54 ^^N \C70/song/m/n/12/76 Ñ\OT1/txr/m/n/12 LowerInfo\C70/song/m/n/12/91 M \C70/song/m/n/12/7f n|\C70/song/m/n/12/ff ^^L| \C70/song/m/n/12/52 ^^F + \C70/song/m/n/12/4e ^^N \C70/song/m/n/12/56 ˛[][]\OT1/txr/m/n/12 3.26[][]\C70/song/m/n/12/54 å \C70/song/m/n/12/56 ˛[][]\OT1/txr/m/n/12 3.27[][]\C70/song/m/n/12/4e - \C70/song/m/n/12/76 Ñ \C70/song/m/n/12/8b ° \C70/song/m/n/12/7b ó \C70/song/m/n/12/79 : \C70/song/m/n/12/61 ^^O \C70/song/m/n/12/76 ¯ \C70/song/m/n/12/5b ˘ \C70/song/m/n/12/5e î|\C70/song/m/n/12/30 ^^B| \C70/song/m/n/12/51 v \C70/song/m/n/12/4e -|\C70/song/m/n/12/ff ^^L|
- []
-
-
+[51 <./figures/3_27.pdf>]
 
 
 Package fancyhdr Warning: \headheight is too small (11.38092pt): 
@@ -2194,7 +2067,7 @@ Package fancyhdr Warning: \headheight is too small (11.38092pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
 
-[52 <./figures/3_29.pdf>]
+[52 <./figures/3_28.pdf> <./figures/3_29.pdf>]
 
 
 Package fancyhdr Warning: \headheight is too small (11.38092pt): 
@@ -2204,16 +2077,11 @@ Package fancyhdr Warning: \headheight is too small (11.38092pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
 
 [53]
-<figures/3_30.pdf, id=1458, 430.7292pt x 236.3229pt>
+<figures/3_30.pdf, id=1654, 2634.24141pt x 1516.94733pt>
 File: figures/3_30.pdf Graphic file (type pdf)
 <use figures/3_30.pdf>
-Package pdftex.def Info: figures/3_30.pdf  used on input line 562.
-(pdftex.def)             Requested size: 364.19667pt x 199.82245pt.
-<figures/3_31.pdf, id=1459, 542.025pt x 528.2937pt>
-File: figures/3_31.pdf Graphic file (type pdf)
-<use figures/3_31.pdf>
-Package pdftex.def Info: figures/3_31.pdf  used on input line 573.
-(pdftex.def)             Requested size: 409.71692pt x 399.34702pt.
+Package pdftex.def Info: figures/3_30.pdf  used on input line 561.
+(pdftex.def)             Requested size: 364.19667pt x 209.7093pt.
 
 
 
@@ -2224,19 +2092,11 @@ Package fancyhdr Warning: \headheight is too small (11.38092pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
 
 [54 <./figures/3_30.pdf>]
-
-
-Package fancyhdr Warning: \headheight is too small (11.38092pt): 
-(fancyhdr)                Make it at least 11.55002pt, for example:
-(fancyhdr)                \setlength{\headheight}{11.55002pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
-
-[55 <./figures/3_31.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 610--611
-[]\C70/song/m/n/12/88 h[][]\OT1/txr/m/n/12 3.4[][]\C70/song/m/n/12/7e Ÿ \C70/song/m/n/12/51 ˙ \C70/song/m/n/12/4e Ü\OT1/txr/m/n/12 DeepGen\C70/song/m/n/12/7c ˚ \C70/song/m/n/12/7e ﬂ \C70/song/m/n/12/4e - \C70/song/m/n/12/5b ö \C70/song/m/n/12/4e I \C70/song/m/n/12/76 Ñ \C70/song/m/n/12/4e ; \C70/song/m/n/12/89 Å \C70/song/m/n/12/8c ^^C \C70/song/m/n/12/4f ^^X \C70/song/m/n/12/53 ¬ \C70/song/m/n/12/65 p|\C70/song/m/n/12/30 ^^B| \C70/song/m/n/12/51 v \C70/song/m/n/12/4e -|\C70/song/m/n/12/ff ^^L| \OT1/txr/m/n/12 block[]size|\C70/song/m/n/12/30 ^^A|
- []
-
+<figures/3_31.pdf, id=1663, 3103.27373pt x 2958.01106pt>
+File: figures/3_31.pdf Graphic file (type pdf)
+<use figures/3_31.pdf>
+Package pdftex.def Info: figures/3_31.pdf  used on input line 572.
+(pdftex.def)             Requested size: 409.71692pt x 390.51283pt.
 
 
 
@@ -2246,16 +2106,35 @@ Package fancyhdr Warning: \headheight is too small (11.38092pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
 
-[56]
-<figures/3_32.pdf, id=1482, 3304.1845pt x 1865.28865pt>
+[55]
+
+
+Package fancyhdr Warning: \headheight is too small (11.38092pt): 
+(fancyhdr)                Make it at least 11.55002pt, for example:
+(fancyhdr)                \setlength{\headheight}{11.55002pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
+
+[56 <./figures/3_31.pdf>]
+<figures/3_32.pdf, id=1679, 3304.1845pt x 1865.28865pt>
 File: figures/3_32.pdf Graphic file (type pdf)
 <use figures/3_32.pdf>
-Package pdftex.def Info: figures/3_32.pdf  used on input line 616.
+Package pdftex.def Info: figures/3_32.pdf  used on input line 615.
 (pdftex.def)             Requested size: 409.71692pt x 231.28201pt.
-<figures/3_33.pdf, id=1483, 3300.57089pt x 1756.88365pt>
+
+
+
+Package fancyhdr Warning: \headheight is too small (11.38092pt): 
+(fancyhdr)                Make it at least 11.55002pt, for example:
+(fancyhdr)                \setlength{\headheight}{11.55002pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
+
+[57]
+<figures/3_33.pdf, id=1684, 3300.57089pt x 1756.88365pt>
 File: figures/3_33.pdf Graphic file (type pdf)
 <use figures/3_33.pdf>
-Package pdftex.def Info: figures/3_33.pdf  used on input line 623.
+Package pdftex.def Info: figures/3_33.pdf  used on input line 622.
 (pdftex.def)             Requested size: 409.71692pt x 218.08186pt.
 
 
@@ -2266,20 +2145,11 @@ Package fancyhdr Warning: \headheight is too small (11.38092pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
 
-[57 <./figures/3_32.pdf>]
-
-
-Package fancyhdr Warning: \headheight is too small (11.38092pt): 
-(fancyhdr)                Make it at least 11.55002pt, for example:
-(fancyhdr)                \setlength{\headheight}{11.55002pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
-
-[58 <./figures/3_33.pdf>]
-<figures/3_34.pdf, id=1499, 3692.27428pt x 531.18451pt>
+[58 <./figures/3_32.pdf> <./figures/3_33.pdf>]
+<figures/3_34.pdf, id=1695, 3692.27428pt x 531.18451pt>
 File: figures/3_34.pdf Graphic file (type pdf)
 <use figures/3_34.pdf>
-Package pdftex.def Info: figures/3_34.pdf  used on input line 641.
+Package pdftex.def Info: figures/3_34.pdf  used on input line 640.
 (pdftex.def)             Requested size: 432.48051pt x 62.2156pt.
 
 
@@ -2290,7 +2160,7 @@ Package fancyhdr Warning: \headheight is too small (11.38092pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
 
-[59 <./figures/3_34.pdf>])
+[59 <./figures/3_34.pdf>]
 
 
 Package fancyhdr Warning: \headheight is too small (11.38092pt): 
@@ -2299,7 +2169,7 @@ Package fancyhdr Warning: \headheight is too small (11.38092pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
 
-[60]
+[60])
 
 
 Package fancyhdr Warning: \headheight is too small (11.38092pt): 
@@ -2313,12 +2183,6 @@ Package fancyhdr Warning: \headheight is too small (11.38092pt):
 
  (./body/chapter4.tex
 Á¨¨4Á´† 4.
-
-Underfull \hbox (badness 2435) in paragraph at lines 9--10
-[]\C70/song/m/n/12/67 , \C70/song/m/n/12/7a ‡ \C70/song/m/n/12/82 Ç \C70/song/m/n/12/57 (\OT1/txr/m/n/12 NVIDIA V100/A100 GPU\C70/song/m/n/12/4e ^^N \C70/song/m/n/12/6d w \C70/song/m/n/12/51 I\OT1/txr/m/n/12 Z100/K100 DCU\C70/song/m/n/12/5f ^^B \C70/song/m/n/12/67 Ñ \C70/song/m/n/12/5e s \C70/song/m/n/12/53  \C70/song/m/n/12/4e 
-|\C70/song/m/n/12/ff ^^L| \C70/song/m/n/12/5b ˘ \C70/song/m/n/12/57 ˙
- []
-
 
 Underfull \hbox (badness 7649) in paragraph at lines 24--24
 []|\OT1/txr/m/n/10.5 ROCm 5.4|\C70/rm/m/n/10.5/30 ^^A| \OT1/txr/m/n/10.5 DTK
@@ -2359,7 +2223,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 24--24
 []|\OT1/txr/m/n/10.5 PyTorch2.1.0|\C70/rm/m/n/10.5/30 ^^A|
  []
 
-)
+
 
 
 Package fancyhdr Warning: \headheight is too small (11.38092pt): 
@@ -2376,11 +2240,17 @@ Package fancyhdr Warning: \headheight is too small (11.38092pt):
 
 
 ]
-\openout2 = `body/chapter5.aux'.
+<figures/a100_matmul.pdf, id=1723, 1004.89429pt x 574.98187pt>
+File: figures/a100_matmul.pdf Graphic file (type pdf)
+<use figures/a100_matmul.pdf>
+Package pdftex.def Info: figures/a100_matmul.pdf  used on input line 41.
+(pdftex.def)             Requested size: 455.24411pt x 260.48538pt.
+<figures/z100_matmul.pdf, id=1725, 1004.89429pt x 574.98187pt>
+File: figures/z100_matmul.pdf Graphic file (type pdf)
+<use figures/z100_matmul.pdf>
+Package pdftex.def Info: figures/z100_matmul.pdf  used on input line 51.
+(pdftex.def)             Requested size: 455.24411pt x 260.48538pt.
 
- (./body/chapter5.tex
-Á¨¨5Á´† 5.
-)
 
 
 Package fancyhdr Warning: \headheight is too small (11.38092pt): 
@@ -2389,16 +2259,299 @@ Package fancyhdr Warning: \headheight is too small (11.38092pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
 
-[63
+[63 <./figures/a100_matmul.pdf>]
+<figures/a100_ttd.pdf, id=1773, 534.64557pt x 282.80843pt>
+File: figures/a100_ttd.pdf Graphic file (type pdf)
+<use figures/a100_ttd.pdf>
+Package pdftex.def Info: figures/a100_ttd.pdf  used on input line 61.
+(pdftex.def)             Requested size: 318.66948pt x 168.5687pt.
+<figures/z100_ttd.pdf, id=1774, 534.65494pt x 282.80843pt>
+File: figures/z100_ttd.pdf Graphic file (type pdf)
+<use figures/z100_ttd.pdf>
+Package pdftex.def Info: figures/z100_ttd.pdf  used on input line 68.
+(pdftex.def)             Requested size: 318.66948pt x 168.5687pt.
+
+
+
+Package fancyhdr Warning: \headheight is too small (11.38092pt): 
+(fancyhdr)                Make it at least 11.55002pt, for example:
+(fancyhdr)                \setlength{\headheight}{11.55002pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
+
+[64 <./figures/z100_matmul.pdf> <./figures/a100_ttd.pdf>]
+
+
+Package fancyhdr Warning: \headheight is too small (11.38092pt): 
+(fancyhdr)                Make it at least 11.55002pt, for example:
+(fancyhdr)                \setlength{\headheight}{11.55002pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
+
+[65 <./figures/z100_ttd.pdf>]
+<figures/a100_attn_fix_bs.pdf, id=1898, 715.40088pt x 791.79187pt>
+File: figures/a100_attn_fix_bs.pdf Graphic file (type pdf)
+<use figures/a100_attn_fix_bs.pdf>
+Package pdftex.def Info: figures/a100_attn_fix_bs.pdf  used on input line 88.
+(pdftex.def)             Requested size: 364.19667pt x 403.09569pt.
+<figures/z100_attn_fix_bs.pdf, id=1899, 715.32497pt x 647.25186pt>
+File: figures/z100_attn_fix_bs.pdf Graphic file (type pdf)
+<use figures/z100_attn_fix_bs.pdf>
+Package pdftex.def Info: figures/z100_attn_fix_bs.pdf  used on input line 95.
+(pdftex.def)             Requested size: 364.19667pt x 329.541pt.
+
+
+
+Package fancyhdr Warning: \headheight is too small (11.38092pt): 
+(fancyhdr)                Make it at least 11.55002pt, for example:
+(fancyhdr)                \setlength{\headheight}{11.55002pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
+
+[66 <./figures/a100_attn_fix_bs.pdf>]
+
+
+Package fancyhdr Warning: \headheight is too small (11.38092pt): 
+(fancyhdr)                Make it at least 11.55002pt, for example:
+(fancyhdr)                \setlength{\headheight}{11.55002pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
+
+[67 <./figures/z100_attn_fix_bs.pdf>]
+<figures/a100_attn_fix_sl.pdf, id=2001, 715.40088pt x 791.79187pt>
+File: figures/a100_attn_fix_sl.pdf Graphic file (type pdf)
+<use figures/a100_attn_fix_sl.pdf>
+Package pdftex.def Info: figures/a100_attn_fix_sl.pdf  used on input line 105.
+(pdftex.def)             Requested size: 364.19667pt x 403.09569pt.
+<figures/z100_attn_fix_sl.pdf, id=2002, 715.32497pt x 647.25186pt>
+File: figures/z100_attn_fix_sl.pdf Graphic file (type pdf)
+<use figures/z100_attn_fix_sl.pdf>
+Package pdftex.def Info: figures/z100_attn_fix_sl.pdf  used on input line 112.
+(pdftex.def)             Requested size: 364.19667pt x 329.541pt.
+
+
+
+Package fancyhdr Warning: \headheight is too small (11.38092pt): 
+(fancyhdr)                Make it at least 11.55002pt, for example:
+(fancyhdr)                \setlength{\headheight}{11.55002pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
+
+[68 <./figures/a100_attn_fix_sl.pdf>]
+
+
+Package fancyhdr Warning: \headheight is too small (11.38092pt): 
+(fancyhdr)                Make it at least 11.55002pt, for example:
+(fancyhdr)                \setlength{\headheight}{11.55002pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
+
+[69 <./figures/z100_attn_fix_sl.pdf>]
+
+
+Package fancyhdr Warning: \headheight is too small (11.38092pt): 
+(fancyhdr)                Make it at least 11.55002pt, for example:
+(fancyhdr)                \setlength{\headheight}{11.55002pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
+
+[70]
+
+LaTeX Warning: Command \texttimes invalid in math mode on input line 163.
+
+
+LaTeX Warning: Command \texttimes invalid in math mode on input line 163.
+
+Missing character: There is no ÷ in font txr!
+
+LaTeX Warning: Command \texttimes invalid in math mode on input line 163.
+
+
+LaTeX Warning: Command \texttimes invalid in math mode on input line 163.
+
+Missing character: There is no ÷ in font txr!
+
+LaTeX Warning: Command \texttimes invalid in math mode on input line 163.
+
+
+LaTeX Warning: Command \texttimes invalid in math mode on input line 163.
+
+Missing character: There is no ÷ in font txr!
+
+LaTeX Warning: Command \texttimes invalid in math mode on input line 163.
+
+
+LaTeX Warning: Command \texttimes invalid in math mode on input line 163.
+
+Missing character: There is no ÷ in font txr!
+
+LaTeX Warning: Command \texttimes invalid in math mode on input line 163.
+
+
+LaTeX Warning: Command \texttimes invalid in math mode on input line 163.
+
+Missing character: There is no ÷ in font txr!
+
+LaTeX Warning: Command \texttimes invalid in math mode on input line 163.
+
+
+LaTeX Warning: Command \texttimes invalid in math mode on input line 163.
+
+Missing character: There is no ÷ in font txr!
+
+LaTeX Warning: Command \texttimes invalid in math mode on input line 165.
+
+
+LaTeX Warning: Command \texttimes invalid in math mode on input line 165.
+
+Missing character: There is no ÷ in font txr!
+
+LaTeX Warning: Command \texttimes invalid in math mode on input line 165.
+
+
+LaTeX Warning: Command \texttimes invalid in math mode on input line 165.
+
+Missing character: There is no ÷ in font txr!
+
+LaTeX Warning: Command \texttimes invalid in math mode on input line 165.
+
+
+LaTeX Warning: Command \texttimes invalid in math mode on input line 165.
+
+Missing character: There is no ÷ in font txr!
+
+LaTeX Warning: Command \texttimes invalid in math mode on input line 165.
+
+
+LaTeX Warning: Command \texttimes invalid in math mode on input line 165.
+
+Missing character: There is no ÷ in font txr!
+
+LaTeX Warning: Command \texttimes invalid in math mode on input line 165.
+
+
+LaTeX Warning: Command \texttimes invalid in math mode on input line 165.
+
+Missing character: There is no ÷ in font txr!
+
+LaTeX Warning: Command \texttimes invalid in math mode on input line 165.
+
+
+LaTeX Warning: Command \texttimes invalid in math mode on input line 165.
+
+Missing character: There is no ÷ in font txr!
+
+
+
+Package fancyhdr Warning: \headheight is too small (11.38092pt): 
+(fancyhdr)                Make it at least 11.55002pt, for example:
+(fancyhdr)                \setlength{\headheight}{11.55002pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
+
+[71]
+Underfull \hbox (badness 10000) in paragraph at lines 194--194
+[]|\OT1/txr/m/n/10.5 GPT2-
+ []
+
+<figures/e2e_1.pdf, id=2119, 715.65114pt x 430.44186pt>
+File: figures/e2e_1.pdf Graphic file (type pdf)
+<use figures/e2e_1.pdf>
+Package pdftex.def Info: figures/e2e_1.pdf  used on input line 200.
+(pdftex.def)             Requested size: 455.24411pt x 273.82013pt.
+
+
+
+Package fancyhdr Warning: \headheight is too small (11.38092pt): 
+(fancyhdr)                Make it at least 11.55002pt, for example:
+(fancyhdr)                \setlength{\headheight}{11.55002pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
+
+[72]
+<figures/e2e_2.pdf, id=2129, 607.20038pt x 322.53622pt>
+File: figures/e2e_2.pdf Graphic file (type pdf)
+<use figures/e2e_2.pdf>
+Package pdftex.def Info: figures/e2e_2.pdf  used on input line 213.
+(pdftex.def)             Requested size: 318.66948pt x 169.275pt.
+
+
+
+Package fancyhdr Warning: \headheight is too small (11.38092pt): 
+(fancyhdr)                Make it at least 11.55002pt, for example:
+(fancyhdr)                \setlength{\headheight}{11.55002pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
+
+[73 <./figures/e2e_1.pdf>]
+
+
+Package fancyhdr Warning: \headheight is too small (11.38092pt): 
+(fancyhdr)                Make it at least 11.55002pt, for example:
+(fancyhdr)                \setlength{\headheight}{11.55002pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
+
+[74 <./figures/e2e_2.pdf>])
+
+
+Package fancyhdr Warning: \headheight is too small (11.38092pt): 
+(fancyhdr)                Make it at least 11.55002pt, for example:
+(fancyhdr)                \setlength{\headheight}{11.55002pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
+
+[75]
+
+
+Package fancyhdr Warning: \headheight is too small (11.38092pt): 
+(fancyhdr)                Make it at least 11.55002pt, for example:
+(fancyhdr)                \setlength{\headheight}{11.55002pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
+
+[76]
+\openout2 = `body/chapter5.aux'.
+
+ (./body/chapter5.tex
+Á¨¨5Á´† 5.
+
+
+
+Package fancyhdr Warning: \headheight is too small (11.38092pt): 
+(fancyhdr)                Make it at least 11.55002pt, for example:
+(fancyhdr)                \setlength{\headheight}{11.55002pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
+
+[77
 
 
 
 
 
 
-] (./main.bbl)
+]
 
-[64
+
+Package fancyhdr Warning: \headheight is too small (11.38092pt): 
+(fancyhdr)                Make it at least 11.55002pt, for example:
+(fancyhdr)                \setlength{\headheight}{11.55002pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
+
+[78])
+
+
+Package fancyhdr Warning: \headheight is too small (11.38092pt): 
+(fancyhdr)                Make it at least 11.55002pt, for example:
+(fancyhdr)                \setlength{\headheight}{11.55002pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.1691pt}.
+
+[79] (./main.bbl
+
+[80
 
 
 
@@ -2407,6 +2560,16 @@ Package fancyhdr Warning: \headheight is too small (11.38092pt):
 
 
 ]
+
+[81]
+
+[82]
+
+[83]
+
+[84])
+
+[85]
 \openout2 = `appendix/acknowledgements.aux'.
 
  (./appendix/acknowledgements.tex
@@ -2417,7 +2580,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 )
 
-[65
+[86
 
 
 
@@ -2432,7 +2595,7 @@ LaTeX Font Warning: Font shape `C70/song/b/n' undefined
 
 )
 
-[66
+[87
 
 
 
@@ -2459,24 +2622,27 @@ LaTeX Font Warning: Size substitutions with differences
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 
+LaTeX Warning: There were undefined references.
+
+
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 2BBB0517AAAB4FF5F8A1D7598C9B3D7C;8732.
+(rerunfilecheck)             Checksum: CBDED5815C517AE25955E70A31CE4F4C;8912.
  ) 
 Here is how much of TeX's memory you used:
- 24885 strings out of 475118
- 418583 string characters out of 5763950
- 803728 words of memory out of 5000000
- 46452 multiletter control sequences out of 15000+600000
- 737864 words of font info for 604 fonts, out of 8000000 for 9000
+ 25416 strings out of 475118
+ 430440 string characters out of 5763950
+ 820310 words of memory out of 5000000
+ 46854 multiletter control sequences out of 15000+600000
+ 742690 words of font info for 619 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 85i,18n,86p,2015b,1934s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><d:/Softwares/texlive/2025/texmf-dist/fonts/type1/public/txfonts/rtcxr.pfb><d:/Softwares/texlive/2025/texmf-dist/fonts/type1/public/txfonts/rtxi.pfb><d:/Softwares/texlive/2025/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb><d:/Softwares/texlive/2025/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb><d:/Softwares/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txex.pfb><d:/Softwares/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txsy.pfb><d:/Softwares/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txsya.pfb><d:/Softwares/texlive/2025/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb><d:/Softwares/texlive/2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><d:/Softwares/texlive/2025/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><d:/Softwares/texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><d:/Softwares/texlive/2025/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (77 pages, 23504287 bytes).
+ 85i,18n,86p,1844b,2232s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><d:/Softwares/texlive/2025/texmf-dist/fonts/type1/public/txfonts/rtcxr.pfb><d:/Softwares/texlive/2025/texmf-dist/fonts/type1/public/txfonts/rtxi.pfb><d:/Softwares/texlive/2025/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb><d:/Softwares/texlive/2025/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb><d:/Softwares/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txex.pfb><d:/Softwares/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txsy.pfb><d:/Softwares/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txsya.pfb><d:/Softwares/texlive/2025/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb><d:/Softwares/texlive/2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><d:/Softwares/texlive/2025/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><d:/Softwares/texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><d:/Softwares/texlive/2025/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on main.pdf (100 pages, 24911887 bytes).
 PDF statistics:
- 2354 PDF objects out of 2487 (max. 8388607)
- 1663 compressed objects within 17 object streams
- 287 named destinations out of 1000 (max. 500000)
- 1013 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 3153 PDF objects out of 3580 (max. 8388607)
+ 2046 compressed objects within 21 object streams
+ 399 named destinations out of 1000 (max. 500000)
+ 1079 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -50,17 +50,33 @@
 % \cdate{\the\year 年\the\month 月 \the\day 日} % 此日期显示格式为阿拉伯数字 如2012年4月25日
 %中文摘要%
 \cabstract{
+随着 Transformer 架构在自然语言处理、代码生成和大模型推理等任务中的广泛应用，矩阵乘法和多头注意力机制等关键算子的执行效率已成为影响模型部署性能的核心因素。由于异构硬件平台在执行模型、存储层次和软件生态上存在显著差异，传统依赖厂商高性能库或人工编写优化内核的方式面临适配复杂、开发成本高以及性能可移植性不足等问题。与此同时，现有深度学习编译器在块级逻辑表达、底层访存控制和跨平台性能迁移方面仍存在一定局限，难以满足 Transformer 关键算子的高性能自动代码生成需求。为解决 Transformer 模型关键算子自动生成中的上述问题，本文提出了一种基于 MLIR 的高性能算子生成框架 DeepGen，本文所做的主要工作如下：
 
+(1) 提出了一种面向 Transformer 关键算子的块级分层中间表示方法。针对现有编译器在代码降级过程中难以保留算子块级语义、无法显式表达计算与访存结构的问题，设计了基于 MLIR 的 DeepGen Dialect，对矩阵乘法和多头注意力机制中的块级计算逻辑、数据搬运路径以及并行映射关系进行统一建模。该方法通过显式定义 Alloc Buffer、Copy、Matmul 和 Block 等操作，实现了计算逻辑与数据搬运过程的解耦，为后续优化与跨平台性能迁移提供了统一而清晰的表示基础。
+
+(2) 提出了一种基于 Lowering 信息推断的自动降级机制。针对从块级抽象到底层线程级执行逻辑的映射困难问题，本文构建了面向数据依赖关系的索引推断方法，能够根据算子的计算模式自动推导线程块和线程束内部的索引布局，实现了从 Block 级表示到 Thread 级表示的渐进式转换。该方法有效保证了算子语义在不同抽象层级间的正确传递，并为后续访存优化、并行调度和底层代码生成奠定了基础。
+
+(3) 提出了一套面向异构平台的跨平台优化与自动调优方法。针对不同硬件平台在访存结构和执行特性上的差异，设计了 Software Pipeline、Local Split-K、Block Swizzle 和 Access Scatter 等优化 Pass，从计算调度、规约拆分、线程块映射和共享存储访问等多个层面提升生成代码的执行效率。同时，针对调优参数空间庞大、人工调参成本高的问题，构建了基于空间剪枝的自动调优框架，通过生成候选参数空间并剔除无效配置，自动搜索适配目标硬件的较优执行配置，提高了算子生成的自动化程度。
+
+(4) 在 NVIDIA A100/V100 GPU 与海光 Z100/K100 DCU 等异构平台上对 DeepGen 进行了系统实验验证。实验结果表明，在矩阵乘法测试中，DeepGen 相比 cuBLAS 和 rocBLAS 的平均性能分别提升 1.10 倍和 1.18 倍；在注意力机制测试中，相比 Triton 的性能最高提升 3.71 倍；在端到端推理实验中，DeepGen 在 BERT、GPT2 和 Llama2 等模型上均取得了稳定的性能提升，表现出良好的工程可用性与跨平台适应能力。同时，数值精度验证结果表明，DeepGen 生成算子的输出与 PyTorch 基准结果保持高度一致，说明本文提出的方法在提升性能的同时具备良好的数值正确性与工程可靠性。
 }
 %中文关键词%
-\ckeywords{}
+\ckeywords{Transformer；MLIR；算子自动代码生成；异构计算；性能可移植性}
 
 %英文摘要%
 \eabstract{
+With the widespread adoption of the Transformer architecture in natural language processing, code generation, and large-scale model inference, the execution efficiency of key operators such as matrix multiplication and multi-head attention has become a critical factor affecting model deployment performance. Due to the significant differences among heterogeneous hardware platforms in execution models, memory hierarchies, and software ecosystems, traditional approaches relying on vendor-specific high-performance libraries or manually optimized kernels suffer from complicated adaptation, high development cost, and limited performance portability. Meanwhile, existing deep learning compilers still show limitations in block-level logical representation, low-level memory access control, and cross-platform performance migration, making it difficult to satisfy the demand for automatic generation of high-performance Transformer operators. To address these issues in the automatic generation of key operators for Transformer models, this thesis proposes an MLIR-based high-performance operator generation framework, named DeepGen. The main contributions of this thesis are as follows:
 
+(1) A block-level hierarchical intermediate representation method for key Transformer operators is proposed. To address the problem that existing compilers cannot preserve block-level operator semantics during lowering and cannot explicitly represent computation and memory access structures, a DeepGen Dialect based on MLIR is designed to uniformly model the block-level computation logic, data movement paths, and parallel mapping relationships in matrix multiplication and multi-head attention. By explicitly defining operations such as Alloc Buffer, Copy, Matmul, and Block, this method decouples computation logic from data movement, providing a unified and clear representation basis for subsequent optimization and cross-platform performance migration.
+
+(2) An automatic lowering mechanism based on lowering-information inference is proposed. To solve the difficulty of mapping block-level abstractions to low-level thread-level execution logic, this thesis develops an index inference method oriented to data dependency relationships, which can automatically derive the index layout within thread blocks and warps according to the computation pattern of operators, thereby realizing the progressive transformation from block-level representation to thread-level representation. This method effectively guarantees the correct transfer of operator semantics across different abstraction levels and lays the foundation for subsequent memory access optimization, parallel scheduling, and low-level code generation.
+
+(3) A cross-platform optimization and auto-tuning method for heterogeneous platforms is proposed. To address the differences in memory access structures and execution characteristics across hardware platforms, a set of optimization passes, including Software Pipeline, Local Split-K, Block Swizzle, and Access Scatter, is designed to improve the execution efficiency of generated code from multiple aspects such as computation scheduling, reduction decomposition, thread-block mapping, and shared-memory access. Meanwhile, to address the large tuning parameter space and the high cost of manual tuning, an auto-tuning framework based on search-space pruning is constructed. By generating candidate parameter spaces and eliminating invalid configurations, the framework automatically searches for efficient execution configurations adapted to target hardware, thus improving the automation level of operator generation.
+
+(4) DeepGen is systematically evaluated on heterogeneous platforms including NVIDIA A100/V100 GPUs and Hygon Z100/K100 DCUs. Experimental results show that, for matrix multiplication, DeepGen achieves average performance improvements of 1.10× and 1.18× over cuBLAS and rocBLAS, respectively. For the attention operator, DeepGen achieves up to 3.71× higher performance than Triton. In end-to-end inference experiments, DeepGen achieved stable performance improvements across models such as BERT, GPT2, and Llama2, demonstrating good engineering practicality and cross-platform adaptability. In addition, numerical accuracy evaluation demonstrates that the outputs of operators generated by DeepGen remain highly consistent with the PyTorch baseline, indicating that the proposed method maintains good numerical correctness and engineering reliability while improving performance.
 }
 %英文关键词%
-\ekeywords{}
+\ekeywords{Transformer; MLIR; automatic operator code generation; heterogeneous computing; performance portability}
 
 \makecover
 
