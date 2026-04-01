@@ -1,6 +1,6 @@
 \relax 
 \providecommand\hyper@newdestlabel[2]{}
-\@writefile{toc}{\contentsline {chapter}{\numberline {3}Transformer模型关键算子的代码生成}{23}{section*.47}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {3}Transformer 模型关键算子的代码生成}{23}{section*.47}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {3.1}引言}{23}{section*.48}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces DeepGen 总体架构}}{24}{section*.49}\protected@file@percent }
 \newlabel{3_1}{{3.1}{24}{引言}{section*.49}{}}
@@ -32,63 +32,63 @@
 \newlabel{3_9}{{3.9}{34}{IR降级转换}{section*.64}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.10}{\ignorespaces ReduceOp 中 Reg(acc\_s) 和 Reg(m) 对应的 LowerInfo}}{35}{section*.65}\protected@file@percent }
 \newlabel{3_10}{{3.10}{35}{IR降级转换}{section*.65}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.3}关键算子的高性能优化pass集合}{36}{section*.66}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}关键算子的高性能优化 Pass 集合}{36}{section*.66}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {3.3}{\ignorespaces 算子优化 Pass 集合列表}}{36}{section*.67}\protected@file@percent }
-\newlabel{tab:table3}{{3.3}{36}{关键算子的高性能优化pass集合}{section*.67}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}矩阵乘法与注意力机制优化分析}{37}{section*.68}\protected@file@percent }
+\newlabel{tab:table4}{{3.3}{36}{关键算子的高性能优化 Pass 集合}{section*.67}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}矩阵乘法与注意力机制优化分析}{36}{section*.68}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {3.11}{\ignorespaces 矩阵乘法在 GPU 上的两种计算方式}}{37}{section*.69}\protected@file@percent }
 \newlabel{3_11}{{3.11}{37}{矩阵乘法与注意力机制优化分析}{section*.69}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.12}{\ignorespaces 无 HBM 写回的融合 MHA 计算流程图}}{38}{section*.70}\protected@file@percent }
-\newlabel{3_12}{{3.12}{38}{矩阵乘法与注意力机制优化分析}{section*.70}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.12}{\ignorespaces 无 HBM 写回的融合 MHA 计算流程图}}{37}{section*.70}\protected@file@percent }
+\newlabel{3_12}{{3.12}{37}{矩阵乘法与注意力机制优化分析}{section*.70}{}}
 \newlabel{softmax}{{3.1}{38}{矩阵乘法与注意力机制优化分析}{equation.3.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Software Pipeline：软件流水线优化}{39}{section*.71}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {3.13}{\ignorespaces MHA 中 $QK^T$ 在线程块层级执行软件流水线的变换过程示意图}}{39}{section*.72}\protected@file@percent }
 \newlabel{3_13}{{3.13}{39}{Software Pipeline：软件流水线优化}{section*.72}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.14}{\ignorespaces MHA 中 $QK^T$ 在软件流水线变化前的线程块层级IR}}{40}{section*.73}\protected@file@percent }
-\newlabel{3_15}{{3.14}{40}{Software Pipeline：软件流水线优化}{section*.73}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.14}{\ignorespaces MHA 中 $QK^T$ 在软件流水线变化前的线程块层级IR}}{39}{section*.73}\protected@file@percent }
+\newlabel{3_15}{{3.14}{39}{Software Pipeline：软件流水线优化}{section*.73}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.15}{\ignorespaces MHA 中 $QK^T$ 在软件流水线变化后的线程块层级IR}}{40}{section*.74}\protected@file@percent }
 \newlabel{3_16}{{3.15}{40}{Software Pipeline：软件流水线优化}{section*.74}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.16}{\ignorespaces MHA 中 $QK^T$ 在线程层级执行软件流水线的变换过程示意图}}{40}{section*.75}\protected@file@percent }
 \newlabel{3_14}{{3.16}{40}{Software Pipeline：软件流水线优化}{section*.75}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.17}{\ignorespaces MHA 中 $QK^T$ 在软件流水线变化前的线程层级 IR}}{41}{section*.76}\protected@file@percent }
 \newlabel{3_17}{{3.17}{41}{Software Pipeline：软件流水线优化}{section*.76}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.3}Local Split K：外积规约轴并行优化}{41}{section*.78}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {3.18}{\ignorespaces MHA 中 $QK^T$ 在软件流水线变化后的线程层级 IR}}{42}{section*.77}\protected@file@percent }
 \newlabel{3_18}{{3.18}{42}{Software Pipeline：软件流水线优化}{section*.77}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.3}Local Split K：外积规约轴并行优化}{43}{section*.78}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {3.19}{\ignorespaces 长规约轴矩阵乘法的三种计算方式}}{43}{section*.79}\protected@file@percent }
 \newlabel{3_19}{{3.19}{43}{Local Split K：外积规约轴并行优化}{section*.79}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.20}{\ignorespaces MatmulOp 操作执行 LOCAL\_SPLIT\_K Pass 优化过程}}{44}{section*.80}\protected@file@percent }
-\newlabel{3_20}{{3.20}{44}{Local Split K：外积规约轴并行优化}{section*.80}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.21}{\ignorespaces 未作用 LOCAL\_SPLIT\_K Pass 时 MatmulOp 的线程层级 IR}}{44}{section*.81}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.20}{\ignorespaces MatmulOp 操作执行 LocalSplitK Pass 优化过程}}{43}{section*.80}\protected@file@percent }
+\newlabel{3_20}{{3.20}{43}{Local Split K：外积规约轴并行优化}{section*.80}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.21}{\ignorespaces 未作用 LocalSplitK Pass 时 MatmulOp 的线程层级 IR}}{44}{section*.81}\protected@file@percent }
 \newlabel{3_21}{{3.21}{44}{Local Split K：外积规约轴并行优化}{section*.81}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.22}{\ignorespaces 作用 LOCAL\_SPLIT\_K Pass 后 MatmulOp 的线程层级 IR}}{45}{section*.82}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.22}{\ignorespaces 作用 LocalSplitK Pass 后 MatmulOp 的线程层级 IR}}{45}{section*.82}\protected@file@percent }
 \newlabel{3_22}{{3.22}{45}{Local Split K：外积规约轴并行优化}{section*.82}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3.4}Block Swizzle：线程块访存重排优化}{46}{section*.83}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.23}{\ignorespaces 线程块层面矩阵乘法的两种不同计算次序方式}}{47}{section*.84}\protected@file@percent }
-\newlabel{3_23}{{3.23}{47}{Block Swizzle：线程块访存重排优化}{section*.84}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.23}{\ignorespaces 线程块层面矩阵乘法的两种不同计算次序方式}}{46}{section*.84}\protected@file@percent }
+\newlabel{3_23}{{3.23}{46}{Block Swizzle：线程块访存重排优化}{section*.84}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.24}{\ignorespaces BlockSwizzle Pass 作用前的行优先映射}}{47}{section*.85}\protected@file@percent }
 \newlabel{3_24}{{3.24}{47}{Block Swizzle：线程块访存重排优化}{section*.85}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.25}{\ignorespaces BlockSwizzle Pass 作用后的分组优先映射}}{47}{section*.86}\protected@file@percent }
 \newlabel{3_25}{{3.25}{47}{Block Swizzle：线程块访存重排优化}{section*.86}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.5}Access Scatter：离散化访存优化}{48}{section*.87}\protected@file@percent }
-\newlabel{ch3_5}{{3.3.5}{48}{Access Scatter：离散化访存优化}{section*.87}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.5}Access Scatter：离散化访存优化}{47}{section*.87}\protected@file@percent }
+\newlabel{ch3_5}{{3.3.5}{47}{Access Scatter：离散化访存优化}{section*.87}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.26}{\ignorespaces MatmulOp 操作的计算细节（无离散化优化）}}{48}{section*.88}\protected@file@percent }
 \newlabel{3_26}{{3.26}{48}{Access Scatter：离散化访存优化}{section*.88}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.27}{\ignorespaces MatmulOp 操作的计算细节（有离散化优化）}}{49}{section*.89}\protected@file@percent }
-\newlabel{3_27}{{3.27}{49}{Access Scatter：离散化访存优化}{section*.89}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.28}{\ignorespaces MatmulOp操作中SM(V)缓冲区的LowerInfo}}{49}{section*.90}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.27}{\ignorespaces MatmulOp 操作的计算细节（有离散化优化）}}{48}{section*.89}\protected@file@percent }
+\newlabel{3_27}{{3.27}{48}{Access Scatter：离散化访存优化}{section*.89}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.28}{\ignorespaces MatmulOp 操作中 SM(V) 缓冲区的 LowerInfo}}{49}{section*.90}\protected@file@percent }
 \newlabel{3_28}{{3.28}{49}{Access Scatter：离散化访存优化}{section*.90}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.29}{\ignorespaces MatmulOp操作中SM(V)缓冲区的LowerInfo}}{50}{section*.91}\protected@file@percent }
-\newlabel{3_29}{{3.29}{50}{Access Scatter：离散化访存优化}{section*.91}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.29}{\ignorespaces MatmulOp 操作中 SM(V) 缓冲区的 LowerInfo}}{49}{section*.91}\protected@file@percent }
+\newlabel{3_29}{{3.29}{49}{Access Scatter：离散化访存优化}{section*.91}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.4}基于空间剪枝的自动调优框架设计}{50}{section*.92}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.1}调优框架的设计}{51}{section*.93}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.1}调优框架的设计}{50}{section*.93}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {3.30}{\ignorespaces DeepGen 调优模块总体架构}}{51}{section*.94}\protected@file@percent }
 \newlabel{3_30}{{3.30}{51}{调优框架的设计}{section*.94}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.31}{\ignorespaces DeepGen 自动调优流程}}{52}{section*.95}\protected@file@percent }
 \newlabel{3_31}{{3.31}{52}{调优框架的设计}{section*.95}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.4.2}调优空间参数的设置与定义}{53}{section*.96}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {3.4}{\ignorespaces 调优参数列表}}{53}{section*.97}\protected@file@percent }
-\newlabel{tab:table4}{{3.4}{53}{调优空间参数的设置与定义}{section*.97}{}}
+\newlabel{tab:table5}{{3.4}{53}{调优空间参数的设置与定义}{section*.97}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.32}{\ignorespaces 注意力机制调优配置参数}}{54}{section*.98}\protected@file@percent }
 \newlabel{3_32}{{3.32}{54}{调优空间参数的设置与定义}{section*.98}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.33}{\ignorespaces 矩阵乘法调优配置参数}}{55}{section*.99}\protected@file@percent }
@@ -120,6 +120,7 @@
 \setcounter{algocfproc}{1}
 \setcounter{algocf}{1}
 \setcounter{AM@survey}{0}
+\setcounter{nlinenum}{0}
 \setcounter{parentequation}{0}
 \setcounter{LT@tables}{0}
 \setcounter{LT@chunks}{0}

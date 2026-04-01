@@ -22,24 +22,24 @@
 \contentsline {figure}{\numberline {3.9}{\ignorespaces MatmulOp 中 SM(Q)、SM(K) 以及 Reg(acc\_s) 对应的 LowerInfo}}{34}{section*.64}%
 \contentsline {figure}{\numberline {3.10}{\ignorespaces ReduceOp 中 Reg(acc\_s) 和 Reg(m) 对应的 LowerInfo}}{35}{section*.65}%
 \contentsline {figure}{\numberline {3.11}{\ignorespaces 矩阵乘法在 GPU 上的两种计算方式}}{37}{section*.69}%
-\contentsline {figure}{\numberline {3.12}{\ignorespaces 无 HBM 写回的融合 MHA 计算流程图}}{38}{section*.70}%
+\contentsline {figure}{\numberline {3.12}{\ignorespaces 无 HBM 写回的融合 MHA 计算流程图}}{37}{section*.70}%
 \contentsline {figure}{\numberline {3.13}{\ignorespaces MHA 中 $QK^T$ 在线程块层级执行软件流水线的变换过程示意图}}{39}{section*.72}%
-\contentsline {figure}{\numberline {3.14}{\ignorespaces MHA 中 $QK^T$ 在软件流水线变化前的线程块层级IR}}{40}{section*.73}%
+\contentsline {figure}{\numberline {3.14}{\ignorespaces MHA 中 $QK^T$ 在软件流水线变化前的线程块层级IR}}{39}{section*.73}%
 \contentsline {figure}{\numberline {3.15}{\ignorespaces MHA 中 $QK^T$ 在软件流水线变化后的线程块层级IR}}{40}{section*.74}%
 \contentsline {figure}{\numberline {3.16}{\ignorespaces MHA 中 $QK^T$ 在线程层级执行软件流水线的变换过程示意图}}{40}{section*.75}%
 \contentsline {figure}{\numberline {3.17}{\ignorespaces MHA 中 $QK^T$ 在软件流水线变化前的线程层级 IR}}{41}{section*.76}%
 \contentsline {figure}{\numberline {3.18}{\ignorespaces MHA 中 $QK^T$ 在软件流水线变化后的线程层级 IR}}{42}{section*.77}%
 \contentsline {figure}{\numberline {3.19}{\ignorespaces 长规约轴矩阵乘法的三种计算方式}}{43}{section*.79}%
-\contentsline {figure}{\numberline {3.20}{\ignorespaces MatmulOp 操作执行 LOCAL\_SPLIT\_K Pass 优化过程}}{44}{section*.80}%
-\contentsline {figure}{\numberline {3.21}{\ignorespaces 未作用 LOCAL\_SPLIT\_K Pass 时 MatmulOp 的线程层级 IR}}{44}{section*.81}%
-\contentsline {figure}{\numberline {3.22}{\ignorespaces 作用 LOCAL\_SPLIT\_K Pass 后 MatmulOp 的线程层级 IR}}{45}{section*.82}%
-\contentsline {figure}{\numberline {3.23}{\ignorespaces 线程块层面矩阵乘法的两种不同计算次序方式}}{47}{section*.84}%
+\contentsline {figure}{\numberline {3.20}{\ignorespaces MatmulOp 操作执行 LocalSplitK Pass 优化过程}}{43}{section*.80}%
+\contentsline {figure}{\numberline {3.21}{\ignorespaces 未作用 LocalSplitK Pass 时 MatmulOp 的线程层级 IR}}{44}{section*.81}%
+\contentsline {figure}{\numberline {3.22}{\ignorespaces 作用 LocalSplitK Pass 后 MatmulOp 的线程层级 IR}}{45}{section*.82}%
+\contentsline {figure}{\numberline {3.23}{\ignorespaces 线程块层面矩阵乘法的两种不同计算次序方式}}{46}{section*.84}%
 \contentsline {figure}{\numberline {3.24}{\ignorespaces BlockSwizzle Pass 作用前的行优先映射}}{47}{section*.85}%
 \contentsline {figure}{\numberline {3.25}{\ignorespaces BlockSwizzle Pass 作用后的分组优先映射}}{47}{section*.86}%
 \contentsline {figure}{\numberline {3.26}{\ignorespaces MatmulOp 操作的计算细节（无离散化优化）}}{48}{section*.88}%
-\contentsline {figure}{\numberline {3.27}{\ignorespaces MatmulOp 操作的计算细节（有离散化优化）}}{49}{section*.89}%
-\contentsline {figure}{\numberline {3.28}{\ignorespaces MatmulOp操作中SM(V)缓冲区的LowerInfo}}{49}{section*.90}%
-\contentsline {figure}{\numberline {3.29}{\ignorespaces MatmulOp操作中SM(V)缓冲区的LowerInfo}}{50}{section*.91}%
+\contentsline {figure}{\numberline {3.27}{\ignorespaces MatmulOp 操作的计算细节（有离散化优化）}}{48}{section*.89}%
+\contentsline {figure}{\numberline {3.28}{\ignorespaces MatmulOp 操作中 SM(V) 缓冲区的 LowerInfo}}{49}{section*.90}%
+\contentsline {figure}{\numberline {3.29}{\ignorespaces MatmulOp 操作中 SM(V) 缓冲区的 LowerInfo}}{49}{section*.91}%
 \contentsline {figure}{\numberline {3.30}{\ignorespaces DeepGen 调优模块总体架构}}{51}{section*.94}%
 \contentsline {figure}{\numberline {3.31}{\ignorespaces DeepGen 自动调优流程}}{52}{section*.95}%
 \contentsline {figure}{\numberline {3.32}{\ignorespaces 注意力机制调优配置参数}}{54}{section*.98}%
@@ -49,10 +49,10 @@
 \contentsline {figure}{\numberline {4.2}{\ignorespaces 海光 Z100 平台上 DeepGen 与 rocBLAS 的矩阵乘法对比实验}}{60}{section*.108}%
 \contentsline {figure}{\numberline {4.3}{\ignorespaces NVIDIA A100 平台上 DeepGen 与 Triton 和 TVM 的矩阵乘法对比实验}}{60}{section*.109}%
 \contentsline {figure}{\numberline {4.4}{\ignorespaces 海光 Z100 平台上 DeepGen 与 Triton 和 TVM 的矩阵乘法对比实验}}{61}{section*.110}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces NVIDA A100 平台上 MHA 序列长度变化对比实验}}{62}{section*.112}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces NVIDIA A100 平台上 MHA 序列长度变化对比实验}}{62}{section*.112}%
 \contentsline {figure}{\numberline {4.6}{\ignorespaces 海光 Z100 平台上 MHA 序列长度变化对比实验}}{63}{section*.113}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces NVIDA A100 平台上 MHA 批大小变化对比实验}}{64}{section*.114}%
-\contentsline {figure}{\numberline {4.8}{\ignorespaces 海光 Z100 平台上 MHA 批大小变化对比实验}}{65}{section*.115}%
-\contentsline {figure}{\numberline {4.9}{\ignorespaces BERT 和 GPT2 系列模型端到端推理实验}}{69}{section*.121}%
-\contentsline {figure}{\numberline {4.10}{\ignorespaces Llama2-7B 模型端到端推理实验}}{70}{section*.122}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces NVIDIA A100 平台上 MHA 批大小变化对比实验}}{64}{section*.114}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces 海光 Z100 平台上 MHA 批大小变化对比实验}}{64}{section*.115}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces BERT 和 GPT2 系列模型端到端推理实验}}{68}{section*.121}%
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Llama2-7B 模型端到端推理实验}}{69}{section*.122}%
 \contentsfinish 

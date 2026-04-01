@@ -23,27 +23,27 @@
 \contentsline {subsection}{\numberline {2.1.2}NVIDIA GPU 架构及编程模型}{12}{section*.28}%
 \contentsline {subsection}{\numberline {2.1.3}海光 DCU 架构及编程模型}{15}{section*.32}%
 \contentsline {section}{\numberline {2.2}Transformer 模型架构与计算特性}{16}{section*.34}%
-\contentsline {subsection}{\numberline {2.2.1}Transformer架构综述}{16}{section*.35}%
+\contentsline {subsection}{\numberline {2.2.1}Transformer 架构综述}{16}{section*.35}%
 \contentsline {subsection}{\numberline {2.2.2}模型关键算子介绍}{17}{section*.37}%
 \contentsline {section}{\numberline {2.3}机器学习编译与 MLIR 基础}{18}{section*.39}%
 \contentsline {subsection}{\numberline {2.3.1}机器学习编译器概述}{18}{section*.40}%
 \contentsline {subsection}{\numberline {2.3.2}MLIR 核心设计原理}{19}{section*.42}%
 \contentsline {subsection}{\numberline {2.3.3}基于 MLIR 的代码生成流程}{21}{section*.44}%
 \contentsline {section}{\numberline {2.4}本章小结}{22}{section*.46}%
-\contentsline {chapter}{\numberline {3}Transformer模型关键算子的代码生成}{23}{section*.47}%
+\contentsline {chapter}{\numberline {3}Transformer 模型关键算子的代码生成}{23}{section*.47}%
 \contentsline {section}{\numberline {3.1}引言}{23}{section*.48}%
 \contentsline {section}{\numberline {3.2}面向硬件层次结构的多级IR设计与转换}{25}{section*.50}%
 \contentsline {subsection}{\numberline {3.2.1}算子的计算建模}{25}{section*.51}%
 \contentsline {subsection}{\numberline {3.2.2}IR降级信息推断算法}{28}{section*.55}%
 \contentsline {subsection}{\numberline {3.2.3}IR降级转换}{32}{section*.60}%
-\contentsline {section}{\numberline {3.3}关键算子的高性能优化pass集合}{36}{section*.66}%
-\contentsline {subsection}{\numberline {3.3.1}矩阵乘法与注意力机制优化分析}{37}{section*.68}%
+\contentsline {section}{\numberline {3.3}关键算子的高性能优化 Pass 集合}{36}{section*.66}%
+\contentsline {subsection}{\numberline {3.3.1}矩阵乘法与注意力机制优化分析}{36}{section*.68}%
 \contentsline {subsection}{\numberline {3.3.2}Software Pipeline：软件流水线优化}{39}{section*.71}%
-\contentsline {subsection}{\numberline {3.3.3}Local Split K：外积规约轴并行优化}{43}{section*.78}%
+\contentsline {subsection}{\numberline {3.3.3}Local Split K：外积规约轴并行优化}{41}{section*.78}%
 \contentsline {subsection}{\numberline {3.3.4}Block Swizzle：线程块访存重排优化}{46}{section*.83}%
-\contentsline {subsection}{\numberline {3.3.5}Access Scatter：离散化访存优化}{48}{section*.87}%
+\contentsline {subsection}{\numberline {3.3.5}Access Scatter：离散化访存优化}{47}{section*.87}%
 \contentsline {section}{\numberline {3.4}基于空间剪枝的自动调优框架设计}{50}{section*.92}%
-\contentsline {subsection}{\numberline {3.4.1}调优框架的设计}{51}{section*.93}%
+\contentsline {subsection}{\numberline {3.4.1}调优框架的设计}{50}{section*.93}%
 \contentsline {subsection}{\numberline {3.4.2}调优空间参数的设置与定义}{53}{section*.96}%
 \contentsline {subsection}{\numberline {3.4.3}搜索空间剪枝策略}{55}{section*.100}%
 \contentsline {section}{\numberline {3.5}本章小结}{56}{section*.102}%
@@ -51,13 +51,13 @@
 \contentsline {section}{\numberline {4.1}实验设置}{58}{section*.104}%
 \contentsline {section}{\numberline {4.2}矩阵乘法算子代码生成测试}{58}{section*.106}%
 \contentsline {section}{\numberline {4.3}注意力机制代码生成测试}{61}{section*.111}%
-\contentsline {section}{\numberline {4.4}计算精确度验证}{66}{section*.116}%
-\contentsline {section}{\numberline {4.5}端到端推理性能测试}{68}{section*.119}%
-\contentsline {section}{\numberline {4.6}本章小结}{70}{section*.123}%
-\contentsline {chapter}{\numberline {5}总结与展望}{72}{section*.124}%
-\contentsline {section}{\numberline {5.1}总结}{72}{section*.125}%
-\contentsline {section}{\numberline {5.2}展望}{73}{section*.126}%
-\contentsline {chapter}{参考文献}{74}{section*.128}%
-\contentsline {chapter}{致\hskip 1em\relax 谢}{79}{section*.130}%
-\contentsline {chapter}{附录A\hspace {0.25em plus 0.125em minus 0.08em}\ignorespaces \hspace {0.25em plus 0.125em minus 0.08em}\ignorespaces 攻读硕士学位期间发表的学术论文}{80}{section*.132}%
+\contentsline {section}{\numberline {4.4}计算精确度验证}{65}{section*.116}%
+\contentsline {section}{\numberline {4.5}端到端推理性能测试}{67}{section*.119}%
+\contentsline {section}{\numberline {4.6}本章小结}{69}{section*.123}%
+\contentsline {chapter}{\numberline {5}总结与展望}{71}{section*.124}%
+\contentsline {section}{\numberline {5.1}总结}{71}{section*.125}%
+\contentsline {section}{\numberline {5.2}展望}{72}{section*.126}%
+\contentsline {chapter}{参考文献}{73}{section*.128}%
+\contentsline {chapter}{致\hskip 1em\relax 谢}{78}{section*.130}%
+\contentsline {chapter}{附录A\hspace {0.25em plus 0.125em minus 0.08em}\ignorespaces \hspace {0.25em plus 0.125em minus 0.08em}\ignorespaces 攻读硕士学位期间发表的学术论文}{79}{section*.132}%
 \contentsfinish 

@@ -4,7 +4,7 @@
 \contentsline {table}{\numberline {3.3}{\ignorespaces 算子优化 Pass 集合列表}}{36}{section*.67}%
 \contentsline {table}{\numberline {3.4}{\ignorespaces 调优参数列表}}{53}{section*.97}%
 \contentsline {table}{\numberline {4.1}{\ignorespaces 实验平台信息}}{58}{section*.105}%
-\contentsline {table}{\numberline {4.2}{\ignorespaces 矩阵乘法结果值的相对 L2 范数误差}}{67}{section*.117}%
-\contentsline {table}{\numberline {4.3}{\ignorespaces 注意力机制结果值的相对 L2 范数误差}}{67}{section*.118}%
-\contentsline {table}{\numberline {4.4}{\ignorespaces 端到端实验模型参数}}{68}{section*.120}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces 矩阵乘法结果值的相对 L2 范数误差}}{66}{section*.117}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces 注意力机制结果值的相对 L2 范数误差}}{66}{section*.118}%
+\contentsline {table}{\numberline {4.4}{\ignorespaces 端到端实验模型参数}}{67}{section*.120}%
 \contentsfinish 
