@@ -1,4 +1,4 @@
-\begin{thebibliography}{72}
+\begin{thebibliography}{71}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{#1}
 \expandafter\ifx\csname urlstyle\endcsname\relax\else
@@ -58,7 +58,7 @@ BROWN T, MANN B, RYDER N, et~al.
 \bibitem[Cai et~al.(2024)Cai, Jiang, Wang, Tang, Kim, and Huang]{cai2024survey}
 CAI W, JIANG J, WANG F, et~al.
 \newblock A survey on mixture of experts\allowbreak[J].
-\newblock Authorea Preprints, 2024.
+\newblock TechRxiv, 2024, 2024\allowbreak (0709).
 
 \bibitem[闫啸彤\ 等(2024)闫啸彤, 唐晓彬, 沈童, and 雷诺]{SCGD202404002}
 闫啸彤, 唐晓彬, 沈童, 等.
@@ -399,10 +399,5 @@ CHELINI L, DREBES A, ZINENKO O, et~al.
 \newblock Progressive raising in multi-level ir\allowbreak[C]//\allowbreak
 2021 IEEE/ACM International Symposium on Code Generation and Optimization (CGO).
 \newblock IEEE, 2021: 15-26.
-
-\bibitem[Wang et~al.(2025)Wang, Bayliss, Bisca, Blair, Chowdhary, Denolf, Fifield, Freiberger, Hunhoff, James-Roxby, et~al.]{wang2025loop}
-WANG E, BAYLISS S, BISCA A, et~al.
-\newblock From loop nests to silicon: Mapping ai workloads onto amd npus with mlir-air\allowbreak[J].
-\newblock ACM Transactions on Reconfigurable Technology and Systems, 2025.
 
 \end{thebibliography}

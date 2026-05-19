@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt,openany,oneside]{book}  % twoside
+\documentclass[a4paper,12pt,openany,twoside]{book}  % twoside
 
                                            % 如果论文超过60页 可以使用 twoside 双面打印
 \input{setup/package}                      % 定义本文所使用宏包
@@ -11,21 +11,25 @@
 
 
 %%%%%%%%%%   目录   %%%%%%%%%%
-\clearpage{\thispagestyle{empty}\cleardoublepage}  % 控制下一页为奇数页
+% \clearpage{\thispagestyle{empty}\cleardoublepage}  % 控制下一页为奇数页
+\clearpage
 \sk20font
 \addcontentsline{toc}{chapter}{目~~~~录}
 \tableofcontents                           % 中文目录
-\clearpage{\thispagestyle{empty}\cleardoublepage}  % 控制下一页为奇数页
+% \clearpage{\thispagestyle{empty}\cleardoublepage}  % 控制下一页为奇数页
+\clearpage
 \newcommand{\loflabel}{图~}
 \renewcommand{\numberline}[1]{\song\xiaosi\loflabel~#1\hspace*{\baselineskip}}
 \addcontentsline{toc}{chapter}{插图索引}
 \listoffigures
-\clearpage{\thispagestyle{empty}\cleardoublepage}  % 控制下一页为奇数页
+% \clearpage{\thispagestyle{empty}\cleardoublepage}  % 控制下一页为奇数页
+\clearpage
 \newcommand{\lotlabel}{表~}
 \renewcommand{\numberline}[1]{\song\xiaosi\lotlabel~#1\hspace*{\baselineskip}}
 \addcontentsline{toc}{chapter}{附表索引}
 \listoftables
-\clearpage{\pagestyle{empty}\cleardoublepage}
+% \clearpage{\pagestyle{empty}\cleardoublepage}  % 控制下一页为奇数页
+% \clearpage
 
 
 %%%%%%%%%% 正文部分内容  %%%%%%%%%%
@@ -34,18 +38,32 @@
 % \renewcommand{\ALC@linenosize}{\xiaosi}
 \clearpage
 
-% 这里有bug，我吐了，\leftmark中莫名有编号，只能在对应章节里手动修改页眉
-\pagestyle{fancy} % 设置页眉页脚风格
-\fancyhf{} % 清空页眉页脚
-\fancyhead[CO]{\song\wuhao ~\leftmark~} % ！！！
-\fancyhead[CE]{\song\wuhao \@cheading}
+% % 这里有bug，我吐了，\leftmark中莫名有编号，只能在对应章节里手动修改页眉
+% \pagestyle{fancy} % 设置页眉页脚风格
+% \fancyhf{} % 清空页眉页脚
+% \fancyhead[CO]{\song\wuhao ~\leftmark~} % ！！！
+% \fancyhead[CE]{\song\wuhao \@cheading}
+% \fancyfoot[C]{\song\wuhao ~\thepage~}
+% \renewcommand{\headrulewidth}{1.5pt}
+% \fancypagestyle{plain}{% 设置开章页页眉页脚风格
+% \fancyhf{}%
+% \fancyhead[CO]{\song\wuhao ~\leftmark~}
+% \fancyhead[CE]{\song\wuhao \@cheading}
+% \fancyfoot[C]{\song\wuhao ~\thepage~}}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[CO]{\song\wuhao \leftmark}   % 奇数页：章标题
+\fancyhead[CE]{\song\wuhao 硕士学位论文}    % 偶数页：论文题目
 \fancyfoot[C]{\song\wuhao ~\thepage~}
 \renewcommand{\headrulewidth}{1.5pt}
-\fancypagestyle{plain}{% 设置开章页页眉页脚风格
-\fancyhf{}%
-\fancyhead[CO]{\song\wuhao ~\leftmark~}
-\fancyhead[CE]{\song\wuhao \@cheading}
-\fancyfoot[C]{\song\wuhao ~\thepage~}}
+
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyhead[CO]{\song\wuhao \leftmark}
+  \fancyhead[CE]{\song\wuhao \@cheading}
+  \fancyfoot[C]{\song\wuhao ~\thepage~}
+  \renewcommand{\headrulewidth}{1.5pt}
+}
 
 \makeatother
 
@@ -57,21 +75,27 @@
 % !!!
 % 请在每个章节之前添加 ```\clearpage{\thispagestyle{empty}\cleardoublepage}``` 指令
 % 用 ```\include{}```插入tex内容
-\clearpage{\thispagestyle{empty}\cleardoublepage}  % 控制下一页为奇数页
+% \clearpage{\thispagestyle{empty}\cleardoublepage}  % 控制下一页为奇数页
+\clearpage
 \include{body/chapter1}
-\clearpage{\thispagestyle{empty}\cleardoublepage}  % 控制下一页为奇数页
+% \clearpage{\thispagestyle{empty}\cleardoublepage}  % 控制下一页为奇数页
+\clearpage
 \include{body/chapter2}
-\clearpage{\thispagestyle{empty}\cleardoublepage}  % 控制下一页为奇数页
+% \clearpage{\thispagestyle{empty}\cleardoublepage}  % 控制下一页为奇数页
+\clearpage
 \include{body/chapter3}
-\clearpage{\thispagestyle{empty}\cleardoublepage}  % 控制下一页为奇数页
+% \clearpage{\thispagestyle{empty}\cleardoublepage}  % 控制下一页为奇数页
+\clearpage
 \include{body/chapter4}
-\clearpage{\thispagestyle{empty}\cleardoublepage}  % 控制下一页为奇数页
+% \clearpage{\thispagestyle{empty}\cleardoublepage}  % 控制下一页为奇数页
+\clearpage
 \include{body/chapter5}
 %%%%%%%%%% 正文部分内容  %%%%%%%%%%
 
 
 %%%%%%%%%%  参考文献  %%%%%%%%%%
-\clearpage{\thispagestyle{empty}\cleardoublepage}  % 控制下一页为奇数页
+% \clearpage{\thispagestyle{empty}\cleardoublepage}  % 控制下一页为奇数页
+\clearpage
 
 % 参考文献之后不需要页眉
 \fancyhead[CO]{\song\wuhao }  % 手动修改页眉
@@ -89,13 +113,17 @@
 
 
 %%%%%%%%%%  致谢和附录  %%%%%%%%%%
-\clearpage{\thispagestyle{empty}\cleardoublepage}  % 控制下一页为奇数页
+% \clearpage{\thispagestyle{empty}\cleardoublepage}  % 控制下一页为奇数页
+\clearpage
 \bibliography{references/reference}
-\clearpage{\thispagestyle{empty}\cleardoublepage}  % 控制下一页为奇数页
+% \clearpage{\thispagestyle{empty}\cleardoublepage}  % 控制下一页为奇数页
+\clearpage
 \include{appendix/acknowledgements}               % 致谢
-\clearpage{\thispagestyle{empty}\cleardoublepage}  % 控制下一页为奇数页
+% \clearpage{\thispagestyle{empty}\cleardoublepage}  % 控制下一页为奇数页
+\clearpage
 \include{appendix/publications}                   % 发表论文和参加科研情况说明
-\clearpage{\thispagestyle{empty}\cleardoublepage}  % 控制下一页为奇数页
+% \clearpage{\thispagestyle{empty}\cleardoublepage}  % 控制下一页为奇数页
+\clearpage
 
 
 \clearpage
