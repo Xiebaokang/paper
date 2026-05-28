@@ -1,14 +1,14 @@
-\contentsline {table}{\numberline {1.1}{\ignorespaces TVM、Triton 与 DeepGen 的 IR 设计和优化能力对比}}{5}{section*.20}%
-\contentsline {table}{\numberline {3.1}{\ignorespaces DeepGen Dialect 中自定义 Operation 列表}}{26}{section*.52}%
-\contentsline {table}{\numberline {3.2}{\ignorespaces 自定义缓冲区标识符}}{27}{section*.53}%
+\contentsline {table}{\numberline {1.1}{\ignorespaces TVM、Triton 与 DeepGen 的 IR 设计和优化能力对比}}{6}{section*.20}%
+\contentsline {table}{\numberline {3.1}{\ignorespaces DeepGen 方言中自定义 Operation 列表}}{27}{section*.52}%
+\contentsline {table}{\numberline {3.2}{\ignorespaces 自定义缓冲区标识符}}{28}{section*.53}%
 \contentsline {table}{\numberline {3.3}{\ignorespaces 算子优化 Pass 集合列表}}{39}{section*.67}%
-\contentsline {table}{\numberline {3.4}{\ignorespaces 调优参数列表}}{57}{section*.98}%
-\contentsline {table}{\numberline {4.1}{\ignorespaces 实验平台信息}}{62}{section*.106}%
-\contentsline {table}{\numberline {4.2}{\ignorespaces Matmul 算子典型优化 Pass 组合消融实验}}{70}{section*.118}%
-\contentsline {table}{\numberline {4.3}{\ignorespaces MHA 算子典型优化 Pass 组合消融实验}}{71}{section*.119}%
-\contentsline {table}{\numberline {4.4}{\ignorespaces 矩阵乘法结果值的相对 L2 范数误差}}{72}{section*.121}%
-\contentsline {table}{\numberline {4.5}{\ignorespaces 注意力机制结果值的相对 L2 范数误差}}{72}{section*.122}%
-\contentsline {table}{\numberline {4.6}{\ignorespaces 端到端实验模型参数}}{73}{section*.124}%
-\contentsline {table}{\numberline {4.7}{\ignorespaces 调优空间剪枝前后候选配置数量对比}}{76}{section*.128}%
-\contentsline {table}{\numberline {4.8}{\ignorespaces 自动代码生成与调优时间开销}}{77}{section*.129}%
+\contentsline {table}{\numberline {3.4}{\ignorespaces 调优参数列表}}{56}{section*.98}%
+\contentsline {table}{\numberline {4.1}{\ignorespaces 实验平台信息}}{60}{section*.106}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces 矩阵乘法算子典型优化 Pass 组合消融实验}}{68}{section*.118}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces 多头注意力机制算子典型优化 Pass 组合消融实验}}{69}{section*.119}%
+\contentsline {table}{\numberline {4.4}{\ignorespaces 矩阵乘法结果值的相对 L2 范数误差}}{70}{section*.121}%
+\contentsline {table}{\numberline {4.5}{\ignorespaces 多头注意力机制结果值的相对 L2 范数误差}}{70}{section*.122}%
+\contentsline {table}{\numberline {4.6}{\ignorespaces 端到端实验模型参数}}{71}{section*.124}%
+\contentsline {table}{\numberline {4.7}{\ignorespaces 调优空间剪枝前后候选配置数量对比}}{74}{section*.128}%
+\contentsline {table}{\numberline {4.8}{\ignorespaces 自动代码生成与调优时间开销}}{75}{section*.129}%
 \contentsfinish 
